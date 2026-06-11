@@ -94,4 +94,5 @@ git push
 - [x] 添加 FAQ 区块提升 SEO
 - [x] 写 SEO 文章（dog-walking-guide 首发）
 - [x] 写 SEO 文章（dog-feeding-guide）
+- [x] 写 SEO 文章（pet-water-guide）
 - [ ] 下一篇 SEO 文章
