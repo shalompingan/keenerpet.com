@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Walking Calculator – Exercise Distance & Calories | KeenerPet</title>
+    <meta name="description" content="Calculate how far your dog walked and how many calories they burned. Plus find the ideal daily exercise for your pet based on breed, age, and weight.">
+    <link rel="canonical" href="https://keenerpet.com/pet-walking-calculator/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pet Walking Calculator – Exercise Distance & Calories | KeenerPet">
+    <meta property="og:description" content="Calculate how far your dog walked and calories burned. Free pet exercise calculator for dogs.">
+    <meta property="og:url" content="https://keenerpet.com/pet-walking-calculator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Walking Calculator – Exercise Distance & Calories | KeenerPet">
+    <meta name="twitter:description" content="Calculate how far your dog walked and calories burned. Free pet exercise calculator.">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Pet Walking Calculator",
+      "url": "https://keenerpet.com/pet-walking-calculator/",
+      "description": "Free pet walking and exercise calculator for dogs.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3DHX71CRB"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J3DHX71CRB');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/">
+    <link rel="prefetch" href="/pet-age-calculator/">
+    <link rel="prefetch" href="/pet-water-intake/">
+    <link rel="prefetch" href="/pet-calorie-calculator/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-walking-calculator/" class="active">Walk</a>
+            <a href="/pet-insurance/">Insurance</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container">
+            <h1>🚶 Pet Walking Calculator</h1>
+            <p class="sub">Find out how far your dog walked, how many calories they burned, and their ideal daily exercise.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-card">
+                <div class="calc-grid">
+                    <div class="field">
+                        <label>Pet Type</label>
+                        <select id="pet-type">
+                            <option value="dog">🐕 Dog</option>
+                            <option value="cat">🐱 Cat</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="weight" min="0.5" max="200" step="0.1" value="25">
+                    </div>
+
+                    <div class="field">
+                        <label>Breed Size</label>
+                        <select id="breed-size">
+                            <option value="small">Small (&lt; 20 lbs / 9 kg)</option>
+                            <option value="medium" selected>Medium (20–50 lbs / 9–23 kg)</option>
+                            <option value="large">Large (50–90 lbs / 23–41 kg)</option>
+                            <option value="giant">Giant (&gt; 90 lbs / 41 kg)</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Age Group</label>
+                        <select id="age-group">
+                            <option value="puppy">Puppy (&lt; 1 year)</option>
+                            <option value="adult" selected>Adult (1–7 years)</option>
+                            <option value="senior">Senior (7+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Walking Time (minutes)</label>
+                        <input type="number" id="walk-time" min="1" max="300" step="5" value="30">
+                    </div>
+
+                    <div class="field">
+                        <label>Walking Pace</label>
+                        <select id="pace">
+                            <option value="leisurely">Leisurely (slow sniffing walk)</option>
+                            <option value="moderate" selected>Moderate (brisk walk)</option>
+                            <option value="fast">Fast (power walk / jog)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="calc-btn" id="calc-btn">Calculate Walk →</button>
+
+                <div class="results" id="results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="value" id="distance-km">—</div>
+                            <div class="label">Distance (km)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="distance-miles">—</div>
+                            <div class="label">Distance (miles)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="calories-burned">—</div>
+                            <div class="label">Calories burned</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="exercise-pct">—</div>
+                            <div class="label">% of daily exercise goal</div>
+                        </div>
+                    </div>
+
+                    <div class="affiliate-rec" id="affiliate-rec">
+                        <span class="rec-label">🛒 Gear for walks</span>
+                        <a href="https://www.chewy.com/s?query=dog+walking+harness" target="_blank" rel="sponsored">Walking Harness →</a>
+                        <a href="https://www.chewy.com/s?query=dog+leash" target="_blank" rel="sponsored">Leashes →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <details class="faq-item">
+                <summary>How much exercise does my dog need daily?</summary>
+                <div class="faq-answer">
+                    Most adult dogs need 30–60 minutes of exercise per day. Active breeds like Border Collies or Huskies may need 60–90 minutes, while small or brachycephalic breeds like Pugs may only need 20–30 minutes. Puppies need shorter, more frequent sessions — about 5 minutes per month of age, twice a day. Our calculator adjusts recommendations based on breed size and age.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>How many calories does my dog burn on a walk?</summary>
+                <div class="faq-answer">
+                    A medium-sized dog (25 kg) burns roughly 80–120 calories on a 30-minute brisk walk. Smaller dogs burn less (~30–50 kcal), while larger dogs burn more (~150–200 kcal). The exact amount depends on weight, pace, terrain, and duration. Our calculator gives a personalized estimate based on your dog's profile and walk details.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>How far can my dog walk?</summary>
+                <div class="faq-answer">
+                    Most healthy adult dogs can walk 3–8 km per day depending on breed and fitness. High-energy breeds may manage 10+ km, while small or senior dogs may prefer 1–3 km. Always watch for signs of fatigue — heavy panting, lagging behind, or lying down. Build up distance gradually, just like human fitness training.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Is walking enough exercise for my dog?</summary>
+                <div class="faq-answer">
+                    Walking is excellent for most dogs, but many also need mental stimulation and off-leash running time. Combine walks with play sessions, training, or dog park visits for a well-rounded routine. For high-energy breeds, consider adding fetch, agility training, or dog sports to meet their exercise needs. <a href="https://www.chewy.com/s?query=dog+fetch+toys" target="_blank" rel="sponsored">Shop fetch toys →</a>
+                </div>
+            </details>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-walking-calculator/">Pet Walking Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Always consult your veterinarian before starting a new exercise routine for your pet.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const petType = document.getElementById('pet-type');
+    const weight = document.getElementById('weight');
+    const breedSize = document.getElementById('breed-size');
+    const ageGroup = document.getElementById('age-group');
+    const walkTime = document.getElementById('walk-time');
+    const pace = document.getElementById('pace');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+
+    function calculate() {
+        const type = petType.value;
+        const w = parseFloat(weight.value);
+        const time = parseFloat(walkTime.value);
+        if (isNaN(w) || w <= 0 || isNaN(time) || time <= 0) {
+            results.classList.remove('show');
+            return;
+        }
+
+        // Speed in km/h based on pace and breed size
+        let baseSpeed;
+        switch (pace.value) {
+            case 'leisurely': baseSpeed = 2.5; break;
+            case 'moderate': baseSpeed = 4.0; break;
+            case 'fast': baseSpeed = 5.5; break;
+            default: baseSpeed = 4.0;
+        }
+
+        // Breed size adjustment
+        const sizeFactors = { small: 0.85, medium: 1.0, large: 1.1, giant: 1.15 };
+        const speed = baseSpeed * (sizeFactors[breedSize.value] || 1.0);
+
+        // Distance
+        const distanceKm = speed * (time / 60);
+        const distanceMiles = distanceKm * 0.621371;
+
+        // Calories burned (MET-based estimation)
+        // MET values: leisurely ~2.5, moderate ~3.5, fast ~5.0
+        let met;
+        switch (pace.value) {
+            case 'leisurely': met = 2.5; break;
+            case 'moderate': met = 3.5; break;
+            case 'fast': met = 5.0; break;
+            default: met = 3.5;
+        }
+        // Calories = MET × weight(kg) × duration(hours) (simplified for dogs)
+        const calories = Math.round(met * w * (time / 60));
+
+        // Daily exercise recommendation (minutes)
+        let recommendedDaily = 30; // default adult
+        const size = breedSize.value;
+        const age = ageGroup.value;
+
+        if (age === 'puppy') {
+            recommendedDaily = 20;
+        } else if (age === 'senior') {
+            recommendedDaily = 25;
+        } else {
+            // Adult
+            if (size === 'small') recommendedDaily = 30;
+            else if (size === 'medium') recommendedDaily = 45;
+            else if (size === 'large') recommendedDaily = 60;
+            else recommendedDaily = 60;
+        }
+
+        const exercisePct = Math.round((time / recommendedDaily) * 100);
+
+        document.getElementById('distance-km').textContent = distanceKm.toFixed(1) + ' km';
+        document.getElementById('distance-miles').textContent = distanceMiles.toFixed(2) + ' miles';
+        document.getElementById('calories-burned').textContent = calories + ' kcal';
+        document.getElementById('exercise-pct').textContent = exercisePct + '%';
+
+        // Update affiliate link based on pet type
+        const affLink = document.querySelector('#affiliate-rec a');
+        if (type === 'cat') {
+            affLink.textContent = 'Cat Walking Gear →';
+            affLink.href = 'https://www.chewy.com/s?query=cat+harness+leash';
+        } else {
+            affLink.textContent = 'Walking Harness →';
+            affLink.href = 'https://www.chewy.com/s?query=dog+walking+harness';
+        }
+
+        results.classList.add('show');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    walkTime.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    weight.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    calculate();
+</script>
+
+</body>
+</html>

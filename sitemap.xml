@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://keenerpet.com/pet-walking-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://keenerpet.com/pet-insurance/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -17,6 +17,7 @@
 | Age | 紫色 | `#8b5cf6` |
 | Water | 蓝色 | `#0ea5e9` |
 | Calories | 橙色 | `#f97316` |
+| Walk | 绿色 | `#10b981` |
 | Insurance | 玫红 | `#e11d48` |
 
 ## 文件结构
@@ -26,6 +27,7 @@ keenerpet.com/
 ├── pet-age-calculator/index.html
 ├── pet-water-intake/index.html
 ├── pet-calorie-calculator/index.html
+├── pet-walking-calculator/index.html
 ├── pet-insurance/index.html
 ├── privacy/index.html
 ├── style.css                   # 共享样式（全局通用）
