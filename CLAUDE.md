@@ -52,13 +52,15 @@ keenerpet.com/
 - 首页有 WebApplication + WebSite Schema
 - 子页面有 WebApplication Schema
 - OG + Twitter Card 每页都要配齐
-- Google Analytics 4（ID 占位符：`G-XXXXXXXXXX`）
+- Google Analytics 4（ID：`G-J3DHX71CRB`）
 
 ## 联盟营销
-- Chewy：4-8% 佣金
-- Amazon Associates：~3%
-- 宠物保险：$25-150/lead
-- 链接用 `rel="sponsored"`
+- **Chewy（Partnerize）**：4% 佣金，30 天 cookie 有效期
+  - 不赚佣金：处方粮、药品、礼品卡
+  - 链接用 `rel="sponsored"`
+- **Amazon Associates**：~3%（180 天需 3 单，新站谨慎）
+- **宠物保险**：Lemonade / Healthy Paws，$25-150/lead
+- 搜索类链接（非具体产品页）更安全，自动适配品类
 
 ## 部署
 ```bash
@@ -79,7 +81,11 @@ git push
 - 配色：暖色基调（`#fafaf9` 背景，`#292524` 文字）
 
 ## 待办
-- [ ] 替换 `G-XXXXXXXXXX` 为真实 GA4 ID
-- [ ] 注册 Chewy 联盟账号
+- [x] 替换 GA4 ID 为真实 ID（G-J3DHX71CRB）
+- [x] 注册 Chewy 联盟账号（Partnerize）
+- [ ] 获取 Partnerize Camref ID 并加入链接
 - [ ] 注册 Amazon Associates
-- [ ] 部署到 Cloudflare Pages
+- [ ] 注册 Awin（备选联盟平台）
+- [x] 部署到 Cloudflare Pages
+- [ ] 添加 FAQ 区块提升 SEO
+- [ ] 写 SEO 文章
