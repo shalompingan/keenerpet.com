@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Food Calculator – Free Daily Feeding Guide | KeenerPet</title>
+    <meta name="description" content="Free pet food calculator: find exactly how much to feed your dog or cat. Based on veterinary NRC formulas. Results in kcal, cups, and grams.">
+    <link rel="canonical" href="https://keenerpet.com/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pet Food Calculator – Free Daily Feeding Guide | KeenerPet">
+    <meta property="og:description" content="Find exactly how much to feed your dog or cat. Free calculator based on veterinary NRC formulas.">
+    <meta property="og:url" content="https://keenerpet.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Food Calculator – Free Daily Feeding Guide | KeenerPet">
+    <meta name="twitter:description" content="Find exactly how much to feed your dog or cat. Free calculator based on veterinary NRC formulas.">
+
+    <meta name="robots" content="index, follow">
+
+    <!-- Schema: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://keenerpet.com/#webapp",
+          "name": "KeenerPet Pet Food Calculator",
+          "url": "https://keenerpet.com/",
+          "description": "Free pet food calculator for dogs and cats based on NRC formulas.",
+          "applicationCategory": "PetApplication",
+          "operatingSystem": "All"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://keenerpet.com/#website",
+          "name": "KeenerPet",
+          "url": "https://keenerpet.com/",
+          "description": "Free pet care calculators and tools for dogs and cats."
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/pet-age-calculator/">
+    <link rel="prefetch" href="/pet-water-intake/">
+    <link rel="prefetch" href="/pet-calorie-calculator/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #ccfbf1;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/" class="active">Calculator</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-insurance/">Insurance</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Pet Food <span>Calculator</span></h1>
+            <p>Find the exact daily feeding amount for your dog or cat. Based on veterinary NRC formulas — no sign-up needed.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-card">
+                <div class="calc-grid">
+                    <div class="field">
+                        <label>Pet Type</label>
+                        <select id="pet-type">
+                            <option value="dog">🐕 Dog</option>
+                            <option value="cat">🐱 Cat</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Weight</label>
+                        <input type="number" id="weight" placeholder="e.g. 25" min="0.5" max="200" step="0.1" value="25">
+                        <div class="unit-toggle">
+                            <button id="unit-kg" class="active">kg</button>
+                            <button id="unit-lbs">lbs</button>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Age Group</label>
+                        <select id="age-group">
+                            <option value="puppy-young">Puppy / Kitten (&lt; 6 months)</option>
+                            <option value="puppy-older">Puppy / Kitten (6–12 months)</option>
+                            <option value="adult" selected>Adult (1–7 years)</option>
+                            <option value="senior">Senior (7+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Body Condition</label>
+                        <select id="body-condition">
+                            <option value="neutered" selected>Neutered / Spayed</option>
+                            <option value="intact">Intact (not neutered)</option>
+                            <option value="overweight">Overweight / Sedentary</option>
+                            <option value="active">Active / Working</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="calc-btn" id="calc-btn">Calculate Daily Feeding →</button>
+
+                <div class="results" id="results">
+                    <div class="main-label">Daily Energy Requirement</div>
+                    <div class="main-result" id="daily-kcal">—</div>
+
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="value" id="dry-amount">—</div>
+                            <div class="label">Dry food (cups / day)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="wet-amount">—</div>
+                            <div class="label">Wet food (cans / day)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="grams-amount">—</div>
+                            <div class="label">Dry food (grams / day)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="meals">—</div>
+                            <div class="label">Recommended meals / day</div>
+                        </div>
+                    </div>
+
+                    <div class="affiliate-rec" id="affiliate-rec">
+                        <span class="rec-label">🛒 Recommended on Chewy</span>
+                        <a href="https://www.chewy.com/s?query=premium+dog+food" target="_blank" rel="sponsored" id="affiliate-link">Shop Dog Food →</a>
+                        <a href="https://www.chewy.com/s?query=pet+food+bowl" target="_blank" rel="sponsored">Feeding Bowls →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Pet Tools -->
+    <section class="tools-section">
+        <div class="container">
+            <h2>🧰 All Pet Tools</h2>
+            <div class="tools-grid">
+                <a href="/pet-age-calculator/" class="tool-card">
+                    <div class="icon">🐕</div>
+                    <h3>Pet Age Calculator</h3>
+                    <p>How old is your pet in human years? Accurate formula based on breed and size.</p>
+                    <span class="go-link">Use Tool →</span>
+                </a>
+                <a href="/pet-water-intake/" class="tool-card">
+                    <div class="icon">💧</div>
+                    <h3>Pet Water Intake</h3>
+                    <p>How much water should your dog or cat drink daily? Based on weight, diet, and activity.</p>
+                    <span class="go-link">Use Tool →</span>
+                </a>
+                <a href="/pet-calorie-calculator/" class="tool-card">
+                    <div class="icon">⚡</div>
+                    <h3>Pet Calorie Calculator</h3>
+                    <p>Calculate your pet's daily calorie needs for weight management and optimal health.</p>
+                    <span class="go-link">Use Tool →</span>
+                </a>
+                <a href="/pet-insurance/" class="tool-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Pet Insurance Estimator</h3>
+                    <p>See how much pet insurance costs and find the best plan for your furry friend.</p>
+                    <span class="go-link">Estimate Cost →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Trust -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">🔬</div>
+                    <h3>Veterinary Formulas</h3>
+                    <p>Every calculator uses established NRC (National Research Council) guidelines for accurate pet nutrition.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🔒</div>
+                    <h3>Your Privacy</h3>
+                    <p>All calculations happen in your browser. We never store or share your pet's information.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🎯</div>
+                    <h3>Evidence-Based</h3>
+                    <p>Our feeding recommendations are based on veterinary science, not marketing.</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">📈</div>
+                    <h3>Always Improving</h3>
+                    <p>New tools added regularly. Have a suggestion? We'd love to hear it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Pet food calculator based on NRC veterinary guidelines. Always consult your vet for specific dietary advice.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ====== Pet Food Calculator ======
+    const petType = document.getElementById('pet-type');
+    const weightInput = document.getElementById('weight');
+    const ageGroup = document.getElementById('age-group');
+    const bodyCondition = document.getElementById('body-condition');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+    const dailyKcal = document.getElementById('daily-kcal');
+    const dryAmount = document.getElementById('dry-amount');
+    const wetAmount = document.getElementById('wet-amount');
+    const gramsAmount = document.getElementById('grams-amount');
+    const meals = document.getElementById('meals');
+    const affiliateLink = document.getElementById('affiliate-link');
+
+    let unit = 'kg';
+
+    document.getElementById('unit-kg').addEventListener('click', () => {
+        unit = 'kg';
+        document.getElementById('unit-kg').classList.add('active');
+        document.getElementById('unit-lbs').classList.remove('active');
+        weightInput.placeholder = 'e.g. 25';
+    });
+
+    document.getElementById('unit-lbs').addEventListener('click', () => {
+        unit = 'lbs';
+        document.getElementById('unit-lbs').classList.add('active');
+        document.getElementById('unit-kg').classList.remove('active');
+        weightInput.placeholder = 'e.g. 55';
+    });
+
+    function calculate() {
+        const type = petType.value;
+        let weight = parseFloat(weightInput.value);
+        if (isNaN(weight) || weight <= 0) {
+            results.classList.remove('show');
+            return;
+        }
+
+        // Convert lbs to kg if needed
+        if (unit === 'lbs') {
+            weight = weight / 2.20462;
+        }
+
+        // RER formula: 70 × (body weight in kg)^0.75
+        const rer = 70 * Math.pow(weight, 0.75);
+
+        // Determine multiplier
+        let multiplier = 1.0;
+        const age = ageGroup.value;
+        const condition = bodyCondition.value;
+
+        if (type === 'dog') {
+            if (age === 'puppy-young') multiplier = 3.0;
+            else if (age === 'puppy-older') multiplier = 2.0;
+            else if (age === 'adult' && condition === 'neutered') multiplier = 1.6;
+            else if (age === 'adult' && condition === 'intact') multiplier = 1.8;
+            else if (age === 'adult' && condition === 'overweight') multiplier = 1.3;
+            else if (age === 'adult' && condition === 'active') multiplier = 2.5;
+            else if (age === 'senior') multiplier = 1.4;
+        } else {
+            // Cat
+            if (age === 'puppy-young') multiplier = 2.5;
+            else if (age === 'puppy-older') multiplier = 2.0;
+            else if (age === 'adult' && condition === 'neutered') multiplier = 1.2;
+            else if (age === 'adult' && condition === 'intact') multiplier = 1.4;
+            else if (age === 'adult' && condition === 'overweight') multiplier = 1.0;
+            else if (age === 'adult' && condition === 'active') multiplier = 1.6;
+            else if (age === 'senior') multiplier = 1.1;
+        }
+
+        const dailyCalories = Math.round(rer * multiplier);
+
+        // Convert to food amounts
+        // Dry food ~350 kcal/cup for dogs, ~380 for cats
+        // Wet food ~250 kcal/can for dogs, ~200 for cats
+        const dryKcalPerCup = type === 'dog' ? 350 : 380;
+        const wetKcalPerCan = type === 'dog' ? 250 : 200;
+        const dryGramsPerCup = type === 'dog' ? 100 : 95; // approx grams per cup
+
+        const cupsDry = (dailyCalories / dryKcalPerCup).toFixed(1);
+        const cansWet = (dailyCalories / wetKcalPerCan).toFixed(1);
+        const gramsDry = Math.round(dailyCalories / dryKcalPerCup * dryGramsPerCup);
+
+        let mealsCount = type === 'dog' ? '2–3 meals' : '2–3 meals';
+        if (age === 'puppy-young') mealsCount = type === 'dog' ? '3–4 meals' : '3–4 meals';
+
+        // Show results
+        dailyKcal.textContent = `${dailyCalories} kcal / day`;
+        dryAmount.textContent = `${cupsDry} cups`;
+        wetAmount.textContent = `${cansWet} cans`;
+        gramsAmount.textContent = `${gramsDry} g`;
+        meals.textContent = mealsCount;
+
+        // Update affiliate link
+        if (type === 'dog') {
+            affiliateLink.textContent = 'Shop Dog Food →';
+            affiliateLink.href = 'https://www.chewy.com/s?query=premium+dry+dog+food';
+        } else {
+            affiliateLink.textContent = 'Shop Cat Food →';
+            affiliateLink.href = 'https://www.chewy.com/s?query=premium+cat+food';
+        }
+
+        results.classList.add('show');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    weightInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+
+    // Calculate on load
+    calculate();
+
+    // ====== Newsletter ======
+    const newsEmail = document.getElementById('newsletter-email');
+    const newsBtn = document.getElementById('newsletter-btn');
+    const newsMsg = document.getElementById('newsletter-msg');
+
+    newsBtn.addEventListener('click', () => {
+        const email = newsEmail.value.trim();
+        if (!email || !email.includes('@')) {
+            newsMsg.textContent = 'Please enter a valid email address.';
+            newsMsg.style.color = '#ef4444';
+            return;
+        }
+        newsMsg.textContent = '';
+        newsBtn.disabled = true;
+        newsBtn.textContent = 'Subscribing...';
+
+        fetch('/api/collect-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, source: 'newsletter', tool: '' })
+        }).then(r => {
+            if (r.ok) {
+                newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
+                newsMsg.style.color = '#059669';
+                newsEmail.value = '';
+            } else {
+                throw new Error('API error');
+            }
+        }).catch(() => {
+            newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
+            newsMsg.style.color = '#ef4444';
+        }).finally(() => {
+            newsBtn.disabled = false;
+            newsBtn.textContent = 'Subscribe';
+        });
+    });
+
+    newsEmail.addEventListener('keydown', (e) => { if (e.key === 'Enter') newsBtn.click(); });
+</script>
+
+</body>
+</html>

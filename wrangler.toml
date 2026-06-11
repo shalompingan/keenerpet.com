@@ -1,0 +1,6 @@
+name = "keenerpet"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = "."
+
+[env.production]
+routes = [{ pattern = "keenerpet.com", custom_domain = true }]

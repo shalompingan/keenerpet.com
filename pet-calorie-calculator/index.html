@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Calorie Calculator – Daily Calorie Needs for Dogs & Cats | KeenerPet</title>
+    <meta name="description" content="Calculate your pet's daily calorie needs for weight management. Based on NRC veterinary formulas for dogs and cats.">
+    <link rel="canonical" href="https://keenerpet.com/pet-calorie-calculator/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <meta property="og:title" content="Pet Calorie Calculator – Daily Calorie Needs | KeenerPet">
+    <meta property="og:description" content="Calculate your dog or cat's daily calorie needs based on veterinary NRC formulas. Free pet calorie calculator.">
+    <meta property="og:url" content="https://keenerpet.com/pet-calorie-calculator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Calorie Calculator – Daily Calorie Needs | KeenerPet">
+    <meta name="twitter:description" content="Calculate your dog or cat's daily calorie needs based on veterinary NRC formulas. Free pet calorie calculator.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Calorie Calculator",
+      "url": "https://keenerpet.com/pet-calorie-calculator/",
+      "description": "Free pet calorie calculator for dogs and cats.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/">
+    <link rel="prefetch" href="/pet-age-calculator/">
+    <link rel="prefetch" href="/pet-water-intake/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        :root {
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --primary-light: #fff7ed;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/" class="active">Calories</a>
+            <a href="/pet-insurance/">Insurance</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container">
+            <h1>⚡ Pet Calorie Calculator</h1>
+            <p class="sub">Calculate your pet's daily calorie needs for healthy weight management. Based on NRC formulas.</p>
+
+            <div class="calc-card">
+                <div class="grid-2">
+                    <div class="field">
+                        <label>Pet Type</label>
+                        <select id="pet-type">
+                            <option value="dog">🐕 Dog</option>
+                            <option value="cat">🐱 Cat</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="weight" min="0.5" max="200" step="0.1" value="25">
+                    </div>
+                    <div class="field">
+                        <label>Age Group</label>
+                        <select id="age-group">
+                            <option value="puppy-young">Puppy / Kitten (&lt; 6 months)</option>
+                            <option value="puppy-older">Puppy / Kitten (6–12 months)</option>
+                            <option value="adult" selected>Adult (1–7 years)</option>
+                            <option value="senior">Senior (7+ years)</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Body Condition</label>
+                        <select id="condition">
+                            <option value="neutered" selected>Neutered / Spayed</option>
+                            <option value="intact">Intact</option>
+                            <option value="overweight">Overweight / Sedentary</option>
+                            <option value="active">Active / Working</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="calc-btn" id="calc-btn">Calculate Daily Calories →</button>
+
+                <div class="results" id="results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="value" id="rer-display">—</div>
+                            <div class="label">RER (Resting Energy)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="der-display">—</div>
+                            <div class="label">DER (Daily Energy)</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="weight-status">—</div>
+                            <div class="label">Weight Range</div>
+                        </div>
+                    </div>
+                    <div class="affiliate-note">
+                        🥩 <a href="https://www.chewy.com/s?query=weight+management+dog+food" target="_blank" rel="sponsored">Shop weight management pet food →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Consult your vet for specific dietary advice for your pet.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const petType = document.getElementById('pet-type');
+    const weight = document.getElementById('weight');
+    const ageGroup = document.getElementById('age-group');
+    const condition = document.getElementById('condition');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+
+    function calculate() {
+        const type = petType.value;
+        const w = parseFloat(weight.value);
+        if (isNaN(w) || w <= 0) { results.classList.remove('show'); return; }
+
+        const rer = 70 * Math.pow(w, 0.75);
+        const age = ageGroup.value;
+        const cond = condition.value;
+
+        let mult = 1.0;
+        if (type === 'dog') {
+            if (age === 'puppy-young') mult = 3.0;
+            else if (age === 'puppy-older') mult = 2.0;
+            else if (age === 'adult' && cond === 'neutered') mult = 1.6;
+            else if (age === 'adult' && cond === 'intact') mult = 1.8;
+            else if (age === 'adult' && cond === 'overweight') mult = 1.3;
+            else if (age === 'adult' && cond === 'active') mult = 2.5;
+            else mult = 1.4;
+        } else {
+            if (age === 'puppy-young') mult = 2.5;
+            else if (age === 'puppy-older') mult = 2.0;
+            else if (age === 'adult' && cond === 'neutered') mult = 1.2;
+            else if (age === 'adult' && cond === 'intact') mult = 1.4;
+            else if (age === 'adult' && cond === 'overweight') mult = 1.0;
+            else if (age === 'adult' && cond === 'active') mult = 1.6;
+            else mult = 1.1;
+        }
+
+        const der = Math.round(rer * mult);
+
+        document.getElementById('rer-display').textContent = Math.round(rer) + ' kcal';
+        document.getElementById('der-display').textContent = der + ' kcal';
+
+        let status = 'Healthy weight';
+        if (cond === 'overweight') status = 'Overweight — reduce calories';
+        else if (age === 'puppy-young') status = 'Growing — needs plenty';
+        else if (cond === 'active') status = 'Active — high energy';
+        document.getElementById('weight-status').textContent = status;
+
+        results.classList.add('show');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    weight.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    calculate();
+</script>
+</body>
+</html>

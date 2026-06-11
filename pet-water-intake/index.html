@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Water Intake Calculator – How Much Should Your Pet Drink? | KeenerPet</title>
+    <meta name="description" content="Calculate how much water your dog or cat needs daily. Based on weight, diet, activity level, and temperature. Free pet hydration tool.">
+    <link rel="canonical" href="https://keenerpet.com/pet-water-intake/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <meta property="og:title" content="Pet Water Intake Calculator – How Much Should Your Pet Drink? | KeenerPet">
+    <meta property="og:description" content="Free pet water intake calculator for dogs and cats based on weight, diet, and activity.">
+    <meta property="og:url" content="https://keenerpet.com/pet-water-intake/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Water Intake Calculator – How Much Should Your Pet Drink? | KeenerPet">
+    <meta name="twitter:description" content="Free pet water intake calculator for dogs and cats based on weight, diet, and activity.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Water Intake Calculator",
+      "url": "https://keenerpet.com/pet-water-intake/",
+      "description": "Free pet water intake calculator for dogs and cats.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/">
+    <link rel="prefetch" href="/pet-age-calculator/">
+    <link rel="prefetch" href="/pet-calorie-calculator/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #e0f2fe;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/" class="active">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-insurance/">Insurance</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container">
+            <h1>💧 Pet Water Intake Calculator</h1>
+            <p class="sub">Find out how much water your dog or cat needs daily based on weight, diet, and environment.</p>
+
+            <div class="calc-card">
+                <div class="field">
+                    <label>Pet Type</label>
+                    <select id="pet-type">
+                        <option value="dog">🐕 Dog</option>
+                        <option value="cat">🐱 Cat</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" min="0.5" max="200" step="0.1" value="25">
+                </div>
+                <div class="field">
+                    <label>Diet Type</label>
+                    <select id="diet-type">
+                        <option value="dry" selected>Dry food only</option>
+                        <option value="mixed">Mixed (dry + wet)</option>
+                        <option value="wet">Wet food only</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Activity & Temperature</label>
+                    <select id="activity">
+                        <option value="normal" selected>Normal activity, mild weather</option>
+                        <option value="active">Active / hot weather</option>
+                        <option value="very-active">Very active / very hot / nursing</option>
+                    </select>
+                </div>
+                <button class="calc-btn" id="calc-btn">Calculate Water Intake →</button>
+
+                <div class="results" id="results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="value" id="daily-ml">—</div>
+                            <div class="label">ml / day</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="daily-cups">—</div>
+                            <div class="label">cups / day</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="from-food">—</div>
+                            <div class="label">ml from food</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="value" id="from-drinking">—</div>
+                            <div class="label">ml should drink</div>
+                        </div>
+                    </div>
+                    <div class="affiliate-note">
+                        💡 Keep your pet hydrated! <a href="https://www.chewy.com/s?query=pet+water+fountain" target="_blank" rel="sponsored">Shop pet water fountains →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Consult your vet if you're concerned about your pet's hydration.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const petType = document.getElementById('pet-type');
+    const weight = document.getElementById('weight');
+    const dietType = document.getElementById('diet-type');
+    const activity = document.getElementById('activity');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+
+    function calculate() {
+        const w = parseFloat(weight.value);
+        if (isNaN(w) || w <= 0) { results.classList.remove('show'); return; }
+
+        const type = petType.value;
+        const diet = dietType.value;
+        const act = activity.value;
+
+        // Baseline: dogs ~60ml/kg/day, cats ~50ml/kg/day
+        let base = type === 'dog' ? 60 : 50;
+        let totalMl = base * w;
+
+        // Activity/temperature multiplier
+        if (act === 'active') totalMl *= 1.3;
+        else if (act === 'very-active') totalMl *= 1.6;
+
+        // Water from food
+        let foodWater = 0;
+        if (diet === 'dry') foodWater = totalMl * 0.1;
+        else if (diet === 'mixed') foodWater = totalMl * 0.4;
+        else foodWater = totalMl * 0.7;
+
+        const shouldDrink = Math.round(totalMl - foodWater);
+        const cups = (shouldDrink / 240).toFixed(1);
+
+        document.getElementById('daily-ml').textContent = Math.round(totalMl) + ' ml';
+        document.getElementById('daily-cups').textContent = cups + ' cups';
+        document.getElementById('from-food').textContent = Math.round(foodWater) + ' ml';
+        document.getElementById('from-drinking').textContent = shouldDrink + ' ml';
+        results.classList.add('show');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    weight.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    calculate();
+</script>
+</body>
+</html>

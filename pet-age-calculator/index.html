@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Age Calculator – Dog & Cat Years to Human Years | KeenerPet</title>
+    <meta name="description" content="Convert your dog or cat's age to human years with our free pet age calculator. Uses breed-size-adjusted formulas for accurate results.">
+    <link rel="canonical" href="https://keenerpet.com/pet-age-calculator/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <meta property="og:title" content="Pet Age Calculator – Dog & Cat Years to Human Years | KeenerPet">
+    <meta property="og:description" content="Free pet age calculator. Convert your dog or cat's age to human years with breed-size-adjusted formulas.">
+    <meta property="og:url" content="https://keenerpet.com/pet-age-calculator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Age Calculator – Dog & Cat Years to Human Years | KeenerPet">
+    <meta name="twitter:description" content="Free pet age calculator. Convert your pet's age to human years with breed-size-adjusted formulas.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Pet Age Calculator",
+      "url": "https://keenerpet.com/pet-age-calculator/",
+      "description": "Free pet age calculator for dogs and cats to human years.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/">
+    <link rel="prefetch" href="/pet-water-intake/">
+    <link rel="prefetch" href="/pet-calorie-calculator/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #ede9fe;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/" class="active">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-insurance/">Insurance</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container">
+            <h1>🐕 Pet Age Calculator</h1>
+            <p class="sub">Convert your dog or cat's age to human years — breed-size-adjusted formula.</p>
+
+            <div class="calc-card">
+                <div class="field">
+                    <label>Pet Type</label>
+                    <select id="pet-type">
+                        <option value="dog">🐕 Dog</option>
+                        <option value="cat">🐱 Cat</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Dog Breed Size (only for dogs)</label>
+                    <select id="breed-size">
+                        <option value="small">Small (&lt; 20 lbs / 9 kg)</option>
+                        <option value="medium" selected>Medium (20–50 lbs / 9–23 kg)</option>
+                        <option value="large">Large (50–90 lbs / 23–41 kg)</option>
+                        <option value="giant">Giant (&gt; 90 lbs / 41 kg)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Pet's Age (years)</label>
+                    <input type="number" id="pet-age" min="0" max="30" step="0.5" value="5">
+                </div>
+                <button class="calc-btn" id="calc-btn">Convert to Human Years →</button>
+
+                <div class="results" id="results">
+                    <div class="big" id="human-age">—</div>
+                    <div class="big-label">human years old</div>
+                    <div class="affiliate-note" style="margin-top:16px">
+                        🎂 Senior pet? <a href="https://www.chewy.com/s?query=senior+pet+health" target="_blank" rel="sponsored">Shop senior pet health products →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Always consult your veterinarian for health advice.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const petType = document.getElementById('pet-type');
+    const breedSize = document.getElementById('breed-size');
+    const petAge = document.getElementById('pet-age');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+    const humanAge = document.getElementById('human-age');
+
+    function calculate() {
+        const type = petType.value;
+        const age = parseFloat(petAge.value);
+        if (isNaN(age) || age < 0) { results.classList.remove('show'); return; }
+
+        let hAge;
+        if (type === 'cat') {
+            // Cat: 1st yr = 15, 2nd yr = 9, each yr after = 4
+            if (age <= 1) hAge = 15 * age;
+            else hAge = 15 + 9 + (age - 2) * 4;
+        } else {
+            const size = breedSize.value;
+            // Dog: 1st yr = 15, 2nd yr = 9, subsequent years vary by size
+            if (age <= 1) {
+                hAge = 15 * age;
+            } else {
+                let perYear;
+                switch (size) {
+                    case 'small': perYear = 4; break;
+                    case 'medium': perYear = 5; break;
+                    case 'large': perYear = 6; break;
+                    case 'giant': perYear = 7; break;
+                    default: perYear = 5;
+                }
+                hAge = 15 + 9 + (age - 2) * perYear;
+            }
+        }
+
+        humanAge.textContent = Math.round(hAge) + ' human years';
+        if (hAge >= 60) humanAge.textContent += ' 🎉';
+        results.classList.add('show');
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    petAge.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    calculate();
+</script>
+</body>
+</html>
