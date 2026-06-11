@@ -30,6 +30,8 @@ keenerpet.com/
 ├── pet-walking-calculator/index.html
 ├── pet-insurance/index.html
 ├── privacy/index.html
+├── guides/
+│   └── dog-walking-guide/index.html   # SEO 指南文章
 ├── style.css                   # 共享样式（全局通用）
 ├── _worker.js                  # Cloudflare Worker API
 ├── wrangler.toml               # Cloudflare Pages 配置
@@ -89,5 +91,6 @@ git push
 - [ ] 注册 Amazon Associates
 - [ ] 注册 Awin（备选联盟平台）
 - [x] 部署到 Cloudflare Pages
-- [ ] 添加 FAQ 区块提升 SEO
-- [ ] 写 SEO 文章
+- [x] 添加 FAQ 区块提升 SEO
+- [x] 写 SEO 文章（dog-walking-guide 首发）
+- [ ] 下一篇 SEO 文章
