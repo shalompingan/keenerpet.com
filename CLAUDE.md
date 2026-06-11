@@ -95,4 +95,8 @@ git push
 - [x] 写 SEO 文章（dog-walking-guide 首发）
 - [x] 写 SEO 文章（dog-feeding-guide）
 - [x] 写 SEO 文章（pet-water-guide）
+- [x] 写 SEO 文章（pet-age-guide）
+- [x] 写 SEO 文章（pet-calorie-guide）
+- [x] 写 SEO 文章（pet-insurance-guide）
 - [ ] 下一篇 SEO 文章
+- [ ] 去 Search Console 更新 sitemap
