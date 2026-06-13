@@ -16,6 +16,7 @@
     <meta property="og:site_name" content="KeenerPet">
     <meta property="og:locale" content="en_US">
     <meta name="robots" content="index, follow">
+    <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pet Walking Calculator – Exercise Distance & Calories | KeenerPet">
@@ -311,14 +312,14 @@
         document.getElementById('calories-burned').textContent = calories + ' kcal';
         document.getElementById('exercise-pct').textContent = exercisePct + '%';
 
-        // Update affiliate link based on pet type
-        const affLink = document.querySelector('#affiliate-rec a');
+        // Update affiliate links based on pet type
+        const affLinks = document.querySelectorAll('#affiliate-rec a');
         if (type === 'cat') {
-            affLink.textContent = 'Cat Walking Gear →';
-            affLink.href = 'https://www.chewy.com/s?query=cat+harness+leash';
+            if (affLinks[0]) { affLinks[0].textContent = 'Cat Walking Gear →'; affLinks[0].href = 'https://www.chewy.com/s?query=cat+harness+leash'; }
+            if (affLinks[1]) { affLinks[1].textContent = 'Cat Toys →'; affLinks[1].href = 'https://www.chewy.com/s?query=cat+toys'; }
         } else {
-            affLink.textContent = 'Walking Harness →';
-            affLink.href = 'https://www.chewy.com/s?query=dog+walking+harness';
+            if (affLinks[0]) { affLinks[0].textContent = 'Walking Harness →'; affLinks[0].href = 'https://www.chewy.com/s?query=dog+walking+harness'; }
+            if (affLinks[1]) { affLinks[1].textContent = 'Leashes →'; affLinks[1].href = 'https://www.chewy.com/s?query=dog+leash'; }
         }
 
         results.classList.add('show');

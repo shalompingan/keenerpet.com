@@ -98,7 +98,7 @@
                         </select>
                     </div>
                     <div class="field">
-                        <label>Breed Size (Dog)</label>
+                        <label id="breed-size-label">Breed Size (Dog)</label>
                         <select id="breed-size">
                             <option value="small">Small</option>
                             <option value="medium" selected>Medium</option>
@@ -126,13 +126,13 @@
                             <div class="name">Lemonade</div>
                             <div class="price" id="lemonade-price">—</div>
                             <div class="rating">★★★★★ 4.8</div>
-                            <a href="https://www.lemonade.com/pet" target="_blank" rel="sponsored">Get Quote →</a>
+                            <a href="https://www.lemonade.com/pet" target="_blank" rel="sponsored" class="ins-cta">Get Quote →</a>
                         </div>
                         <div class="ins-card">
                             <div class="name">Healthy Paws</div>
                             <div class="price" id="healthypaws-price">—</div>
                             <div class="rating">★★★★★ 4.7</div>
-                            <a href="https://www.healthypawspetinsurance.com" target="_blank" rel="sponsored">Get Quote →</a>
+                            <a href="https://www.healthypawspetinsurance.com" target="_blank" rel="sponsored" class="ins-cta">Get Quote →</a>
                         </div>
                     </div>
 
@@ -256,6 +256,14 @@
     }
 
     calcBtn.addEventListener('click', calculate);
+
+    // Update breed size label when pet type changes
+    petType.addEventListener('change', () => {
+        const label = document.getElementById('breed-size-label');
+        label.textContent = petType.value === 'dog' ? 'Breed Size (Dog)' : 'Breed Size';
+        document.getElementById('breed-size').style.display = petType.value === 'dog' ? '' : 'none';
+    });
+
     calculate();
 </script>
 </body>

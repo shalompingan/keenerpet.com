@@ -201,14 +201,17 @@
 
         let hAge;
         if (type === 'cat') {
-            // Cat: 1st yr = 15, 2nd yr = 9, each yr after = 4
-            if (age <= 1) hAge = 15 * age;
+            // Cat: more gradual first-year scaling (6mo ≈ 10 human years)
+            if (age <= 1) hAge = 10 + age * 5;
+            else if (age <= 2) hAge = 15 + (age - 1) * 9;
             else hAge = 15 + 9 + (age - 2) * 4;
         } else {
             const size = breedSize.value;
-            // Dog: 1st yr = 15, 2nd yr = 9, subsequent years vary by size
+            // Dog: more gradual first-year scaling
             if (age <= 1) {
-                hAge = 15 * age;
+                hAge = 10 + age * 5;
+            } else if (age <= 2) {
+                hAge = 15 + (age - 1) * 9;
             } else {
                 let perYear;
                 switch (size) {

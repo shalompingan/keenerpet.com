@@ -379,6 +379,13 @@ nav a.active { background: var(--primary); color: white; }
     font-size: 12px; font-weight: 600; transition: background 0.2s;
 }
 .ins-card a:hover { background: #d97706; color: white; }
+.ins-card a.ins-cta {
+    background: var(--primary);
+    color: white;
+    padding: 8px 18px;
+    font-size: 13px;
+}
+.ins-card a.ins-cta:hover { background: var(--primary-dark); color: white; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
