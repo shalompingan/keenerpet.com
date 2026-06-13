@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Pregnancy Calculator – Free Whelping Due Date &amp; Timeline | KeenerPet</title>
+    <meta name="description" content="Calculate your dog's due date and track her pregnancy week by week. Enter the breeding date to get the exact due date, current stage, and daily care tips for a healthy whelping.">
+    <meta name="keywords" content="dog pregnancy calculator, dog due date calculator, canine gestation calculator, whelping calculator, dog pregnancy timeline, how long are dogs pregnant">
+    <link rel="canonical" href="https://keenerpet.com/dog-pregnancy-calculator/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <meta property="og:title" content="Dog Pregnancy Calculator – Free Due Date &amp; Whelping Timeline | KeenerPet">
+    <meta property="og:description" content="Track your dog's pregnancy week by week. Enter the breeding date for an instant due date, current stage, and expert whelping tips.">
+    <meta property="og:url" content="https://keenerpet.com/dog-pregnancy-calculator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+    <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dog Pregnancy Calculator – Free Whelping Due Date &amp; Timeline | KeenerPet">
+    <meta name="twitter:description" content="Know exactly when your dog's puppies are due. Free canine gestation calculator with week-by-week milestones.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Dog Pregnancy Calculator",
+      "url": "https://keenerpet.com/dog-pregnancy-calculator/",
+      "description": "Free canine gestation calculator that computes due dates and provides week-by-week pregnancy tracking with care tips.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3DHX71CRB"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J3DHX71CRB');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0c0a09;
+            color: #f5f5f4;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        :root {
+            --primary: #e11d48;
+            --primary-dark: #be123c;
+            --primary-light: #ffe4e6;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --bg: #0c0a09;
+            --card-bg: #1c1917;
+            --card-border: #292524;
+            --text: #f5f5f4;
+            --text-muted: #a8a29e;
+            --border: #292524;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.4);
+            --container: 1100px;
+        }
+
+        /* ===== Container ===== */
+        .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+        /* ===== Header ===== */
+        header { background: #171412; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+        .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--primary); }
+        .logo-icon { font-size: 22px; }
+        nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        nav a {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        nav a:hover { color: var(--text); background: #292524; }
+        nav a.active { color: #fff; background: var(--primary); }
+
+        /* ===== Hero ===== */
+        .hero { padding: 48px 0 28px; text-align: center; }
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
+            color: #fff;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== Ad Placeholders ===== */
+        .ad-top { padding: 12px 0; text-align: center; }
+        .ad-box {
+            background: #171412;
+            border: 1px dashed #292524;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #57534e;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .ad-box.horizontal { width: 728px; max-width: 100%; height: 90px; }
+        .ad-box.rectangle { width: 300px; max-width: 100%; height: 250px; }
+
+        /* ===== Calculator Section ===== */
+        .calc-section { padding: 20px 0 48px; }
+        .calc-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            box-shadow: var(--shadow-lg);
+        }
+        .calc-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* ===== Form ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+        }
+        .field { display: flex; flex-direction: column; gap: 5px; }
+        .field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .field input, .field select {
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: #292524;
+            color: var(--text);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .field input:focus, .field select:focus { border-color: var(--primary); }
+        .field input::placeholder { color: #57534e; }
+        .field select { cursor: pointer; }
+        .field-hint {
+            font-size: 11px;
+            color: #57534e;
+            margin-top: 2px;
+        }
+
+        .calc-btn {
+            grid-column: 1 / -1;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            border: none;
+            background: linear-gradient(135deg, var(--primary), #f43f5e);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            margin-top: 8px;
+        }
+        .calc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(225, 29, 72, 0.35); }
+        .calc-btn:active { transform: translateY(0); }
+
+        /* ===== Results ===== */
+        .results {
+            margin-top: 28px;
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .results.show { display: block; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .result-stat {
+            background: #292524;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+        }
+        .result-stat .stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .result-stat .stat-value.highlight { color: var(--primary); }
+        .result-stat .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        /* ===== Timeline ===== */
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: #292524;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+            padding-left: 20px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #292524;
+            border: 2px solid #44403c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .timeline-item.current .timeline-dot {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 16px rgba(225, 29, 72, 0.4);
+        }
+        .timeline-item.past .timeline-dot {
+            background: #292524;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .timeline-item .tl-week {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-item.current .tl-week { color: var(--primary); }
+        .timeline-item.past .tl-week { color: var(--text-muted); }
+        .timeline-item .tl-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 2px 0 4px;
+            color: #fff;
+        }
+        .timeline-item.past .tl-title { color: var(--text-muted); }
+        .timeline-item .tl-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .timeline-item.current .tl-desc { color: #d6d3d1; }
+
+        /* ===== CTA ===== */
+        .cta-card {
+            margin-top: 28px;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #1c1917, #292524);
+            border: 1px solid #44403c;
+            text-align: center;
+        }
+        .cta-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .cta-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, var(--primary), #f43f5e);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.25s;
+            border: none;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(225, 29, 72, 0.35); }
+
+        .affiliate-note {
+            margin-top: 12px;
+            font-size: 11px;
+            color: #57534e;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section { padding: 48px 0; }
+        .faq-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 28px;
+            color: #fff;
+        }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+        .faq-item summary {
+            padding: 16px 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::before { content: '▼'; font-size: 10px; color: var(--text-muted); transition: transform 0.2s; }
+        .faq-item[open] summary::before { transform: rotate(180deg); }
+        .faq-item summary:hover { background: #292524; }
+        .faq-answer {
+            padding: 0 20px 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .faq-answer a { color: var(--primary); font-weight: 600; }
+        .faq-answer a:hover { text-decoration: underline; }
+
+        /* ===== Newsletter ===== */
+        .newsletter-section {
+            background: #171412;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .newsletter-section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .newsletter-section p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: #292524;
+            color: var(--text);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+        .newsletter-form input:focus { border-color: var(--primary); }
+        .newsletter-form input::placeholder { color: #57534e; }
+        .newsletter-form button {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .newsletter-form button:hover { background: var(--primary-dark); }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #171412;
+            padding: 48px 0 24px;
+            font-size: 13px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-brand .logo { font-size: 18px; margin-bottom: 10px; }
+        .footer-brand p { color: var(--text-muted); line-height: 1.6; }
+        .footer-col h4 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 8px; }
+        .footer-col a { color: var(--text-muted); transition: color 0.2s; }
+        .footer-col a:hover { color: var(--text); }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            text-align: center;
+            color: #57534e;
+            font-size: 12px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 14px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .calc-card { padding: 24px 18px; }
+            .result-cards { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .newsletter-form { flex-direction: column; }
+            .footer-grid { text-align: center; }
+            .footer-brand .logo { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 32px 0 20px; }
+            .hero h1 { font-size: 22px; }
+            .result-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .result-stat { padding: 12px 8px; }
+            .result-stat .stat-value { font-size: 20px; }
+            .timeline { padding-left: 28px; }
+            .timeline-dot { left: -28px; width: 20px; height: 20px; font-size: 9px; }
+        }
+
+        @media (max-width: 360px) {
+            nav a { padding: 4px 8px; font-size: 11px; }
+            .calc-card { padding: 16px 12px; }
+            .result-cards { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ===== Disclaimer ===== */
+        .disclaimer {
+            margin-top: 20px;
+            padding: 12px 16px;
+            background: #292524;
+            border-radius: var(--radius);
+            font-size: 12px;
+            color: #57534e;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-walking-calculator/">Walk</a>
+            <a href="/pet-insurance/">Insurance</a>
+            <a href="/pet-toxicity-checker/">Toxicity</a>
+            <a href="/dog-breed-match/">Breeds</a>
+            <a href="/dog-separation-anxiety/">Anxiety</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- AdSense Top -->
+    <div class="ad-top">
+        <div class="ad-box horizontal">Ad · 728×90</div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>🐾 Dog Pregnancy <span>Calculator</span></h1>
+            <p>Enter your dog's breeding date to get the exact due date, current pregnancy stage, and week-by-week milestones with expert care tips for a healthy whelping.</p>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-card" id="calc-card">
+                <h2>📅 When did mating occur?</h2>
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="breed-date">Breeding date</label>
+                        <input type="date" id="breed-date">
+                        <span class="field-hint">The date your dog was first bred</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="breed-count">Number of puppies (optional)</label>
+                        <select id="breed-count">
+                            <option value="">Not sure yet</option>
+                            <option value="1">1 puppy</option>
+                            <option value="2">2 puppies</option>
+                            <option value="3">3 puppies</option>
+                            <option value="4">4 puppies</option>
+                            <option value="5">5 puppies</option>
+                            <option value="6">6 puppies</option>
+                            <option value="7">7 puppies</option>
+                            <option value="8">8 puppies</option>
+                            <option value="9">9 puppies</option>
+                            <option value="10">10+ puppies</option>
+                        </select>
+                        <span class="field-hint">Helps estimate whelping duration</span>
+                    </div>
+
+                    <button class="calc-btn" id="calc-btn">📊 Calculate Due Date</button>
+                </div>
+
+                <!-- Results -->
+                <div class="results" id="results">
+                    <div class="result-cards" id="result-cards"></div>
+
+                    <div class="timeline-title">📋 Week-by-Week Timeline</div>
+                    <div class="timeline" id="timeline"></div>
+
+                    <!-- CTA -->
+                    <div class="cta-card">
+                        <h3>🐶 Get Ready for Puppies!</h3>
+                        <p>Stock up on whelping supplies, puppy pads, heating pads, and nursing essentials for mom and her new litter.</p>
+                        <a href="https://www.chewy.com/s?query=whelping+supplies+puppy+care" target="_blank" rel="sponsored" class="cta-btn">🛒 Shop Whelping Supplies on Chewy →</a>
+                        <div class="affiliate-note">As an affiliate we may earn from qualifying purchases.</div>
+                    </div>
+
+                    <div class="disclaimer">This calculator provides estimates only. Always consult your veterinarian for professional pregnancy care and whelping guidance.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips &amp; New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg"></div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Dog Pregnancy FAQs</h2>
+
+            <details class="faq-item">
+                <summary>How long are dogs pregnant?</summary>
+                <div class="faq-answer">
+                    The average canine gestation period is 63 days from ovulation, but it can range from 57 to 65 days from breeding. Unlike humans, dog pregnancy is very short — about 9 weeks. The exact duration depends on the timing of ovulation and fertilization, which is why tracking the breeding date is important. Always consult your vet to confirm the due date, especially if you're unsure of the exact breeding date.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>When can I confirm my dog is pregnant?</summary>
+                <div class="faq-answer">
+                    Around day 21–25 (week 3-4), a veterinarian can palpate the abdomen to feel the developing embryos. By day 25–30, an ultrasound can detect fetal heartbeats, which is the most reliable early confirmation method. X-rays can count puppies from day 45–55 (week 7-8), once the fetal skeletons have calcified. Home pregnancy tests for dogs are not reliable — always see your vet for confirmation.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>What should I feed my pregnant dog?</summary>
+                <div class="faq-answer">
+                    During the first 4 weeks, feed a high-quality adult maintenance diet. From week 5 onward, switch to a high-quality puppy food (which has more calories, protein, and calcium) and gradually increase portions. By week 9, she may eat 30–50% more than usual. Feed smaller, more frequent meals if she has morning sickness or feels bloated. Always provide fresh water. <a href="https://www.chewy.com/s?query=puppy+food+pregnant+dog" target="_blank" rel="sponsored">Shop puppy food →</a>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>When should I prepare a whelping box?</summary>
+                <div class="faq-answer">
+                    Set up the whelping box around day 50–55 (week 7-8). Place it in a quiet, draft-free area with good visibility. Line it with clean towels or blankets that can be easily washed and replaced. The box should have raised sides to prevent puppies from crawling out but low enough for the mother to enter and exit comfortably. Introduce your dog to the box gradually so she feels safe in it before labor begins. <a href="https://www.chewy.com/s?query=whelping+box+supplies" target="_blank" rel="sponsored">Shop whelping boxes →</a>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>How can I tell if my dog is in labor?</summary>
+                <div class="faq-answer">
+                    Signs of impending labor include: drop in body temperature below 100°F (37.8°C) — this happens 12–24 hours before labor; restlessness, panting, and nesting behavior; loss of appetite; shivering or trembling; and visible contractions. Stage 1 labor (cervical dilation) lasts 6–12 hours. Stage 2 (active delivery) follows, with puppies usually born 30–60 minutes apart. Contact your vet immediately if your dog has been in active labor for more than 2 hours without delivering a puppy.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>How many puppies will my dog have?</summary>
+                <div class="faq-answer">
+                    Litter size varies greatly by breed. Small breeds like Chihuahuas average 2–3 puppies, medium breeds like Beagles average 5–7, and large breeds like Golden Retrievers average 7–10. A dog's first litter is typically smaller than subsequent litters. The only reliable way to count puppies before birth is through X-rays at day 45–55. Keep in mind that X-ray counts can sometimes be off by one or two puppies.
+                </div>
+            </details>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-walking-calculator/">Pet Walking Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                    <li><a href="/pet-toxicity-checker/">Pet Toxicity Checker</a></li>
+                    <li><a href="/dog-breed-match/">Dog Breed Match Quiz</a></li>
+                    <li><a href="/dog-separation-anxiety/">Separation Anxiety Test</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/terms/">Terms of Use</a></li>
+                    <li><a href="/disclaimer/">Disclaimer</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 KeenerPet.com &mdash; Smarter care for your furry family. | Always consult your veterinarian for professional medical advice.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ====== Pregnancy Data ======
+    const GESTATION_DAYS = 63;
+
+    const WEEKLY_MILESTONES = [
+        { week: '1–2', title: 'Mating & Fertilization', desc: 'Eggs are fertilized in the fallopian tubes and begin traveling to the uterus. Your dog may show no visible signs yet. Avoid stress and maintain her regular routine.' },
+        { week: '3', title: 'Implantation', desc: 'Embryos implant in the uterine lining. Some dogs experience mild morning sickness — reduced appetite or occasional vomiting. This usually passes quickly.' },
+        { week: '4', title: 'First Vet Visit', desc: 'A veterinarian can palpate the abdomen to feel embryos. Ultrasound can detect fetal heartbeats. Confirm pregnancy and discuss nutrition and care plans with your vet.' },
+        { week: '5', title: 'Organ Development', desc: 'Fetal organs are forming. Your dog\'s appetite will increase noticeably. Switch to a high-quality puppy food for extra calories, protein, and calcium. Start feeding 3 smaller meals per day.' },
+        { week: '6', title: 'Rapid Growth', desc: 'Weight gain accelerates. Nipples enlarge and darken, and hair may thin around the belly. Reduce intense exercise — stick to gentle walks. Avoid jumping or rough play.' },
+        { week: '7', title: 'Prepare the Whelping Box', desc: 'Fetuses are fully formed. Set up the whelping box in a quiet area. Introduce your dog to it gradually. Stock up on clean towels, heating pads, and puppy supplies.' },
+        { week: '8', title: 'Final Growth', desc: 'X-rays can count puppies and confirm their positions. Your dog\'s appetite may decrease as puppies take up space. Feed smaller, frequent meals. Start taking her temperature daily.' },
+        { week: '9', title: 'Any Day Now!', desc: 'Nesting behavior intensifies. When her temperature drops below 100°F (37.8°C), labor will begin within 12–24 hours. Watch for restlessness, panting, and contractions. Contact your vet if you have concerns.' }
+    ];
+
+    // ====== DOM Refs ======
+    const breedDateInput = document.getElementById('breed-date');
+    const breedCountSelect = document.getElementById('breed-count');
+    const calcBtn = document.getElementById('calc-btn');
+    const results = document.getElementById('results');
+    const resultCards = document.getElementById('result-cards');
+    const timeline = document.getElementById('timeline');
+
+    // ====== Set default date (63 days ago so default shows current pregnancy) ======
+    function setDefaultDate() {
+        const d = new Date();
+        d.setDate(d.getDate() - 14); // Default: bred 2 weeks ago
+        breedDateInput.value = d.toISOString().split('T')[0];
+    }
+    setDefaultDate();
+
+    // ====== Calculate ======
+    function calculate() {
+        const breedDateStr = breedDateInput.value;
+        if (!breedDateStr) {
+            alert('Please select the breeding date.');
+            return;
+        }
+
+        const breedDate = new Date(breedDateStr + 'T12:00:00');
+        const today = new Date();
+        today.setHours(12, 0, 0, 0);
+
+        // Due date = breed date + 63 days
+        const dueDate = new Date(breedDate);
+        dueDate.setDate(dueDate.getDate() + GESTATION_DAYS);
+
+        // Days along
+        const daysAlong = Math.round((today - breedDate) / (1000 * 60 * 60 * 24));
+        const daysRemaining = Math.max(0, GESTATION_DAYS - daysAlong);
+
+        // Current week (1-9, 0 = not yet confirmed)
+        let currentWeek = 0;
+        const dayStartWeek = [0, 0, 7, 14, 21, 28, 35, 42, 49, 56]; // day ranges by week
+        for (let i = 8; i >= 1; i--) {
+            if (daysAlong >= dayStartWeek[i]) {
+                currentWeek = i;
+                break;
+            }
+        }
+
+        // Early detection window (day 21-35 = week 3-5)
+        const inDetectionWindow = daysAlong >= 18 && daysAlong <= 35;
+        const vetTime = daysAlong >= 21 && daysAlong <= 28;
+        const xrayReady = daysAlong >= 45;
+
+        // Puppy estimate range
+        const puppyCount = breedCountSelect.value;
+
+        // ====== Render stat cards ======
+        const isBeforeDue = daysAlong <= GESTATION_DAYS;
+        const isPastDue = daysAlong > GESTATION_DAYS && daysAlong <= 70;
+        const isOverdue = daysAlong > 70;
+
+        let statusText, statusEmoji;
+        if (isBeforeDue) {
+            statusText = `Week ${currentWeek} of 9`;
+            statusEmoji = '🤰';
+        } else if (isPastDue) {
+            statusText = 'Past Due — Consult Vet';
+            statusEmoji = '⚠️';
+        } else {
+            statusText = 'Pregnancy Complete';
+            statusEmoji = '🐶';
+        }
+
+        resultCards.innerHTML = `
+            <div class="result-stat">
+                <div class="stat-value highlight">${statusEmoji} ${statusText}</div>
+                <div class="stat-label">Current Status</div>
+            </div>
+            <div class="result-stat">
+                <div class="stat-value highlight">${formatDate(dueDate)}</div>
+                <div class="stat-label">Due Date</div>
+            </div>
+            <div class="result-stat">
+                <div class="stat-value">${daysAlong > 0 ? daysAlong : 0}</div>
+                <div class="stat-label">Days Along</div>
+            </div>
+            <div class="result-stat">
+                <div class="stat-value">${daysRemaining > 0 ? daysRemaining : 0}</div>
+                <div class="stat-label">Days Until Due</div>
+            </div>
+        `;
+
+        // ====== Render timeline ======
+        let tlHtml = '';
+        WEEKLY_MILESTONES.forEach((m, idx) => {
+            const weekNum = idx + 1;
+            let cls = '';
+            if (weekNum === currentWeek) cls = 'current';
+            else if (weekNum < currentWeek) cls = 'past';
+
+            tlHtml += `
+                <div class="timeline-item ${cls}">
+                    <div class="timeline-dot">${weekNum}</div>
+                    <div class="tl-week">Week ${m.week}</div>
+                    <div class="tl-title">${m.title}</div>
+                    <div class="tl-desc">${m.desc}</div>
+                </div>
+            `;
+        });
+        timeline.innerHTML = tlHtml;
+
+        // Show results
+        results.classList.add('show');
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function formatDate(date) {
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    // ====== Event binding ======
+    calcBtn.addEventListener('click', calculate);
+
+    // Enter key support
+    breedDateInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') calculate();
+    });
+    breedCountSelect.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') calculate();
+    });
+
+    // ====== Newsletter ======
+    document.getElementById('newsletter-btn').addEventListener('click', async () => {
+        const email = document.getElementById('newsletter-email').value.trim();
+        const msg = document.getElementById('newsletter-msg');
+        if (!email || !email.includes('@')) {
+            msg.textContent = 'Please enter a valid email address.';
+            msg.style.color = '#fca5a5';
+            return;
+        }
+        try {
+            const res = await fetch('/api/collect-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, source: 'dog-pregnancy-calculator', tool: 'pregnancy' })
+            });
+            if (res.ok) {
+                msg.textContent = 'Thanks for subscribing! 🐾';
+                msg.style.color = '#86efac';
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                msg.textContent = 'Something went wrong. Try again later.';
+                msg.style.color = '#fca5a5';
+            }
+        } catch {
+            msg.textContent = 'Network error. Please try again.';
+            msg.style.color = '#fca5a5';
+        }
+    });
+</script>
+
+</body>
+</html>
