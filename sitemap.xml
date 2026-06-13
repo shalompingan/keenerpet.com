@@ -96,6 +96,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://keenerpet.com/guides/senior-dog-care-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://keenerpet.com/privacy/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
