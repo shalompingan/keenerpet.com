@@ -295,6 +295,19 @@
         </div>
     </section>
 
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg"></div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq-section">
         <div class="container">
@@ -327,19 +340,6 @@
                     Adult dogs do well on 2 meals per day. Puppies under 6 months need 3–4 smaller meals. Cats typically prefer 2–3 meals per day. Free-feeding (leaving food out) works for some cats but can lead to obesity. Our calculator shows recommended meal frequency based on your pet's age.
                 </div>
             </details>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="container">
-            <h2>🐾 Get Pet Care Tips & New Tools</h2>
-            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
-            <div class="newsletter-form">
-                <input type="email" id="newsletter-email" placeholder="your@email.com">
-                <button id="newsletter-btn">Subscribe</button>
-            </div>
-            <div id="newsletter-msg"></div>
         </div>
     </section>
 </main>
@@ -400,6 +400,7 @@
         document.getElementById('unit-kg').classList.add('active');
         document.getElementById('unit-lbs').classList.remove('active');
         weightInput.placeholder = 'e.g. 25';
+        calculate();
     });
 
     document.getElementById('unit-lbs').addEventListener('click', () => {
@@ -407,6 +408,7 @@
         document.getElementById('unit-lbs').classList.add('active');
         document.getElementById('unit-kg').classList.remove('active');
         weightInput.placeholder = 'e.g. 55';
+        calculate();
     });
 
     function calculate() {
@@ -486,6 +488,10 @@
 
     calcBtn.addEventListener('click', calculate);
     weightInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
+    petType.addEventListener('change', calculate);
+    ageGroup.addEventListener('change', calculate);
+    bodyCondition.addEventListener('change', calculate);
+    weightInput.addEventListener('input', calculate);
 
     // Calculate on load
     calculate();
