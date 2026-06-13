@@ -36,6 +36,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://keenerpet.com/dog-breed-match/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://keenerpet.com/guides/pet-insurance-guide/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
