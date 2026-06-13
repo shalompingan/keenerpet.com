@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Toxicity Checker – Is It Safe for Your Dog or Cat? | KeenerPet</title>
+    <meta name="description" content="Free pet toxicity checker. Search 120+ foods, plants, and substances to see if they're safe or toxic for your dog or cat. Instant results with symptoms and vet advice.">
+    <link rel="canonical" href="https://keenerpet.com/pet-toxicity-checker/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+
+    <meta property="og:title" content="Pet Toxicity Checker – Is It Safe for Your Dog or Cat?">
+    <meta property="og:description" content="Free toxicity checker for pets. Search 120+ foods and plants to see what's safe or toxic for your dog or cat.">
+    <meta property="og:url" content="https://keenerpet.com/pet-toxicity-checker/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KeenerPet">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
+    <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pet Toxicity Checker – Is It Safe for Your Dog or Cat?">
+    <meta name="twitter:description" content="Free pet toxicity checker for dogs and cats. Search 120+ items instantly.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KeenerPet Pet Toxicity Checker",
+      "url": "https://keenerpet.com/pet-toxicity-checker/",
+      "description": "Free interactive pet toxicity checker for dogs and cats. Search foods and plants to see if they're safe.",
+      "applicationCategory": "PetApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3DHX71CRB"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J3DHX71CRB');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Prefetch navigation pages -->
+    <link rel="prefetch" href="/">
+    <link rel="prefetch" href="/pet-age-calculator/">
+    <link rel="prefetch" href="/pet-water-intake/">
+    <link rel="prefetch" href="/pet-calorie-calculator/">
+    <link rel="prefetch" href="/pet-walking-calculator/">
+    <link rel="prefetch" href="/pet-insurance/">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg-primary: #0d0d0a;
+            --bg-secondary: #1a1814;
+            --bg-tertiary: #252220;
+            --text-primary: #f5f0eb;
+            --text-secondary: #a09890;
+            --text-muted: #78716c;
+            --border: #2d2823;
+            --border-light: #3d3833;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --accent-light: #fef3c7;
+            --safe: #22c55e;
+            --safe-bg: rgba(34, 197, 94, 0.12);
+            --caution: #eab308;
+            --caution-bg: rgba(234, 179, 8, 0.12);
+            --toxic: #ef4444;
+            --toxic-bg: rgba(239, 68, 68, 0.12);
+            --emergency: #dc2626;
+            --emergency-bg: rgba(220, 38, 38, 0.18);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.4);
+            --font: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== Header (dark variant) ===== */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--accent); }
+        .logo-icon { font-size: 22px; }
+
+        nav { display: flex; align-items: center; gap: 6px; }
+        nav a {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+        nav a:hover { background: var(--bg-tertiary); color: var(--accent); }
+        nav a.active { background: var(--accent); color: #1c1917; }
+
+        @media (max-width: 600px) {
+            nav { gap: 4px; }
+            nav a { padding: 5px 10px; font-size: 12px; }
+            .logo { font-size: 17px; }
+        }
+
+        /* ===== AdSense Placeholders ===== */
+        .ad-top {
+            padding: 12px 0;
+            text-align: center;
+        }
+        .ad-box {
+            background: var(--bg-tertiary);
+            border: 1px dashed var(--border-light);
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .ad-box.horizontal { width: 728px; max-width: 100%; height: 90px; }
+        .ad-box.rectangle { width: 300px; max-width: 100%; height: 250px; }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 40px 0 12px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .hero .pill {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 16px;
+            background: var(--accent-light);
+            color: #92400e;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 14px; }
+        }
+
+        /* ===== Search Section ===== */
+        .search-section { padding: 20px 0; }
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            pointer-events: none;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 16px 16px 16px 48px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            font-size: 16px;
+            font-family: var(--font);
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.25s;
+        }
+        .search-container input::placeholder { color: var(--text-muted); }
+        .search-container input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+            background: var(--bg-tertiary);
+        }
+        .search-container .clear-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            display: none;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .search-container .clear-btn:hover { color: var(--text-primary); background: var(--border); }
+        .search-container .clear-btn.visible { display: block; }
+
+        .search-hint {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ===== Results Stats ===== */
+        .stats-bar {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto 12px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .stats-bar.visible { display: block; }
+
+        /* ===== Results Grid ===== */
+        .results-grid {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 8px;
+        }
+        .results-grid.visible { display: flex; flex-direction: column; }
+
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .result-card:hover {
+            border-color: var(--border-light);
+            background: var(--bg-tertiary);
+            transform: translateY(-1px);
+        }
+        .result-card .emoji { font-size: 24px; flex-shrink: 0; }
+        .result-card .info { flex: 1; min-width: 0; }
+        .result-card .info .name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .result-card .info .desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .result-card .badge {
+            flex-shrink: 0;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .result-card .badge.safe { background: var(--safe-bg); color: var(--safe); }
+        .result-card .badge.caution { background: var(--caution-bg); color: var(--caution); }
+        .result-card .badge.toxic { background: var(--toxic-bg); color: var(--toxic); }
+        .result-card .badge.emergency { background: var(--emergency-bg); color: var(--emergency); animation: pulse-badge 1.5s infinite; }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .result-card .arrow { color: var(--text-muted); font-size: 14px; flex-shrink: 0; transition: transform 0.2s; }
+        .result-card.open .arrow { transform: rotate(90deg); }
+
+        /* ===== Detail Panel ===== */
+        .detail-panel {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            overflow: hidden;
+            animation: slide-down 0.3s ease;
+        }
+        .detail-panel.visible { display: block; }
+
+        @keyframes slide-down {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-panel .detail-header {
+            padding: 20px 24px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .detail-panel .detail-header .emoji { font-size: 32px; }
+        .detail-panel .detail-header .info { flex: 1; }
+        .detail-panel .detail-header .info h2 { font-size: 20px; font-weight: 700; color: var(--text-primary); }
+        .detail-panel .detail-header .info .species {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        .detail-panel .detail-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .detail-panel .detail-badge.safe { background: var(--safe-bg); color: var(--safe); }
+        .detail-panel .detail-badge.caution { background: var(--caution-bg); color: var(--caution); }
+        .detail-panel .detail-badge.toxic { background: var(--toxic-bg); color: var(--toxic); }
+        .detail-panel .detail-badge.emergency { background: var(--emergency-bg); color: var(--emergency); }
+
+        .detail-panel .detail-body { padding: 20px 24px; }
+        .detail-panel .detail-body p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .detail-panel .info-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .detail-panel .info-row .label {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* ===== Affiliate CTA Card ===== */
+        .affiliate-cta-section {
+            max-width: 600px;
+            margin: 20px auto 0;
+            display: none;
+        }
+        .affiliate-cta-section.visible { display: block; }
+
+        .cta-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.02));
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            text-align: center;
+        }
+        .cta-card .cta-icon { font-size: 36px; margin-bottom: 8px; }
+        .cta-card h3 { font-size: 17px; font-weight: 700; color: var(--text-primary); }
+        .cta-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            line-height: 1.6;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-card .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 12px 28px;
+            background: var(--accent);
+            color: #1c1917;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cta-card .cta-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);
+        }
+        .cta-card .cta-sub {
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ===== Safety Legend ===== */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            max-width: 600px;
+            margin: 20px auto 0;
+            padding: 14px 18px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .legend-item .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .legend-item .dot.safe { background: var(--safe); }
+        .legend-item .dot.caution { background: var(--caution); }
+        .legend-item .dot.toxic { background: var(--toxic); }
+        .legend-item .dot.emergency { background: var(--emergency); }
+
+        /* ===== No Results ===== */
+        .no-results {
+            display: none;
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .no-results.visible { display: block; }
+        .no-results .icon { font-size: 40px; margin-bottom: 10px; }
+        .no-results h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .no-results p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* ===== Empty State ===== */
+        .empty-state {
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: center;
+            padding: 40px 20px;
+            display: block;
+        }
+        .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+        .empty-state h3 { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .empty-state p { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* ===== FAQ Section ===== */
+        .faq-section { padding: 40px 0 12px; }
+        .faq-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        .faq-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 10px;
+        }
+        .faq-item summary {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::before {
+            content: "▶";
+            font-size: 10px;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::before { transform: rotate(90deg); }
+        .faq-item .faq-answer {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .faq-item .faq-answer a { color: var(--accent); font-weight: 600; }
+
+        /* ===== Newsletter ===== */
+        .newsletter-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .newsletter-section h2 { font-size: 20px; font-weight: 700; color: var(--text-primary); }
+        .newsletter-section p { color: var(--text-secondary); margin-top: 6px; font-size: 14px; }
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            max-width: 420px;
+            margin: 16px auto 0;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: var(--font);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            outline: none;
+        }
+        .newsletter-form input:focus { border-color: var(--accent); }
+        .newsletter-form input::placeholder { color: var(--text-muted); }
+        .newsletter-form button {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #1c1917;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font);
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .newsletter-form button:hover { background: var(--accent-dark); }
+        #newsletter-msg { font-size: 13px; margin-top: 8px; }
+
+        /* ===== AdSense Sidebar ===== */
+        .ad-sidebar-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
+            margin-top: auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding: 36px 0;
+        }
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+        .footer-brand .logo { font-size: 18px; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+        .footer-col ul li a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding: 16px 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .search-container input { padding: 14px 14px 14px 44px; font-size: 15px; }
+            .detail-panel .detail-header { padding: 16px 18px; }
+            .detail-panel .detail-body { padding: 16px 18px; }
+            .detail-panel .detail-header .emoji { font-size: 26px; }
+            .cta-card { padding: 20px 18px; }
+            .cta-card .cta-btn { width: 100%; justify-content: center; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form button { width: 100%; }
+        }
+
+        /* ===== Auto-calculate on load highlight ===== */
+        .highlight-yellow { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <nav>
+            <a href="/">Food</a>
+            <a href="/pet-age-calculator/">Age</a>
+            <a href="/pet-water-intake/">Water</a>
+            <a href="/pet-calorie-calculator/">Calories</a>
+            <a href="/pet-walking-calculator/">Walk</a>
+            <a href="/pet-insurance/">Insurance</a>
+            <a href="/pet-toxicity-checker/" class="active">Toxicity</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- AdSense Top -->
+    <section class="ad-top">
+        <div class="container">
+            <div class="ad-box horizontal">Advertisement</div>
+        </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>🥜 Pet <span>Toxicity Checker</span></h1>
+            <p>Search any food, plant, or substance to see if it's safe for your dog or cat. Instant results with symptoms and emergency steps.</p>
+            <span class="pill">⚡ 120+ items indexed</span>
+        </div>
+    </section>
+
+    <!-- Safety Legend -->
+    <div class="container">
+        <div class="legend">
+            <span class="legend-item"><span class="dot safe"></span> Safe</span>
+            <span class="legend-item"><span class="dot caution"></span> Caution</span>
+            <span class="legend-item"><span class="dot toxic"></span> Toxic</span>
+            <span class="legend-item"><span class="dot emergency"></span> Emergency</span>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search a food, plant, or substance..." autocomplete="off" autofocus>
+                <button class="clear-btn" id="clear-btn">✕</button>
+            </div>
+            <div class="search-hint">Try: chocolate, grapes, avocado, xylitol, lily, garlic...</div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats-bar" id="stats-bar"><span id="stats-count">0</span> results found</div>
+    </div>
+
+    <!-- Results Grid -->
+    <div class="container">
+        <div class="results-grid" id="results-grid"></div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="container">
+        <div class="detail-panel" id="detail-panel"></div>
+    </div>
+
+    <!-- Affiliate CTA (shown when toxic/emergency result is selected) -->
+    <div class="container">
+        <div class="affiliate-cta-section" id="affiliate-cta">
+            <div class="cta-card">
+                <div class="cta-icon">🛡️</div>
+                <h3>Before an Emergency Happens</h3>
+                <p>Pet insurance covers poisoning emergencies, vet visits, and even poison control hotline fees. Get covered in minutes.</p>
+                <a href="https://www.petplace.com/pet-insurance" target="_blank" rel="sponsored" class="cta-btn">
+                    Compare Pet Insurance Plans →
+                </a>
+                <div class="cta-sub">🐾 The Swiftest • ASPCA • Lemonade • Healthy Paws</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="container">
+        <div class="no-results" id="no-results">
+            <div class="icon">🔎</div>
+            <h3>No matches found</h3>
+            <p>Try a different search term, or check the common searches above.</p>
+        </div>
+    </div>
+
+    <!-- Empty State (hidden once user starts typing) -->
+    <div class="container">
+        <div class="empty-state" id="empty-state">
+            <div class="icon">🔍</div>
+            <h3>Type to search</h3>
+            <p>Start typing a food, plant, or substance name above.</p>
+        </div>
+    </div>
+
+    <!-- AdSense Sidebar -->
+    <div class="container">
+        <div class="ad-sidebar-wrap">
+            <div class="ad-box rectangle">Advertisement</div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <details class="faq-item">
+                <summary>What should I do if my pet eats something toxic?</summary>
+                <div class="faq-answer">
+                    Stay calm and act quickly. <strong>Do not</strong> induce vomiting unless a veterinarian specifically tells you to — some substances cause more damage coming up. Remove your pet from the area. Call your veterinarian, an emergency vet clinic, or one of these 24/7 poison control hotlines: <strong>ASPCA Poison Control (1-888-426-4435)</strong> or <strong>Pet Poison Helpline (1-855-764-7661)</strong>. There is a $85–95 consultation fee. Having pet insurance can help cover these costs. Save any packaging or plant material for identification.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Can dogs eat grapes?</summary>
+                <div class="faq-answer">
+                    <strong>No. Grapes and raisins are highly toxic to dogs.</strong> They can cause acute kidney failure even in small amounts. Some dogs are more sensitive than others, but there is no known safe amount. Symptoms include vomiting, lethargy, loss of appetite, and decreased urination within 12–24 hours. If your dog eats grapes or raisins, contact your vet or a poison control hotline <strong>immediately</strong>.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Why is xylitol dangerous for dogs?</summary>
+                <div class="faq-answer">
+                    Xylitol is an artificial sweetener found in sugar-free gum, candy, baked goods, peanut butter, and toothpaste. In dogs, it causes a <strong>rapid, massive insulin release</strong> leading to dangerously low blood sugar (hypoglycemia) within 10–60 minutes. Symptoms include weakness, staggering, collapse, and seizures. In high doses, xylitol can cause liver failure. Always check ingredient labels — especially on peanut butter before sharing with your dog.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Is chocolate really that bad for dogs?</summary>
+                <div class="faq-answer">
+                    Yes. Chocolate contains <strong>theobromine and caffeine</strong>, which dogs and cats cannot metabolize effectively. Dark chocolate, baking chocolate, and cocoa powder are the most dangerous (10–20x more theobromine than milk chocolate). Symptoms include vomiting, diarrhea, rapid breathing, increased heart rate, tremors, and seizures. The toxic dose depends on the type of chocolate and your dog's weight. <strong>Always consult a vet if your dog eats any amount of dark or baking chocolate.</strong>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>What foods are safe for dogs to eat?</summary>
+                <div class="faq-answer">
+                    Many human foods are safe for dogs in moderation. Safe options include: cooked chicken (plain, boneless), carrots, apples (no seeds), blueberries, bananas, green beans, sweet potatoes (cooked), plain rice, oatmeal, peanut butter (xylitol-free), plain yogurt, and pumpkin. Always introduce new foods gradually and in small amounts. When in doubt, check our toxicity checker above or consult your veterinarian.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Safety Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, toxicity alerts, and new calculator launches.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
+                <p>Smarter care for your furry family. Free pet tools based on veterinary science.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/">Pet Food Calculator</a></li>
+                    <li><a href="/pet-age-calculator/">Pet Age Calculator</a></li>
+                    <li><a href="/pet-water-intake/">Pet Water Intake</a></li>
+                    <li><a href="/pet-calorie-calculator/">Pet Calorie Calculator</a></li>
+                    <li><a href="/pet-walking-calculator/">Pet Walking Calculator</a></li>
+                    <li><a href="/pet-insurance/">Pet Insurance Estimator</a></li>
+                    <li><a href="/pet-toxicity-checker/">Pet Toxicity Checker</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/privacy/#terms">Terms of Use</a></li>
+                    <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
+                    <li><a href="mailto:hello@keenerpet.com">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | This tool is for informational purposes only. Always consult a veterinarian for health advice.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ====== Database ======
+const db = [
+    // ===== EMERGENCY (life-threatening) =====
+    { n: "Xylitol", t: ["xylitol", "sweetener", "gum", "candy", "sugar-free", "toothpaste"], s: "emergency", e: "🍬", d: "Xylitol is an artificial sweetener that causes rapid, massive insulin release in dogs, leading to life-threatening low blood sugar within 10-60 minutes. High doses can cause liver failure.", f: "Dogs", y: "Weakness, staggering, collapse, seizures, vomiting, lethargy", a: "EMERGENCY — Contact your vet or Pet Poison Helpline (1-855-764-7661) immediately. This is one of the most dangerous substances for dogs." },
+    { n: "Grapes", t: ["grape", "grapes", "raisin", "raisins", "currant", "currants"], s: "emergency", e: "🍇", d: "Grapes and raisins can cause acute kidney failure in dogs. The exact toxic substance is unknown, and some dogs are more sensitive than others. There is no known safe amount.", f: "Dogs", y: "Vomiting, lethargy, loss of appetite, abdominal pain, decreased urination (within 12-24 hours)", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Induce vomiting only if directed by a professional." },
+    { n: "Chocolate", t: ["chocolate", "cocoa", "cacao", "dark chocolate", "milk chocolate", "baking chocolate", "hot cocoa"], s: "emergency", e: "🍫", d: "Chocolate contains theobromine and caffeine, which pets cannot metabolize. Dark chocolate, baking chocolate, and cocoa powder are most dangerous. The darker the chocolate, the higher the risk.", f: "Dogs & Cats", y: "Vomiting, diarrhea, rapid breathing, increased heart rate, restlessness, tremors, seizures", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Treatment depends on amount and type of chocolate ingested." },
+    { n: "Lily", t: ["lily", "lilies", "easter lily", "tiger lily", "day lily", "asian lily"], s: "emergency", e: "🌸", d: "True lilies (Lilium and Hemerocallis species) are extremely toxic to cats. Even ingesting 1-2 leaves or licking pollen can cause fatal kidney failure within 24-72 hours.", f: "Cats (extremely toxic)", y: "Vomiting, lethargy, loss of appetite, increased urination then decreased urination, kidney failure", a: "EMERGENCY — Immediate veterinary care is critical. The sooner treatment begins, the better the prognosis. Call your vet or Pet Poison Helpline NOW." },
+    { n: "Sago Palm", t: ["sago palm", "cycad", "palm", "sago"], s: "emergency", e: "🌴", d: "All parts of the sago palm are highly toxic, especially the seeds (nuts). Ingestion causes severe liver failure. Even a single seed can be fatal.", f: "Dogs & Cats", y: "Vomiting, bloody stool, jaundice, increased thirst, liver failure, seizures, death", a: "EMERGENCY — Immediate veterinary treatment is essential. This is one of the most toxic plants for pets." },
+    { n: "Marijuana", t: ["marijuana", "cannabis", "weed", "thc", "cbd", "pot", "hemp"], s: "emergency", e: "🌿", d: "THC is toxic to dogs and cats. Edibles are especially dangerous as they often contain xylitol or chocolate too. Even small amounts can cause severe neurological symptoms.", f: "Dogs & Cats", y: "Drowsiness, staggering, dilated pupils, urinary incontinence, slow heart rate, seizures, coma", a: "EMERGENCY — Contact your vet immediately. Be honest about what your pet ingested — it helps with treatment." },
+    { n: "Alcohol", t: ["alcohol", "beer", "wine", "liquor", "vodka", "whiskey", "ethanol", "drink"], s: "emergency", e: "🍺", d: "Alcohol is rapidly absorbed and can cause alcohol poisoning, respiratory failure, and dangerously low blood sugar in pets. Even small amounts can be dangerous.", f: "Dogs & Cats", y: "Vomiting, disorientation, staggering, slowed breathing, low blood sugar, coma, seizures", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately." },
+    { n: "Macadamia Nuts", t: ["macadamia", "macadamia nut", "mac nuts"], s: "toxic", e: "🥜", d: "Macadamia nuts cause a unique toxicity syndrome in dogs. The mechanism is unknown, but symptoms typically appear within 12 hours and can last 24-48 hours.", f: "Dogs", y: "Weakness (especially hind legs), vomiting, tremors, hyperthermia, inability to walk", a: "Contact your vet. Most dogs recover with supportive care within 24-48 hours." },
+    { n: "Yeast Dough", t: ["yeast", "dough", "bread dough", "pizza dough", "raw dough"], s: "emergency", e: "🍞", d: "Raw yeast dough can expand in the stomach causing bloat (life-threatening). Yeast also produces ethanol as it ferments, leading to alcohol poisoning.", f: "Dogs & Cats", y: "Bloated abdomen, retching, distress, disorientation, drunkenness, low blood sugar", a: "EMERGENCY — Contact your vet immediately. Bloat can be fatal within hours." },
+
+    // ===== TOXIC =====
+    { n: "Onion", t: ["onion", "onions", "scallion", "shallot", "spring onion", "chive", "chives"], s: "toxic", e: "🧅", d: "All members of the allium family (onions, garlic, leeks, chives, shallots) damage red blood cells in dogs and cats, leading to hemolytic anemia. All forms are toxic: raw, cooked, dehydrated, or powdered.", f: "Dogs & Cats", y: "Weakness, pale gums, rapid breathing, dark urine, vomiting, diarrhea (may be delayed 2-5 days)", a: "Contact your vet. Treatment may include induced vomiting if recent, and monitoring for anemia." },
+    { n: "Garlic", t: ["garlic", "garlic powder", "garlic clove"], s: "toxic", e: "🧄", d: "Garlic is more concentrated than onion (about 5x more toxic per gram). It damages red blood cells causing hemolytic anemia in both dogs and cats.", f: "Dogs & Cats", y: "Weakness, pale or yellow gums, rapid breathing, dark urine, vomiting", a: "Contact your vet. Small amounts of garlic powder in food are generally not dangerous, but concentrated amounts or whole cloves are toxic." },
+    { n: "Avocado", t: ["avocado", "avocado toast", "guacamole", "avocado oil"], s: "toxic", e: "🥑", d: "Avocados contain persin, a fungicidal toxin that can cause vomiting and diarrhea in dogs and cats. The pit is also a choking hazard and can cause intestinal blockage.", f: "Dogs & Cats", y: "Vomiting, diarrhea, stomach upset. Pit ingestion: choking, intestinal blockage", a: "Contact your vet if symptoms develop. The flesh is mildly toxic, the pit is a physical danger." },
+    { n: "Caffeine", t: ["caffeine", "coffee", "coffee grounds", "espresso", "energy drink", "tea", "soda", "caffeinated"], s: "toxic", e: "☕", d: "Caffeine is a stimulant that can cause dangerous increases in heart rate and blood pressure. Coffee grounds and energy drinks are the most concentrated sources.", f: "Dogs & Cats", y: "Restlessness, rapid breathing, heart palpitations, tremors, seizures, hyperactivity", a: "Contact your vet or Pet Poison Helpline. Treatment may include inducing vomiting and activated charcoal." },
+    { n: "Nutmeg", t: ["nutmeg", "spice", "pumpkin spice"], s: "toxic", e: "🌰", d: "Nutmeg contains myristicin, which can cause hallucinations, disorientation, and seizures in dogs. Large amounts are dangerous.", f: "Dogs", y: "Disorientation, increased heart rate, dry mouth, abdominal pain, seizures, hallucinations", a: "Contact your vet. Small amounts in baked goods are typically not concerning, but whole nutmegs or large amounts are dangerous." },
+    { n: "Rhubarb", t: ["rhubarb", "rhubarb leaf", "rhubarb stalk"], s: "toxic", e: "🌱", d: "Rhubarb leaves contain soluble oxalates that can cause kidney damage. The stalks are less toxic but still contain oxalates.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, weakness, tremors, bloody urine", a: "Contact your vet. Rhubarb stalks in small amounts are generally safe, but avoid leaves entirely." },
+    { n: "Green Potato", t: ["green potato", "raw potato", "potato skin", "solanine", "potato plant"], s: "toxic", e: "🥔", d: "Green potatoes and potato plants contain solanine, a toxic compound that affects the nervous system and digestive tract. Raw potatoes also contain trypsin inhibitors.", f: "Dogs & Cats", y: "Vomiting, diarrhea, lethargy, confusion, slow heart rate, dilated pupils", a: "Contact your vet. Well-cooked plain potatoes are safe, but avoid green skins and raw potatoes." },
+    { n: "Azalea", t: ["azalea", "rhododendron", "rosebay"], s: "toxic", e: "🌺", d: "Azaleas contain grayanotoxins that affect the heart and nervous system. Even eating a few leaves can be dangerous.", f: "Dogs & Cats", y: "Vomiting, drooling, weakness, difficulty walking, slow heart rate, collapse, coma", a: "Contact your vet or Pet Poison Helpline immediately." },
+    { n: "Oleander", t: ["oleander", "nerium"], s: "emergency", e: "🌺", d: "Oleander is extremely toxic to all animals. It contains cardiac glycosides that cause severe heart abnormalities and can be fatal even in small amounts.", f: "Dogs & Cats", y: "Vomiting, diarrhea, slow or irregular heart rate, weakness, collapse, death", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. This is one of the most toxic garden plants." },
+    { n: "Tulip", t: ["tulip", "tulip bulb", "daffodil", "hyacinth", "spring bulb"], s: "toxic", e: "🌷", d: "Tulip bulbs contain allergenic lactones and are the most toxic part of the plant. Daffodils and hyacinths have similar toxicity.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, depression, difficulty breathing. Bulb ingestion can cause severe gastrointestinal distress.", a: "Contact your vet. Bulbs are the most dangerous part — keep them out of reach." },
+    { n: "Ivy", t: ["ivy", "english ivy", "hedera"], s: "toxic", e: "🌿", d: "English ivy contains saponins and polyacetylene compounds that are toxic when ingested. Leaves are more toxic than berries.", f: "Dogs & Cats", y: "Vomiting, abdominal pain, diarrhea, drooling, difficulty breathing", a: "Contact your vet. Rinse mouth if contact occurred. Mild cases usually resolve with supportive care." },
+    { n: "Aloe Vera", t: ["aloe", "aloe vera", "succulent"], s: "caution", e: "🌵", d: "Aloe vera contains saponins and anthraquinones that are mildly toxic. The latex (just under the skin) is the irritating part. The inner gel is generally safe externally.", f: "Dogs & Cats", y: "Vomiting, diarrhea, lethargy, tremors, change in urine color", a: "Contact your vet if symptoms develop. Usually self-limiting with mild symptoms." },
+    { n: "Poinsettia", t: ["poinsettia", "christmas flower"], s: "caution", e: "🎄", d: "Poinsettias have a mildly irritating sap that can cause mouth and stomach irritation. Despite their reputation, they are not severely toxic.", f: "Dogs & Cats", y: "Mild vomiting, drooling, lip smacking, mouth irritation", a: "Rinse mouth with water. Symptoms are usually mild and self-limiting. Contact your vet if symptoms persist." },
+
+    // ===== CAUTION =====
+    { n: "Peanut Butter", t: ["peanut butter", "peanut", "peanuts"], s: "caution", e: "🥜", d: "Peanut butter is generally safe in moderation BUT many brands contain XYLITOL which is extremely toxic. Always check the label. Also high in fat.", f: "Dogs & Cats", y: "Check for xylitol! If xylitol-free: possible vomiting, diarrhea if overfed. Xylitol version: emergency (see Xylitol)", a: "Always read ingredient labels. Choose unsalted, natural peanut butter without xylitol. Feed in moderation." },
+    { n: "Tomato", t: ["tomato", "tomatoes", "cherry tomato", "tomato plant", "tomato sauce", "ketchup"], s: "caution", e: "🍅", d: "Ripe tomatoes are generally safe in small amounts. Green tomatoes and tomato plants/leaves/stems contain solanine and are toxic.", f: "Dogs & Cats", y: "Ripe: mild stomach upset if overfed. Green/plant: vomiting, diarrhea, weakness, confusion", a: "Ripe tomatoes in moderation are fine. Keep pets away from tomato plants in the garden." },
+    { n: "Mushroom", t: ["mushroom", "mushrooms", "fungus", "wild mushroom", "button mushroom", "portobello"], s: "caution", e: "🍄", d: "Common store-bought mushrooms are safe in small amounts. Wild mushrooms can be deadly — identification is critical. Some species cause liver failure.", f: "Dogs & Cats", y: "Vomiting, diarrhea, abdominal pain. Toxic species: liver failure, seizures, death", a: "Only feed common store-bought mushrooms (white, cremini, portobello) in small amounts. Never let pets eat wild mushrooms." },
+    { n: "Cherry", t: ["cherry", "cherries", "cherry pit", "wild cherry"], s: "caution", e: "🍒", d: "The cherry flesh is safe, but the pit (stone), leaves, and stems contain cyanide. Pits can also cause intestinal blockage.", f: "Dogs & Cats", y: "Pit ingestion: choking, intestinal blockage. Cyanide: difficulty breathing, red gums, dilated pupils", a: "Remove pits before feeding cherries. A few cherries (pitted) are fine as treats." },
+    { n: "Peach", t: ["peach", "peaches", "peach pit"], s: "caution", e: "🍑", d: "Peach flesh is safe and healthy. The pit contains cyanide and is a choking hazard. Never let your pet chew on peach pits.", f: "Dogs & Cats", y: "Pit: choking, intestinal blockage. Cyanide symptoms rare from single pit", a: "Remove the pit completely before feeding. Offer only small pieces of fresh peach." },
+    { n: "Corn on the Cob", t: ["corn", "corn cob", "corn on the cob", "maize", "sweetcorn"], s: "caution", e: "🌽", d: "Corn kernels are safe, but the cob is a major choking hazard and can cause life-threatening intestinal blockage requiring surgery.", f: "Dogs", y: "Choking, gagging, abdominal pain, vomiting, constipation, loss of appetite", a: "Only feed loose corn kernels. NEVER give your dog a corn cob to chew on." },
+    { n: "Bacon", t: ["bacon", "bacon fat", "pork belly", "sausage", "grease", "fatty meat"], s: "caution", e: "🥓", d: "Bacon is extremely high in fat and salt. It can trigger pancreatitis (inflammation of the pancreas), which is painful and dangerous. Not worth the risk.", f: "Dogs & Cats", y: "Vomiting, diarrhea, abdominal pain, loss of appetite, lethargy (pancreatitis signs)", a: "Avoid feeding bacon. If your pet eats a small amount, monitor for digestive upset. Large amounts or frequent feeding can cause pancreatitis." },
+    { n: "Tuna", t: ["tuna", "canned tuna", "tuna fish", "mercury", "fish"], s: "caution", e: "🐟", d: "Tuna is high in mercury and can cause mercury poisoning over time. In small amounts it's fine as an occasional treat. Packed in water is better than oil.", f: "Dogs & Cats", y: "Long-term: mercury poisoning (neurological issues). Short-term: vomiting if overfed", a: "Feed tuna only occasionally as a treat. Choose tuna packed in water, not oil or seasoned." },
+    { n: "Milk", t: ["milk", "dairy", "lactose", "whole milk", "skim milk"], s: "caution", e: "🥛", d: "Most adult pets are lactose intolerant. Milk can cause digestive upset, gas, and diarrhea. Small amounts may be fine for some pets.", f: "Dogs & Cats", y: "Diarrhea, gas, bloating, stomach upset within 12 hours", a: "Offer only small amounts. Lactose-free or plant-based milks are better options if you must share." },
+    { n: "Ice Cream", t: ["ice cream", "gelato", "frozen dessert", "frozen yogurt"], s: "caution", e: "🍦", d: "Ice cream contains sugar, lactose, and often xylitol or chocolate. These are a triple threat for pets. Not recommended.", f: "Dogs & Cats", y: "Vomiting, diarrhea, gas, bloating. Xylitol versions: emergency symptoms", a: "Check for xylitol and chocolate before sharing. Even safe flavors can cause digestive upset due to lactose." },
+    { n: "Raw Meat", t: ["raw meat", "raw chicken", "raw beef", "raw pork", "raw fish", "raw egg", "uncooked"], s: "caution", e: "🥩", d: "Raw meat can contain Salmonella, E. coli, and other bacteria. Raw fish can contain parasites. Raw eggs contain avidin which can cause biotin deficiency over time.", f: "Dogs & Cats", y: "Vomiting, diarrhea, fever, lethargy. Salmonella can affect humans in the household too!", a: "Cook meat thoroughly before feeding. If you feed raw, source high-quality meat and practice strict hygiene." },
+    { n: "Cooked Bones", t: ["bone", "cooked bone", "chicken bone", "pork bone", "turkey bone", "t-bone", "rib bone"], s: "caution", e: "🦴", d: "Cooked bones splinter easily and can cause choking, mouth lacerations, and life-threatening intestinal perforation. Raw bones are safer but still require supervision.", f: "Dogs", y: "Choking, gagging, vomiting blood, abdominal pain, constipation, straining to defecate", a: "Never feed cooked bones. If your pet eats one, monitor closely and contact your vet if any symptoms appear." },
+    { n: "Almond", t: ["almond", "almonds", "nut", "nuts"], s: "caution", e: "🥜", d: "Almonds are not toxic but are a choking hazard and can cause digestive upset due to high fat content. Salted/flavored almonds add more risk.", f: "Dogs", y: "Choking, vomiting, diarrhea, pancreatitis risk with large amounts", a: "A few plain almonds are usually fine. Avoid salted, smoked, or flavored varieties." },
+    { n: "Walnut", t: ["walnut", "walnuts", "black walnut"], s: "caution", e: "🥜", d: "Walnuts are high in fat (pancreatitis risk) and can grow mold that produces tremorgenic mycotoxins. Black walnuts are especially dangerous.", f: "Dogs", y: "Vomiting, tremors, seizures (with moldy walnuts). High fat: pancreatitis risk", a: "Avoid walnuts entirely. If your pet eats moldy walnuts, contact your vet immediately (tremors may develop)." },
+    { n: "Spinach", t: ["spinach", "baby spinach", "kale", "swiss chard", "leafy green"], s: "caution", e: "🥬", d: "Spinach contains oxalates which can bind calcium and potentially cause kidney issues in large amounts. Small amounts are generally fine.", f: "Dogs & Cats", y: "Large amounts: kidney issues, vomiting, diarrhea. Small amounts: no symptoms", a: "A few leaves are fine. Avoid feeding large amounts regularly, especially for pets with kidney disease." },
+    { n: "Broccoli", t: ["broccoli", "broccolini", "cruciferous"], s: "caution", e: "🥦", d: "Broccoli is safe in small amounts but contains isothiocyanates which can cause gastric irritation in large quantities.", f: "Dogs & Cats", y: "Gas, bloating, stomach discomfort. Large amounts: vomiting, diarrhea", a: "Feed small amounts (no more than 10% of daily diet). Steamed is easiest to digest." },
+    { n: "Shrimp", t: ["shrimp", "prawn", "shellfish"], s: "caution", e: "🦐", d: "Shrimp is safe if fully cooked and peeled. The shell, tail, and vein can cause choking or digestive issues. Raw shrimp may contain bacteria.", f: "Dogs & Cats", y: "Choking from shell/tail. Raw: vomiting, diarrhea from bacteria", a: "Only feed fully cooked, peeled, and deveined shrimp. Remove the tail entirely." },
+    { n: "Egg", t: ["egg", "eggs", "egg white", "egg yolk", "scrambled egg", "boiled egg"], s: "caution", e: "🥚", d: "Cooked eggs are an excellent protein source. Raw eggs carry salmonella risk and avidin in raw whites can interfere with biotin absorption over time.", f: "Dogs & Cats", y: "Cooked: none (healthy). Raw: possible salmonella, skin/coat issues with frequent raw feeding", a: "Always cook eggs before feeding. Scrambled or hard-boiled without seasoning is perfect." },
+
+    // ===== SAFE =====
+    { n: "Chicken", t: ["chicken", "chicken breast", "chicken thigh", "cooked chicken", "white meat"], s: "safe", e: "🍗", d: "Cooked, plain, boneless, skinless chicken is an excellent lean protein source for dogs and cats. It's a common ingredient in most commercial pet foods.", f: "Dogs & Cats", y: "None when properly prepared. Avoid seasoning, oils, onions, or garlic.", a: "Boil or bake without seasoning. Remove all bones and skin. Shred or cube before serving." },
+    { n: "Turkey", t: ["turkey", "turkey breast", "roast turkey", "cooked turkey", "deli turkey"], s: "safe", e: "🦃", d: "Plain, cooked turkey (no skin, no seasoning) is a healthy lean protein. Avoid processed deli turkey which is high in sodium.", f: "Dogs & Cats", y: "None when plain. Seasoned/smoked/deli: vomiting, diarrhea, excessive thirst", a: "Serve plain cooked turkey without skin, bones, or seasoning. Great protein source." },
+    { n: "Beef", t: ["beef", "hamburger", "steak", "ground beef", "roast beef"], s: "safe", e: "🥩", d: "Lean cooked beef is a great protein source. Choose lean cuts and drain excess fat to avoid pancreatitis.", f: "Dogs & Cats", y: "None in moderation. Fatty cuts: possible vomiting, diarrhea, pancreatitis risk", a: "Cook thoroughly, drain fat, and serve plain. Choose lean ground beef (90%+ lean)." },
+    { n: "Salmon", t: ["salmon", "salmon fillet", "cooked salmon", "fish oil"], s: "safe", e: "🐟", d: "Cooked salmon is rich in omega-3 fatty acids which support skin, coat, and joint health. Never feed raw salmon (parasite risk).", f: "Dogs & Cats", y: "None when cooked. Raw: salmon poisoning disease (potentially fatal)", a: "Cook thoroughly to kill parasites. Remove all bones. Serve plain without seasoning." },
+    { n: "Carrot", t: ["carrot", "carrots", "baby carrot", "raw carrot", "cooked carrot"], s: "safe", e: "🥕", d: "Carrots are low-calorie, high-fiber, and rich in beta-carotene. They make excellent crunchy treats and can help with dental health.", f: "Dogs & Cats", y: "None. Very large pieces could be a choking hazard for small dogs.", a: "Wash and cut into appropriate sizes. Raw or cooked — both are great. Avoid seasoning." },
+    { n: "Apple", t: ["apple", "apples", "apple slice", "apple seed", "green apple", "red apple"], s: "safe", e: "🍎", d: "Apples are rich in fiber and vitamins A and C. The flesh is safe and healthy. REMOVE the seeds and core — seeds contain trace cyanide.", f: "Dogs & Cats", y: "None (flesh only). Seeds: cyanide risk in very large quantities", a: "Remove core and seeds. Slice into bite-sized pieces. Feed as occasional treat." },
+    { n: "Banana", t: ["banana", "bananas", "plantain"], s: "safe", e: "🍌", d: "Bananas are rich in potassium, vitamin B6, and fiber. They're high in sugar so feed in moderation. The peel is not digestible.", f: "Dogs & Cats", y: "None in moderation. Too much: constipation or stomach upset due to fiber", a: "Peel and slice. Feed small amounts (a few slices for small dogs, half a banana for large dogs)." },
+    { n: "Blueberry", t: ["blueberry", "blueberries", "berry", "berries"], s: "safe", e: "🫐", d: "Blueberries are packed with antioxidants, fiber, and vitamins. They're a perfect low-calorie training treat for dogs.", f: "Dogs & Cats", y: "None in moderation. Wash thoroughly to remove pesticides.", a: "Wash and serve fresh or frozen. Frozen blueberries make a great summer treat." },
+    { n: "Strawberry", t: ["strawberry", "strawberries", "berry", "berries"], s: "safe", e: "🍓", d: "Strawberries are rich in vitamin C and antioxidants. They contain a natural enzyme that can help whiten teeth. High in sugar — feed in moderation.", f: "Dogs & Cats", y: "None in moderation. Wash and remove green top before serving.", a: "Wash, remove leaves/stem, and slice. Feed 1-3 depending on pet size." },
+    { n: "Watermelon", t: ["watermelon", "melon", "water melon"], s: "safe", e: "🍉", d: "Watermelon is 92% water — great for hydration on hot days. Remove all seeds and the rind to prevent choking and intestinal blockage.", f: "Dogs & Cats", y: "None (flesh only). Rind: choking hazard, intestinal blockage. Seeds: digestive upset", a: "Remove rind and seeds. Cut flesh into small cubes. Serve chilled as a summer treat." },
+    { n: "Cucumber", t: ["cucumber", "cucumbers", "pickle"], s: "safe", e: "🥒", d: "Cucumbers are low-calorie, hydrating, and crunchy. They make excellent training treats for overweight pets. Avoid pickles (high sodium, spices).", f: "Dogs & Cats", y: "None. Pickles: high sodium, possible garlic/onion seasoning, vomiting, diarrhea", a: "Wash, slice, and serve raw. Avoid pickles and seasoned cucumber products." },
+    { n: "Sweet Potato", t: ["sweet potato", "yam", "sweet potato treat", "sweet potato chew"], s: "safe", e: "🍠", d: "Cooked sweet potatoes are rich in fiber, vitamin A, and antioxidants. A popular ingredient in many pet foods and treats.", f: "Dogs & Cats", y: "None when cooked. Raw: choking hazard, difficult to digest", a: "Cook thoroughly (bake, boil, or steam). Remove skin. Serve plain without seasoning." },
+    { n: "Pumpkin", t: ["pumpkin", "pumpkin puree", "pumpkin pie", "canned pumpkin"], s: "safe", e: "🎃", d: "Plain pumpkin (not pumpkin pie filling) is excellent for digestive health. The fiber helps with both diarrhea and constipation.", f: "Dogs & Cats", y: "None (plain). Pumpkin pie filling: toxic (xylitol, nutmeg, sugar)", a: "Feed plain canned pumpkin (not pie filling!). 1-2 tbsp per day for most dogs." },
+    { n: "Rice", t: ["rice", "white rice", "brown rice", "jasmine rice", "basmati rice"], s: "safe", e: "🍚", d: "Plain cooked rice is easily digestible and often recommended for pets with upset stomachs. White rice is gentler than brown rice.", f: "Dogs & Cats", y: "None when plain and cooked. Large amounts: possible gas, bloating", a: "Cook thoroughly in water without salt, oil, or seasoning. Serve plain." },
+    { n: "Oatmeal", t: ["oatmeal", "oats", "porridge", "rolled oats"], s: "safe", e: "🥣", d: "Plain cooked oatmeal is a good source of soluble fiber and can help regulate digestion. Choose whole oats over instant (less processing).", f: "Dogs & Cats", y: "None when plain. Flavored instant oatmeal: high sugar, possible xylitol", a: "Cook with water only (not milk). Serve plain without sugar, honey, or flavoring." },
+    { n: "Green Beans", t: ["green bean", "green beans", "string bean", "french bean"], s: "safe", e: "🫘", d: "Green beans are a low-calorie, nutrient-rich treat. They're often recommended as a healthy snack for overweight pets.", f: "Dogs & Cats", y: "None. Plain is best — avoid seasoned or canned with added salt.", a: "Steam or boil until tender. Serve plain without salt, butter, or seasoning." },
+    { n: "Peas", t: ["pea", "peas", "garden pea", "snow pea", "sugar snap pea"], s: "safe", e: "🫛", d: "Peas are rich in vitamins and fiber. They're a common ingredient in many premium pet foods. Serve plain.", f: "Dogs & Cats", y: "None in moderation. Fresh or frozen (thawed) peas are best.", a: "Serve fresh, frozen (thawed), or lightly steamed. Avoid canned peas with added sodium." },
+    { n: "Yogurt", t: ["yogurt", "plain yogurt", "greek yogurt", "natural yogurt"], s: "safe", e: "🥛", d: "Plain yogurt provides probiotics, calcium, and protein. Greek yogurt has more protein. Avoid flavored yogurts with added sugar or xylitol.", f: "Dogs & Cats", y: "None (plain). Flavored: possible xylitol toxicity, vomiting, diarrhea from sugar/dairy", a: "Choose plain, unsweetened yogurt. Greek yogurt is best. Feed 1-2 tbsp per day." },
+    { n: "Cottage Cheese", t: ["cottage cheese", "curd cheese", "paneer"], s: "safe", e: "🧀", d: "Low-fat cottage cheese is a good source of protein and calcium. It's lower in lactose than regular cheese, making it easier to digest.", f: "Dogs & Cats", y: "None in moderation. Some pets may have lactose intolerance (gas, diarrhea).", a: "Choose low-fat, plain cottage cheese. Feed small amounts (1-2 tbsp)." },
+    { n: "Cheese", t: ["cheese", "cheddar", "mozzarella", "swiss", "parmesan", "american cheese"], s: "safe", e: "🧀", d: "Most cheeses are safe in small amounts. Many dogs love cheese, making it a great training treat. Some pets are lactose intolerant.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: vomiting, diarrhea, pancreatitis risk (high fat)", a: "Feed small pieces as occasional treats. Low-fat cheeses (mozzarella, cottage) are safer." },
+    { n: "Pork", t: ["pork", "pork chop", "pork loin", "cooked pork", "ham"], s: "safe", e: "🥩", d: "Cooked lean pork is safe and nutritious. Avoid processed pork products (ham, bacon, sausage) which are high in salt and fat.", f: "Dogs & Cats", y: "None (lean, cooked). Processed: vomiting, diarrhea, excessive thirst, pancreatitis", a: "Cook thoroughly. Choose lean cuts. Avoid seasoning, especially garlic and onion." },
+    { n: "Lamb", t: ["lamb", "lamb chop", "roast lamb", "cooked lamb"], s: "safe", e: "🐑", d: "Lamb is a novel protein source often used in hypoallergenic pet foods. It's rich in iron and B vitamins.", f: "Dogs & Cats", y: "None when cooked plain. Trim excess fat to avoid pancreatitis.", a: "Cook thoroughly, trim fat, and serve plain without seasoning." },
+    { n: "White Fish", t: ["white fish", "cod", "haddock", "tilapia", "pollock", "flounder"], s: "safe", e: "🐟", d: "White fish is a lean, easily digestible protein source. Great for pets with food sensitivities or stomach issues.", f: "Dogs & Cats", y: "None when cooked. Raw: parasite risk", a: "Cook thoroughly (bake, poach, or steam). Remove all bones. Serve plain." },
+    { n: "Cantaloupe", t: ["cantaloupe", "melon", "rockmelon", "muskmelon"], s: "safe", e: "🍈", d: "Cantaloupe is rich in vitamins A and C, beta-carotene, and fiber. It's hydrating and low in calories. Remove the rind.", f: "Dogs & Cats", y: "None in moderation. Remove rind to prevent choking.", a: "Remove rind and seeds. Cut into small cubes. Feed as occasional treat." },
+    { n: "Coconut", t: ["coconut", "coconut oil", "coconut meat", "coconut milk", "coconut water"], s: "safe", e: "🥥", d: "Coconut and coconut oil contain medium-chain triglycerides (MCTs) that can support skin and coat health. Feed in moderation.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: vomiting, diarrhea, pancreatitis (high fat)", a: "Feed small amounts of fresh coconut meat or coconut oil (1 tsp for small dogs, 1 tbsp for large)." },
+    { n: "Honey", t: ["honey", "raw honey", "manuka honey"], s: "safe", e: "🍯", d: "Honey is safe in very small amounts. It contains natural sugars and trace antioxidants. Never feed to puppies under 1 year old (botulism risk).", f: "Dogs & Cats", y: "None in tiny amounts. Too much: vomiting, diarrhea, blood sugar spike", a: "Feed tiny amounts (1/4 tsp for small dogs, 1 tsp for large). Avoid for puppies under 1 year." },
+    { n: "Popcorn", t: ["popcorn", "plain popcorn", "air-popped popcorn"], s: "safe", e: "🍿", d: "Plain, air-popped popcorn is a low-calorie treat. Remove unpopped kernels (choking hazard). Avoid butter, salt, and seasonings.", f: "Dogs", y: "None (plain). Buttered/salted: vomiting, diarrhea, pancreatitis. Unpopped kernels: choking", a: "Air-pop without oil. Serve plain — no butter, salt, or seasoning. Remove unpopped kernels." },
+    { n: "Celery", t: ["celery", "celery stick", "celery stalk"], s: "safe", e: "🥬", d: "Celery is low-calorie, crunchy, and contains vitamins A, C, and K. It can help freshen breath and satisfy chewing urges.", f: "Dogs & Cats", y: "None. Stringy texture may be hard for some pets to chew — cut into small pieces.", a: "Wash thoroughly and cut into small, manageable pieces. Great low-calorie training treat." },
+    { n: "Zucchini", t: ["zucchini", "courgette", "summer squash", "marrow"], s: "safe", e: "🥒", d: "Zucchini is safe, low-calorie, and hydrating. It's a great addition to homemade pet meals. Serve raw or cooked.", f: "Dogs & Cats", y: "None. Wash before serving to remove pesticides.", a: "Wash, slice, and serve raw or lightly steamed. Avoid seasoning." },
+    { n: "Bell Pepper", t: ["bell pepper", "capsicum", "red pepper", "green pepper", "yellow pepper", "sweet pepper"], s: "safe", e: "🫑", d: "Bell peppers are rich in vitamins A, C, and antioxidants. All colors are safe. Remove the stem, seeds, and inner white membrane.", f: "Dogs & Cats", y: "None in moderation. Avoid spicy peppers (jalapeño, chili — these are different species).", a: "Wash, remove stem and seeds, and cut into small pieces. Serve raw or cooked." },
+    { n: "Cauliflower", t: ["cauliflower", "cauliflower rice"], s: "safe", e: "🥦", d: "Cauliflower is safe in small amounts. It's low-calorie and contains fiber and vitamins. Too much can cause gas.", f: "Dogs & Cats", y: "Gas, bloating if overfed. None in small amounts.", a: "Steam or boil until tender. Serve plain in small amounts." },
+    { n: "Brussels Sprouts", t: ["brussels sprout", "brussels sprouts"], s: "safe", e: "🥬", d: "Brussels sprouts are safe but can cause significant gas. They're rich in fiber and antioxidants.", f: "Dogs & Cats", y: "Gas, bloating. None in small cooked amounts.", a: "Cook thoroughly (steam or roast). Serve in very small amounts unless you enjoy a gassy house!" },
+    { n: "Asparagus", t: ["asparagus", "asparagus spear"], s: "safe", e: "🌱", d: "Asparagus is safe but tough raw — steam or cook first for easier digestion. It's a good source of fiber and vitamins.", f: "Dogs & Cats", y: "None when cooked. Raw: possible difficulty chewing, mild stomach upset.", a: "Steam or cook until tender. Cut into small pieces. Avoid seasoning." },
+    { n: "Pineapple", t: ["pineapple", "fresh pineapple", "canned pineapple"], s: "safe", e: "🍍", d: "Pineapple is safe in moderation. It contains bromelain, an enzyme that may help with digestion. High in sugar — feed sparingly.", f: "Dogs & Cats", y: "None in small amounts. Canned in syrup: too much sugar. Too much fresh: vomiting, diarrhea", a: "Feed fresh pineapple only. Remove the tough outer skin and core. Small pieces only." },
+    { n: "Mango", t: ["mango", "mango chunks", "fresh mango"], s: "safe", e: "🥭", d: "Mango is rich in vitamins A, B6, C, and fiber. Remove the large pit (choking hazard, contains trace cyanide).", f: "Dogs & Cats", y: "None in moderation. Pit: choking hazard. Skin: difficult to digest.", a: "Peel, remove pit, and cut flesh into small pieces. Feed as occasional treat." },
+    { n: "Pear", t: ["pear", "pears", "asian pear"], s: "safe", e: "🍐", d: "Pears are rich in fiber and vitamin C. Remove the seeds and core (seeds contain trace cyanide, similar to apples).", f: "Dogs & Cats", y: "None (flesh only). Seeds: cyanide risk in very large quantities", a: "Remove core and seeds. Cut into bite-sized pieces. Feed as occasional treat." },
+    { n: "Raspberry", t: ["raspberry", "raspberries", "berry"], s: "safe", e: "🫐", d: "Raspberries are rich in antioxidants and fiber, with less sugar than many fruits. They contain small amounts of xylitol naturally — feed very sparingly.", f: "Dogs & Cats", y: "Very small amounts: none. Large amounts: possible digestive upset (plus trace natural xylitol)", a: "Wash and serve fresh or frozen. Limit to a few berries at a time." },
+    { n: "Cranberry", t: ["cranberry", "cranberries", "dried cranberry", "cranberry juice"], s: "safe", e: "🫐", d: "Cranberries are safe and may support urinary tract health. Avoid dried cranberries (added sugar). Pure cranberry juice (unsweetened) is OK in tiny amounts.", f: "Dogs & Cats", y: "None in small amounts. Dried: high sugar. Juice: too acidic in large amounts", a: "Feed fresh or frozen cranberries in small amounts. Avoid sweetened dried cranberries." },
+    { n: "Pasta", t: ["pasta", "spaghetti", "noodle", "macaroni", "penne"], s: "safe", e: "🍝", d: "Plain cooked pasta is safe in moderation. It's mostly carbohydrates with little nutritional value. Serve plain — no sauce.", f: "Dogs & Cats", y: "None (plain). With sauce: possible garlic, onion, or spice toxicity", a: "Cook plain without salt or oil. Serve small amounts as occasional treat. No sauce!" },
+    { n: "Bread", t: ["bread", "white bread", "whole wheat bread", "toast", "sandwich"], s: "safe", e: "🍞", d: "Plain bread is safe in small amounts. It's mostly empty calories. Whole grain is slightly more nutritious than white.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: bloating, stomach upset. Raisin bread: emergency!", a: "Feed small pieces of plain bread. Never bread with raisins, garlic, or xylitol." },
+    { n: "Quinoa", t: ["quinoa", "quinoa grain", "cooked quinoa"], s: "safe", e: "🌾", d: "Quinoa is a complete protein containing all essential amino acids. Rinse before cooking to remove bitter saponins.", f: "Dogs & Cats", y: "None when cooked thoroughly and rinsed. Uncooked: difficult to digest.", a: "Rinse thoroughly, cook in water, and serve plain. Mix with protein for a balanced meal." },
+    { n: "Liver", t: ["liver", "chicken liver", "beef liver", "organ meat"], s: "safe", e: "🥩", d: "Liver is extremely nutrient-dense (vitamin A, iron, copper). However, too much can cause vitamin A toxicity (hypervitaminosis A).", f: "Dogs & Cats", y: "None in small amounts. Too much: vitamin A toxicity (bone issues, weight loss, stiffness)", a: "Feed in strict moderation — no more than 1-2 small pieces per week." },
+    { n: "Cheddar Cheese", t: ["cheddar", "cheddar cheese"], s: "safe", e: "🧀", d: "Cheddar is safe in tiny amounts but high in fat. Great as a high-value training treat for dogs. Some pets are lactose intolerant.", f: "Dogs & Cats", y: "None in tiny amounts. Large amounts: vomiting, diarrhea, pancreatitis risk", a: "Feed pea-sized pieces as training treats. Choose low-fat varieties if possible." },
+    { n: "Mozzarella", t: ["mozzarella", "mozzarella cheese", "string cheese"], s: "safe", e: "🧀", d: "Mozzarella is lower in lactose and fat than many cheeses, making it a better option. String cheese is a convenient training treat.", f: "Dogs & Cats", y: "None in moderation. Lower lactose = less digestive upset than other cheeses.", a: "Tear string cheese into small pieces for training. Choose part-skim mozzarella." },
+    { n: "Cashew", t: ["cashew", "cashews", "cashew nut"], s: "caution", e: "🥜", d: "Cashews are not toxic but are high in fat. A few plain cashews are fine. Avoid salted, roasted, or flavored cashews.", f: "Dogs & Cats", y: "None in small amounts. High fat: pancreatitis risk, vomiting, diarrhea", a: "Feed 1-3 plain, unsalted cashews maximum. Not worth feeding regularly due to high fat." },
+    { n: "Pistachio", t: ["pistachio", "pistachios"], s: "caution", e: "🥜", d: "Pistachios are not toxic but are high in fat. The shells are a choking hazard. Unshelled pistachios can cause intestinal blockage.", f: "Dogs", y: "None (shelled, small amounts). Shells: choking, intestinal blockage. Moldy: tremors", a: "Only feed shelled, plain, unsalted pistachios in very small amounts." },
+    { n: "Pecan", t: ["pecan", "pecans"], s: "caution", e: "🥜", d: "Pecans are high in fat (pancreatitis risk) and can grow mold producing tremorgenic mycotoxins. Similar risks to walnuts.", f: "Dogs", y: "High fat: vomiting, diarrhea, pancreatitis. Moldy: tremors, seizures", a: "Best to avoid pecans entirely. The risks outweigh any nutritional benefit." },
+    { n: "Coffee", t: ["coffee", "coffee bean", "coffee grounds", "caffeinated"], s: "toxic", e: "☕", d: "Coffee contains caffeine which is a stimulant toxic to dogs and cats. Coffee grounds are especially concentrated.", f: "Dogs & Cats", y: "Restlessness, rapid breathing, heart palpitations, tremors, seizures", a: "Contact your vet immediately. Keep coffee and coffee grounds securely out of reach." },
+    { n: "Tea", t: ["tea", "black tea", "green tea", "herbal tea", "caffeine"], s: "caution", e: "🍵", d: "Caffeinated tea contains theobromine and caffeine. Herbal teas vary by ingredient. Most teas in small amounts are not dangerous but best to avoid.", f: "Dogs & Cats", y: "Caffeinated: mild restlessness, increased heart rate. Large amounts: vomiting, diarrhea", a: "Keep caffeinated tea away from pets. A few laps of spilled tea are not usually dangerous." },
+    { n: "Raisin", t: ["raisin", "raisins", "dried grape", "currant", "sultana"], s: "emergency", e: "🍇", d: "Raisins are dried grapes and equally toxic to dogs. Even small amounts can cause acute kidney failure. The toxic dose varies by individual dog.", f: "Dogs", y: "Vomiting, lethargy, loss of appetite, abdominal pain, decreased urination (12-24 hours)", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Early treatment improves outcomes." },
+    { n: "Daffodil", t: ["daffodil", "narcissus", "jonquil"], s: "toxic", e: "🌼", d: "All parts of the daffodil are toxic, especially the bulbs. Contains lycorine which causes severe gastrointestinal distress and neurological symptoms.", f: "Dogs & Cats", y: "Vomiting, diarrhea, abdominal pain, drooling, tremors, low blood pressure", a: "Contact your vet. Bulb ingestion requires immediate veterinary attention." },
+    { n: "Hyacinth", t: ["hyacinth", "hyacinth bulb"], s: "toxic", e: "🌸", d: "Hyacinths contain oxalic acid crystals that cause intense mouth irritation and gastrointestinal distress. Bulbs are the most concentrated.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, mouth irritation, difficulty swallowing", a: "Rinse mouth thoroughly. Contact your vet if symptoms persist or if bulbs were ingested." },
+    { n: "Pomegranate", t: ["pomegranate", "pomegranate seeds"], s: "safe", e: "🍎", d: "Pomegranate seeds are safe in small amounts but can cause digestive upset if overfed. The tough skin is hard to digest.", f: "Dogs & Cats", y: "None in small amounts. Too many seeds: vomiting, diarrhea", a: "Feed only the seeds (arils) in small amounts. Avoid the white pith and skin." },
+    { n: "Fig", t: ["fig", "figs", "dried fig"], s: "safe", e: "🫐", d: "Figs are safe in moderation. They contain fiber and natural sugars. Dried figs are concentrated in sugar — feed sparingly.", f: "Dogs & Cats", y: "None in small amounts. Too many: vomiting, diarrhea, blood sugar spike", a: "Fresh is better than dried. Cut into small pieces. Feed occasionally." },
+    { n: "Kiwi", t: ["kiwi", "kiwifruit", "golden kiwi"], s: "safe", e: "🥝", d: "Kiwi is rich in vitamin C and fiber. The fuzzy skin is edible but may be hard to digest — peel it for your pet.", f: "Dogs & Cats", y: "None in small amounts. Too much: possible digestive upset due to fiber", a: "Peel and slice. Feed small amounts as occasional treat." },
+    { n: "Date", t: ["date", "dates", "dried date", "medjool"], s: "safe", e: "🫐", d: "Dates are safe but extremely high in sugar. The pit is a choking hazard. Feed very sparingly, if at all.", f: "Dogs & Cats", y: "None in tiny amounts. Pit: choking hazard. Too much sugar: vomiting, diarrhea, blood sugar spike", a: "Remove pit. Feed 1/2 to 1 date maximum. Better to choose lower-sugar treats." },
+    { n: "Radish", t: ["radish", "radishes", "daikon"], s: "safe", e: "🥬", d: "Radishes are safe in small amounts. They're crunchy and low-calorie. Some pets may not like the peppery taste.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: possible gas, stomach irritation", a: "Wash and slice thinly. Feed as occasional crunchy treat." },
+    { n: "Cabbage", t: ["cabbage", "red cabbage", "savoy cabbage"], s: "safe", e: "🥬", d: "Cabbage is safe in small amounts. Rich in fiber and vitamins. Can cause significant gas in large amounts.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: gas, bloating, stomach discomfort", a: "Steam or cook lightly for easier digestion. Serve small amounts." },
+    { n: "Kale", t: ["kale", "curly kale", "cavolo nero"], s: "caution", e: "🥬", d: "Kale is safe in small amounts but contains calcium oxalate crystals and isothiocyanates. Large amounts can cause kidney and bladder issues.", f: "Dogs & Cats", y: "Small amounts: none. Large amounts regularly: potential kidney/bladder stones", a: "Feed small amounts occasionally. Steaming reduces oxalate content. Not for pets with kidney issues." },
+    { n: "Lettuce", t: ["lettuce", "romaine", "iceberg", "mixed greens", "salad"], s: "safe", e: "🥬", d: "Lettuce is safe, mostly water, and very low in calories. Romaine has more nutrients than iceberg. Great for overweight pets.", f: "Dogs & Cats", y: "None. Wash thoroughly to remove pesticides.", a: "Wash and tear into pieces. Mix into meals for extra hydration and crunch." },
+    { n: "Orange", t: ["orange", "oranges", "mandarin", "clementine", "tangerine"], s: "safe", e: "🍊", d: "Oranges are safe in small amounts. Rich in vitamin C. Remove seeds and peel. The acidity may cause stomach upset in some pets.", f: "Dogs & Cats", y: "None in small amounts. Too much: vomiting, diarrhea (citric acid). Peel: difficult to digest", a: "Peel and remove seeds. Feed 1-2 segments maximum. Some pets may not like the acidity." },
+    { n: "Lemon", t: ["lemon", "lemons", "lemon juice", "lime", "limes"], s: "caution", e: "🍋", d: "Lemons and limes contain citric acid and essential oils that can cause digestive upset in large amounts. Most pets dislike the taste anyway.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, photosensitivity (lime). Small amounts: usually none", a: "Avoid feeding lemons or limes. A small lick of lemon juice is not dangerous but not recommended." },
+    { n: "Grapefruit", t: ["grapefruit", "pomelo"], s: "caution", e: "🍊", d: "Grapefruit contains essential oils and psoralens that can cause vomiting, diarrhea, and photosensitivity in dogs.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, photosensitivity (skin sensitivity to sun)", a: "Not recommended. If your pet eats a small amount of flesh, monitor for symptoms." },
+    { n: "Tequila", t: ["tequila", "distilled spirits", "hard liquor"], s: "emergency", e: "🍺", d: "All alcoholic beverages are dangerous to pets. Tequila has high alcohol content. Even small amounts can cause alcohol poisoning.", f: "Dogs & Cats", y: "Vomiting, disorientation, staggering, slowed breathing, low blood sugar, coma", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Keep all alcohol out of reach." },
+    { n: "Chives", t: ["chive", "chives", "garlic chive"], s: "toxic", e: "🌿", d: "Chives belong to the allium family (like onions and garlic) and damage red blood cells, leading to anemia.", f: "Dogs & Cats", y: "Weakness, pale gums, rapid breathing, dark urine. Symptoms may be delayed 2-5 days.", a: "Contact your vet. Small amounts in food garnish are typically not dangerous, but regular or large amounts are toxic." },
+    { n: "Shallot", t: ["shallot", "shallots", "eschalot"], s: "toxic", e: "🧅", d: "Shallots are in the allium family and toxic to dogs and cats, similar to onions and garlic. They damage red blood cells.", f: "Dogs & Cats", y: "Weakness, pale gums, rapid breathing, dark urine, vomiting, diarrhea", a: "Contact your vet. All forms (raw, cooked, powdered) are toxic." },
+    { n: "Pickle", t: ["pickle", "pickles", "gherkin", "dill pickle"], s: "caution", e: "🥒", d: "Pickles are cucumbers soaked in salt, vinegar, and often garlic or spices. High sodium can cause excessive thirst and sodium ion poisoning.", f: "Dogs & Cats", y: "Excessive thirst, urination, vomiting, diarrhea. Garlic/onion in pickling spice adds toxicity risk.", a: "Not recommended. The high sodium and potential garlic/onion make pickles risky." },
+    { n: "Chili Pepper", t: ["chili", "chili pepper", "jalapeño", "habanero", "cayenne", "spicy"], s: "caution", e: "🌶️", d: "Chili peppers contain capsaicin which causes intense burning, stomach upset, and pain. Not toxic per se but very unpleasant.", f: "Dogs & Cats", y: "Mouth burning, drooling, pawing at mouth, vomiting, diarrhea, stomach pain", a: "Offer milk or yogurt to soothe mouth. Contact your vet if symptoms are severe or persist." },
+    { n: "Cinnamon", t: ["cinnamon", "cinnamon stick", "cinnamon powder"], s: "safe", e: "🌿", d: "Cinnamon is generally safe in small amounts (sprinkled on food). Large amounts can cause mouth irritation, low blood sugar, and liver issues.", f: "Dogs & Cats", y: "Small amounts: none. Large amounts: vomiting, diarrhea, low blood sugar, liver disease", a: "A sprinkle on food is fine. Never give cinnamon sticks or essential oil (highly concentrated)." },
+    { n: "Vanilla Extract", t: ["vanilla", "vanilla extract", "vanilla flavor"], s: "caution", e: "🧁", d: "Vanilla extract contains alcohol (35%). Pure vanilla extract is dangerous due to alcohol content. Imitation vanilla may contain xylitol.", f: "Dogs & Cats", y: "Alcohol poisoning (from extract). Xylitol poisoning (from imitation). Small amounts: mild upset", a: "Avoid entirely. Vanilla-flavored foods may be OK if you check the ingredients carefully." },
+    { n: "Sesame Seed", t: ["sesame", "sesame seed", "sesame oil", "tahini"], s: "safe", e: "🌰", d: "Sesame seeds and tahini (sesame paste) are safe in small amounts. Rich in healthy fats and calcium.", f: "Dogs & Cats", y: "None in small amounts. High fat: pancreatitis risk in large amounts", a: "A sprinkle on food or small amount of tahini is fine. Feed in moderation." },
+    { n: "Flaxseed", t: ["flax", "flaxseed", "linseed", "flax meal"], s: "safe", e: "🌰", d: "Flaxseeds are rich in omega-3 fatty acids and fiber. Ground flaxseed is easier to digest than whole seeds.", f: "Dogs & Cats", y: "None in small amounts. Whole seeds may pass undigested.", a: "Grind before feeding for best nutrient absorption. Sprinkle 1/4 tsp on food." },
+    { n: "Chia Seed", t: ["chia", "chia seed", "chia seeds"], s: "safe", e: "🌰", d: "Chia seeds are rich in omega-3s, fiber, and protein. They absorb water and form a gel — great for digestion.", f: "Dogs & Cats", y: "None in small amounts. Ensure seeds are soaked/gelled to prevent expansion in stomach.", a: "Soak in water before feeding (they expand). Add 1/4-1/2 tsp to food." },
+    { n: "Sunflower Seed", t: ["sunflower", "sunflower seed", "sunflower kernel"], s: "safe", e: "🌰", d: "Sunflower seeds are safe in small amounts. Rich in vitamin E and healthy fats. Shells can cause digestive issues.", f: "Dogs & Cats", y: "None (shelled). Shells: choking, intestinal blockage, vomiting", a: "Only feed shelled, unsalted sunflower seeds. A few seeds as occasional treat." },
+    { n: "Chestnut", t: ["chestnut", "chestnuts", "roasted chestnut"], s: "safe", e: "🌰", d: "Chestnuts are safe and lower in fat than other nuts. Roasted chestnuts (plain) make a nice occasional treat.", f: "Dogs & Cats", y: "None in moderation. Too many: stomach upset, gas", a: "Roast or boil plain. Avoid salted or flavored chestnuts. Feed in small amounts." },
+    { n: "Turkey Bacon", t: ["turkey bacon", "turkey sausage"], s: "caution", e: "🥓", d: "Turkey bacon is still high in sodium and often contains garlic or onion powder. Not necessarily healthier than regular bacon for pets.", f: "Dogs & Cats", y: "Vomiting, diarrhea, excessive thirst. Garlic/onion powder: red blood cell damage", a: "Not recommended. If you must share, rinse thoroughly and feed a tiny piece." },
+    { n: "Cream Cheese", t: ["cream cheese", "philadelphia", "soft cheese"], s: "safe", e: "🧀", d: "Plain cream cheese is safe in very small amounts. It's high in fat and lactose. Great for hiding pills!", f: "Dogs & Cats", y: "None in tiny amounts. Too much: vomiting, diarrhea, pancreatitis", a: "Use only as a pill pocket. A pea-sized amount is enough. Choose low-fat if possible." },
+    { n: "Lima Bean", t: ["lima bean", "butter bean", "fava bean"], s: "caution", e: "🫘", d: "Lima beans are safe when cooked thoroughly. Raw or undercooked lima beans contain cyanogenic compounds (can release cyanide).", f: "Dogs & Cats", y: "Cooked: none. Raw/undercooked: cyanide poisoning (rare, but serious)", a: "Cook thoroughly until soft. Serve plain in small amounts." },
+    { n: "Lentil", t: ["lentil", "lentils", "red lentil", "green lentil"], s: "safe", e: "🫘", d: "Cooked lentils are safe and provide protein, fiber, and iron. Rinse and cook thoroughly. A great addition to homemade pet meals.", f: "Dogs & Cats", y: "None when cooked. Raw: difficult to digest, possible stomach upset", a: "Rinse, cook until soft, and serve plain. Mix with protein for balanced meal." },
+    { n: "Chickpea", t: ["chickpea", "chickpeas", "garbanzo", "hummus"], s: "safe", e: "🫘", d: "Cooked chickpeas are safe and nutritious. Hummus often contains garlic, lemon, and tahini — plain is best.", f: "Dogs & Cats", y: "None when cooked plain. Hummus: possible garlic/lemon toxicity, high fat", a: "Cook from dry or use canned (rinsed). Serve plain. Avoid hummus (garlic, lemon, oil)." },
+    { n: "Soy Sauce", t: ["soy sauce", "shoyu", "tamari", "sodium"], s: "caution", e: "🧂", d: "Soy sauce is extremely high in sodium and often contains onion or garlic. A tiny amount is OK but not recommended.", f: "Dogs & Cats", y: "Excessive thirst, urination, vomiting, diarrhea. Large amounts: sodium poisoning, tremors, seizures", a: "Avoid feeding. If your pet licks a spilled drop, it's fine — but don't intentionally feed." },
+    { n: "Salt", t: ["salt", "table salt", "sodium", "sea salt"], s: "caution", e: "🧂", d: "Small amounts of salt are essential, but too much causes sodium poisoning (hypernatremia). Salt dough ornaments are especially dangerous.", f: "Dogs & Cats", y: "Excessive thirst, vomiting, diarrhea, tremors, seizures, coma", a: "Do not add salt to pet food. If they eat play-dough/salt dough, contact your vet immediately." },
+    { n: "Vinegar", t: ["vinegar", "apple cider vinegar", "white vinegar", "acv"], s: "safe", e: "🧪", d: "Small amounts of vinegar (especially apple cider vinegar) are safe and sometimes beneficial for digestion. Dilute with water.", f: "Dogs & Cats", y: "None in small diluted amounts. Undiluted: mouth/throat irritation", a: "Dilute with water (1 tsp per bowl). Never feed undiluted. Some pets may refuse." },
+    { n: "Coconut Oil", t: ["coconut oil", "coco oil", "mct oil"], s: "safe", e: "🥥", d: "Coconut oil contains MCTs which may support skin, coat, and brain health. Feed in small amounts to start.", f: "Dogs & Cats", y: "None in small amounts. Too much: vomiting, diarrhea, pancreatitis (high fat)", a: "Start with 1/4 tsp for small dogs, 1 tsp for large. Gradually increase. Not for overweight pets." },
+    { n: "Olive Oil", t: ["olive oil", "extra virgin olive oil", "evoo"], s: "safe", e: "🫒", d: "Olive oil is safe in small amounts and provides healthy fats. Can help with dry skin and coat health.", f: "Dogs & Cats", y: "None in small amounts. Too much: vomiting, diarrhea, pancreatitis", a: "Drizzle 1/4-1 tsp on food occasionally. Not for overweight pets." },
+    { n: "Catnip", t: ["catnip", "catmint", "nepeta"], s: "safe", e: "🌿", d: "Catnip is safe and non-toxic. It causes a euphoric response in cats but has no effect on dogs. Can cause mild digestive upset if overeaten.", f: "Cats (dogs: no effect)", y: "Cats: excitement then relaxation. Too much: mild vomiting, diarrhea", a: "Safe in moderation. Offer dried or fresh. Effects last about 10-15 minutes." },
+    { n: "Eucalyptus", t: ["eucalyptus", "eucalyptus oil", "eucalyptus leaf"], s: "toxic", e: "🌿", d: "Eucalyptus contains eucalyptol which is toxic to pets. Essential oil is highly concentrated and especially dangerous.", f: "Dogs & Cats", y: "Vomiting, diarrhea, drooling, weakness, difficulty walking, seizures", a: "Contact your vet immediately. Keep eucalyptus plants and essential oils away from pets." },
+    { n: "Tea Tree Oil", t: ["tea tree", "tea tree oil", "melaleuca", "ti tree"], s: "toxic", e: "🧴", d: "Tea tree oil is highly toxic to pets, even in small amounts. Never apply to skin or allow ingestion. Concentrated essential oil is especially dangerous.", f: "Dogs & Cats", y: "Vomiting, drooling, weakness, difficulty walking, tremors, coma, skin reactions", a: "Contact your vet immediately. Keep all essential oils securely stored. Never apply to pet's skin." },
+    { n: "Lavender", t: ["lavender", "lavender oil", "lavender plant"], s: "caution", e: "🌸", d: "Lavender plants are mildly toxic. Lavender essential oil is more concentrated and dangerous. Small amounts of dried lavender are usually OK.", f: "Dogs & Cats", y: "Plant: mild vomiting, nausea. Essential oil: vomiting, lethargy, difficulty breathing", a: "Keep lavender essential oil away from pets. Dried lavender in small amounts is typically fine." },
+    { n: "Rosemary", t: ["rosemary", "rosemary oil", "rosemary herb"], s: "safe", e: "🌿", d: "Rosemary is safe in small culinary amounts. It's actually used as a natural preservative in some pet foods. Essential oil is too concentrated.", f: "Dogs & Cats", y: "Culinary amounts: none. Essential oil: vomiting, seizures (in large amounts)", a: "A sprinkle on food is fine. Never give rosemary essential oil internally." },
+    { n: "Mint", t: ["mint", "peppermint", "spearmint", "mint leaf"], s: "safe", e: "🌿", d: "Fresh mint leaves are safe in small amounts. Peppermint oil is concentrated and dangerous. Can help freshen breath.", f: "Dogs & Cats", y: "Fresh leaves in small amounts: none. Peppermint oil: vomiting, diarrhea, liver damage", a: "A few fresh leaves are fine. Never give peppermint essential oil or candy (xylitol risk)." },
+    { n: "Basil", t: ["basil", "fresh basil", "sweet basil"], s: "safe", e: "🌿", d: "Basil is safe and may have anti-inflammatory properties. A great herb to add to homemade pet meals.", f: "Dogs & Cats", y: "None in small amounts.", a: "Chop fresh leaves and sprinkle on food. Dried basil is fine too." },
+    { n: "Parsley", t: ["parsley", "fresh parsley", "italian parsley", "curly parsley"], s: "safe", e: "🌿", d: "Parsley is safe in small amounts and can help freshen breath. Spring parsley (different species) is toxic — use common parsley only.", f: "Dogs & Cats", y: "None in small amounts. Very large amounts: possible photosensitivity, anemia", a: "Chop fresh common/curly parsley and sprinkle on food. Small amounts only." },
+    { n: "Cilantro", t: ["cilantro", "coriander", "fresh coriander", "dhania"], s: "safe", e: "🌿", d: "Cilantro is safe and may help with digestion. Safe for dogs and cats in small amounts.", f: "Dogs & Cats", y: "None in small amounts.", a: "Chop fresh and sprinkle on food. Some pets may dislike the taste." },
+    { n: "Ginger", t: ["ginger", "ginger root", "fresh ginger", "ground ginger"], s: "safe", e: "🌱", d: "Ginger is safe and can help with nausea and motion sickness. Fresh or dried are both fine in small amounts.", f: "Dogs & Cats", y: "None in small amounts. Too much: vomiting, diarrhea, heartburn", a: "Grate fresh ginger into food (1/4 tsp for small dogs, 1/2 tsp for large). Can help with car sickness." },
+    { n: "Turmeric", t: ["turmeric", "turmeric root", "curcumin", "yellow spice"], s: "safe", e: "🌱", d: "Turmeric has anti-inflammatory properties and is safe in small amounts. Black pepper helps with absorption.", f: "Dogs & Cats", y: "None in small amounts. Large amounts: stomach upset, iron deficiency", a: "Mix 1/4 tsp with a pinch of black pepper. The 'golden paste' is a popular supplement for dogs." },
+    { n: "Macadamia Nut Butter", t: ["macadamia butter", "macadamia spread"], s: "toxic", e: "🥜", d: "Macadamia nut butter is as toxic as whole macadamia nuts for dogs. Do not feed.", f: "Dogs", y: "Weakness (especially hind legs), vomiting, tremors, hyperthermia, inability to walk", a: "Contact your vet if your dog eats macadamia nut butter. Avoid entirely." },
+    { n: "Raw Egg", t: ["raw egg", "raw egg white", "unpasteurized egg"], s: "caution", e: "🥚", d: "Raw eggs carry salmonella risk. Raw egg whites contain avidin which can cause biotin deficiency if fed frequently in large amounts.", f: "Dogs & Cats", y: "Possible salmonella: vomiting, diarrhea, fever. Long-term: poor coat, skin issues", a: "Cook eggs before feeding to eliminate salmonella risk and denature avidin." },
+    { n: "Raw Fish", t: ["raw fish", "sushi", "sashimi", "raw salmon", "raw tuna"], s: "caution", e: "🐟", d: "Raw fish can contain parasites (tapeworms) and bacteria. Raw salmon can cause Salmon Poisoning Disease (SPD) which is often fatal.", f: "Dogs & Cats", y: "Vomiting, diarrhea, fever, lethargy. Salmon: SPD (vomiting, bloody diarrhea, death within 14 days)", a: "Cook fish thoroughly to 145°F to kill parasites and bacteria. Never feed raw salmon." },
+    { n: "Raw Chicken", t: ["raw chicken", "raw poultry", "raw meat chicken"], s: "caution", e: "🍗", d: "Raw chicken can contain Salmonella, Campylobacter, and other bacteria. Risk to both pets and humans handling the food.", f: "Dogs & Cats", y: "Vomiting, diarrhea, fever, lethargy. Can shed bacteria in stool for weeks.", a: "Cook chicken thoroughly to 165°F. If feeding raw, source high-quality meat and practice strict hygiene." },
+    { n: "Bones (Raw)", t: ["raw bone", "raw chicken bone", "raw beef bone", "marrow bone"], s: "caution", e: "🦴", d: "Raw bones are safer than cooked (don't splinter as easily) but still carry risks: choking, broken teeth, intestinal blockage, and bacterial contamination.", f: "Dogs", y: "Choking, broken teeth, constipation, diarrhea (bacteria). Raw bones can also cause pancreatitis from marrow.", a: "Supervise raw bone chewing. Choose appropriately sized bones. Never feed cooked bones." },
+    { n: "Sweetener (Artificial)", t: ["artificial sweetener", "sucralose", "aspartame", "stevia", "saccharin", "sugar-free"], s: "caution", e: "🧪", d: "Xylitol is the dangerous one (see Xylitol). Other artificial sweeteners like stevia, aspartame, and sucralose are generally not toxic but may cause digestive upset.", f: "Dogs & Cats", y: "Stevia/aspartame/sucralose: mild diarrhea, gas. Xylitol: EMERGENCY (see Xylitol entry)", a: "Check labels carefully for XYLITOL specifically. Other sweeteners are generally safe in tiny amounts." },
+    { n: "Rye Grass", t: ["grass", "rye grass", "wheat grass", "barley grass", "cat grass"], s: "safe", e: "🌱", d: "Cat grass (wheatgrass, oat grass) is safe and many pets enjoy eating it. May help with digestion and provide trace nutrients.", f: "Dogs & Cats", y: "None. Some pets vomit after eating grass — this is normal behavior.", a: "Grow cat grass indoors for safe grazing. Avoid grass treated with pesticides or fertilizers." },
+    { n: "Gum (Xylitol)", t: ["gum", "chewing gum", "sugar-free gum", "mint gum"], s: "emergency", e: "🍬", d: "Most sugar-free gum contains xylitol, which is extremely toxic to dogs. Even one stick can cause life-threatening low blood sugar.", f: "Dogs", y: "Weakness, staggering, collapse, seizures, vomiting. Onset within 10-60 minutes.", a: "EMERGENCY — Contact your vet immediately. Keep all gum out of reach. Check ingredients for xylitol." },
+    { n: "Cocoa Powder", t: ["cocoa", "cocoa powder", "cacao powder", "hot chocolate"], s: "emergency", e: "🍫", d: "Cocoa powder is the most concentrated form of theobromine — far more dangerous than milk chocolate. Even small amounts are toxic.", f: "Dogs & Cats", y: "Vomiting, diarrhea, rapid breathing, increased heart rate, tremors, seizures", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Cocoa powder is extremely dangerous." },
+    { n: "Baking Chocolate", t: ["baking chocolate", "unsweetened chocolate", "dark chocolate bar"], s: "emergency", e: "🍫", d: "Baking chocolate contains 10-20x more theobromine than milk chocolate. Even small amounts can be fatal.", f: "Dogs & Cats", y: "Vomiting, diarrhea, rapid breathing, heart arrhythmias, tremors, seizures", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. This is extremely dangerous." },
+    { n: "Milk Chocolate", t: ["milk chocolate", "chocolate bar", "chocolate candy", "chocolate chip"], s: "toxic", e: "🍫", d: "Milk chocolate is less concentrated than dark/baking chocolate but still toxic. More chocolate = more risk. A small amount may cause mild upset, large amounts are dangerous.", f: "Dogs & Cats", y: "Vomiting, diarrhea, increased thirst, restlessness, rapid breathing (in larger amounts)", a: "Contact your vet. The risk depends on amount eaten vs pet's body weight." },
+    { n: "White Chocolate", t: ["white chocolate", "white chocolate chip"], s: "caution", e: "🍫", d: "White chocolate contains very little theobromine but is high in fat and sugar. It's mainly a digestive upset and pancreatitis risk.", f: "Dogs & Cats", y: "Vomiting, diarrhea, pancreatitis risk (high fat). Theobromine toxicity is very unlikely.", a: "Not recommended due to high fat and sugar content. Call your vet if a large amount is eaten." },
+    { n: "Tulip Bulb", t: ["tulip bulb", "daffodil bulb", "hyacinth bulb", "spring bulb"], s: "toxic", e: "🌷", d: "Spring flower bulbs (tulips, daffodils, hyacinths) are the most concentrated and dangerous part of the plant. Eating a bulb can cause severe poisoning.", f: "Dogs & Cats", y: "Severe vomiting, diarrhea, drooling, difficulty breathing, tremors, cardiac issues", a: "Contact your vet immediately. Bulbs are highly concentrated and require prompt treatment." },
+    { n: "Sugar", t: ["sugar", "white sugar", "brown sugar", "powdered sugar", "cane sugar"], s: "safe", e: "🍚", d: "Plain sugar is not toxic but has zero nutritional value and contributes to obesity, dental issues, and diabetes. Very small amounts are OK.", f: "Dogs & Cats", y: "None in tiny amounts. Long-term: obesity, dental problems, diabetes", a: "Avoid feeding sugar. If your pet eats a cookie or cake, it's usually fine — just monitor for upset stomach." },
+    { n: "Baking Soda", t: ["baking soda", "sodium bicarbonate", "bicarbonate of soda"], s: "caution", e: "🧪", d: "Small amounts of baking soda are not dangerous, but large amounts can cause electrolyte imbalances, muscle spasms, and heart issues.", f: "Dogs & Cats", y: "Vomiting, diarrhea, muscle spasms, lethargy. Large: seizures, heart arrhythmias", a: "A tiny amount in baked goods is fine. Play-dough or homemade clay containing baking soda can be dangerous if eaten in quantity." },
+    { n: "Cherry Pit", t: ["cherry pit", "stone fruit pit", "peach pit", "plum pit", "apricot pit", "nectarine pit"], s: "caution", e: "🍒", d: "Pits/stones from cherries, peaches, plums, apricots, and nectarines contain amygdalin which can release cyanide when chewed. Also a choking hazard.", f: "Dogs & Cats", y: "Choking, intestinal blockage. Chewed pits: difficulty breathing, red gums, dilated pupils (cyanide)", a: "Remove pits before feeding stone fruits. Contact your vet if your pet chews and swallows a pit." },
+    { n: "Cigarette", t: ["cigarette", "tobacco", "nicotine", "vape", "e-cigarette", "nicotine gum"], s: "emergency", e: "🚬", d: "Nicotine is highly toxic to pets. Cigarettes, nicotine gum, vape liquid can all cause nicotine poisoning. Even one cigarette butt can make a small dog sick.", f: "Dogs & Cats", y: "Vomiting, drooling, diarrhea, agitation, rapid breathing, tremors, seizures, coma", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. Keep all tobacco/nicotine products out of reach." },
+    { n: "Moldy Food", t: ["mold", "moldy food", "rotten food", "spoiled food", "garbage", "trash"], s: "emergency", e: "🗑️", d: "Moldy foods can contain tremorgenic mycotoxins that cause severe neurological symptoms including tremors and seizures. Dumpster-diving dogs are at high risk.", f: "Dogs & Cats", y: "Vomiting, tremors, muscle twitching, seizures, hyperthermia, agitation", a: "EMERGENCY — Contact your vet or Pet Poison Helpline immediately. This is a common ER visit for dogs." },
+    { n: "Pokeweed", t: ["pokeweed", "pokeberry", "phytolacca"], s: "toxic", e: "🌿", d: "All parts of the pokeweed plant are toxic. The roots are most concentrated, but berries also cause poisoning. Common in North America.", f: "Dogs & Cats", y: "Vomiting, diarrhea (sometimes bloody), abdominal pain, weakness, difficulty breathing", a: "Contact your vet immediately. Remove pokeweed from your yard if your pets go outside." },
+    { n: "Rat Poison", t: ["rat poison", "rodenticide", "mouse poison", "slug bait"], s: "emergency", e: "☠️", d: "Rodenticides cause internal bleeding or neurological damage depending on the type. Extremely dangerous — even eating a poisoned rodent can make your pet sick.", f: "Dogs & Cats", y: "Bleeding type: pale gums, weakness, coughing blood, collapse. Brain type: tremors, seizures, paralysis", a: "EMERGENCY — Contact your vet immediately. This is a life-threatening emergency. Bring the poison packaging if possible." },
+    { n: "Antifreeze", t: ["antifreeze", "ethylene glycol", "coolant", "radiator fluid"], s: "emergency", e: "☠️", d: "Antifreeze (ethylene glycol) has a sweet taste that attracts pets. Even a tiny amount causes kidney failure and death. Treatment must start within hours.", f: "Dogs & Cats", y: "Staggering, drunkenness, increased thirst, vomiting, seizures, kidney failure, coma", a: "EMERGENCY — Contact your vet immediately. This is one of the most deadly pet poisons. Time is critical." },
+];
+
+// ====== Search & Render ======
+const searchInput = document.getElementById('search-input');
+const clearBtn = document.getElementById('clear-btn');
+const resultsGrid = document.getElementById('results-grid');
+const detailPanel = document.getElementById('detail-panel');
+const affiliateCta = document.getElementById('affiliate-cta');
+const noResults = document.getElementById('no-results');
+const emptyState = document.getElementById('empty-state');
+const statsBar = document.getElementById('stats-bar');
+const statsCount = document.getElementById('stats-count');
+
+let selectedName = null;
+
+function getBadgeHTML(safety) {
+    const map = {
+        safe: '<span class="badge safe">✓ Safe</span>',
+        caution: '<span class="badge caution">⚠ Caution</span>',
+        toxic: '<span class="badge toxic">✕ Toxic</span>',
+        emergency: '<span class="badge emergency">⚡ Emergency</span>'
+    };
+    return map[safety] || '';
+}
+
+function getDetailBadgeHTML(safety) {
+    const map = {
+        safe: '<span class="detail-badge safe">✓ Safe</span>',
+        caution: '<span class="detail-badge caution">⚠ Caution</span>',
+        toxic: '<span class="detail-badge toxic">✕ Toxic</span>',
+        emergency: '<span class="detail-badge emergency">⚡ Emergency</span>'
+    };
+    return map[safety] || '';
+}
+
+function renderResults(query) {
+    const q = query.toLowerCase().trim();
+    selectedName = null;
+    detailPanel.classList.remove('visible');
+    detailPanel.innerHTML = '';
+    affiliateCta.classList.remove('visible');
+
+    if (!q) {
+        resultsGrid.classList.remove('visible');
+        resultsGrid.innerHTML = '';
+        noResults.classList.remove('visible');
+        emptyState.style.display = 'block';
+        statsBar.classList.remove('visible');
+        return;
+    }
+
+    emptyState.style.display = 'none';
+
+    const matches = db.filter(item =>
+        item.n.toLowerCase().includes(q) ||
+        item.t.some(tag => tag.includes(q))
+    );
+
+    if (matches.length === 0) {
+        resultsGrid.classList.remove('visible');
+        resultsGrid.innerHTML = '';
+        noResults.classList.add('visible');
+        statsBar.classList.remove('visible');
+        return;
+    }
+
+    noResults.classList.remove('visible');
+
+    // Sort: emergency first, then toxic, then caution, then safe
+    const order = { emergency: 0, toxic: 1, caution: 2, safe: 3 };
+    matches.sort((a, b) => order[a.s] - order[b.s]);
+
+    statsCount.textContent = matches.length;
+    statsBar.classList.add('visible');
+
+    resultsGrid.innerHTML = matches.map(item => `
+        <div class="result-card${selectedName === item.n ? ' open' : ''}" data-name="${item.n}">
+            <span class="emoji">${item.e}</span>
+            <div class="info">
+                <div class="name">${item.n}</div>
+                <div class="desc">${item.d}</div>
+            </div>
+            ${getBadgeHTML(item.s)}
+            <span class="arrow">›</span>
+        </div>
+    `).join('');
+
+    resultsGrid.classList.add('visible');
+
+    // Click handler for cards
+    document.querySelectorAll('.result-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const name = card.dataset.name;
+            showDetail(name);
+            // Scroll to detail panel
+            setTimeout(() => {
+                detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        });
+    });
+}
+
+function showDetail(name) {
+    const item = db.find(i => i.n === name);
+    if (!item) return;
+
+    selectedName = item.n;
+    detailPanel.innerHTML = `
+        <div class="detail-header">
+            <span class="emoji">${item.e}</span>
+            <div class="info">
+                <h2>${item.n}</h2>
+                <div class="species">Affects: ${item.f}</div>
+            </div>
+            ${getDetailBadgeHTML(item.s)}
+        </div>
+        <div class="detail-body">
+            <p>${item.d}</p>
+            ${item.y ? `<div class="info-row"><span class="label">Symptoms:</span> <span>${item.y}</span></div>` : ''}
+            <div class="info-row"><span class="label">Action:</span> <span>${item.a}</span></div>
+        </div>
+    `;
+    detailPanel.classList.add('visible');
+
+    // Show affiliate CTA for toxic/emergency results
+    if (item.s === 'toxic' || item.s === 'emergency') {
+        affiliateCta.classList.add('visible');
+    } else {
+        affiliateCta.classList.remove('visible');
+    }
+
+    // Highlight card
+    document.querySelectorAll('.result-card').forEach(c => c.classList.remove('open'));
+    const activeCard = document.querySelector(`.result-card[data-name="${name}"]`);
+    if (activeCard) activeCard.classList.add('open');
+}
+
+// ====== Event Listeners ======
+searchInput.addEventListener('input', () => {
+    renderResults(searchInput.value);
+    clearBtn.classList.toggle('visible', searchInput.value.length > 0);
+});
+
+clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    renderResults('');
+    clearBtn.classList.remove('visible');
+    searchInput.focus();
+});
+
+// ====== Newsletter ======
+const newsEmail = document.getElementById('newsletter-email');
+const newsBtn = document.getElementById('newsletter-btn');
+const newsMsg = document.getElementById('newsletter-msg');
+
+newsBtn.addEventListener('click', () => {
+    const email = newsEmail.value.trim();
+    if (!email || !email.includes('@')) {
+        newsMsg.textContent = 'Please enter a valid email address.';
+        newsMsg.style.color = '#ef4444';
+        return;
+    }
+    newsMsg.textContent = '';
+    newsBtn.disabled = true;
+    newsBtn.textContent = 'Subscribing...';
+    fetch('/api/collect-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'newsletter', tool: 'toxicity-checker' })
+    }).then(r => {
+        if (r.ok) {
+            newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
+            newsMsg.style.color = '#22c55e';
+            newsEmail.value = '';
+        } else {
+            throw new Error('API error');
+        }
+    }).catch(() => {
+        newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
+        newsMsg.style.color = '#ef4444';
+    }).finally(() => {
+        newsBtn.disabled = false;
+        newsBtn.textContent = 'Subscribe';
+    });
+});
+newsEmail.addEventListener('keydown', (e) => { if (e.key === 'Enter') newsBtn.click(); });
+</script>
+
+</body>
+</html>
