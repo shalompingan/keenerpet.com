@@ -550,7 +550,14 @@ footer {
 .faq-item .faq-answer a { color: var(--primary); font-weight: 600; }
 
 /* ====== Responsive Navigation ====== */
-/* Shared visual styles (applied regardless of screen size) */
+/* Default: ALL nav elements hidden (display:none base ensures no leak) */
+.desktop-nav { display: none; }
+.hamburger { display: none; }
+.sidebar-overlay { display: none; }
+.mobile-sidebar { display: none; }
+
+/* Shared visual styles (colors, spacing, position — NOT display!) */
+.nav-group { position: relative; }
 .nav-trigger {
     display: flex; align-items: center; gap: 4px;
     padding: 8px 16px; border-radius: 8px;
@@ -578,7 +585,7 @@ footer {
 .dropdown-item:hover { background: var(--primary-light); color: var(--primary-dark); }
 .dropdown-item.active { background: var(--primary); color: white; }
 
-/* Hamburger button (mobile trigger) */
+/* Hamburger visual only */
 .hamburger {
     background: none; border: none;
     font-size: 26px; cursor: pointer; padding: 6px 10px;
@@ -586,14 +593,14 @@ footer {
 }
 .hamburger:hover { background: var(--primary-light); }
 
-/* Sidebar overlay (mobile) */
+/* Sidebar overlay visual only */
 .sidebar-overlay {
     position: fixed; inset: 0;
     background: rgba(0,0,0,0.45); z-index: 90;
     opacity: 0; transition: opacity 0.3s;
 }
 
-/* Mobile sidebar drawer */
+/* Mobile sidebar drawer visual only */
 .mobile-sidebar {
     position: fixed; top: 0; right: -100%;
     width: 300px; max-width: 80vw; height: 100vh;
@@ -628,33 +635,20 @@ footer {
 
 /* ===== Desktop (≥768px) ===== */
 @media (min-width: 768px) {
-    /* Force-hide ALL mobile elements */
     .hamburger { display: none !important; }
     .sidebar-overlay { display: none !important; }
     .mobile-sidebar { display: none !important; }
-
-    /* Show desktop nav */
     .desktop-nav { display: flex !important; align-items: center; gap: 4px; }
-    .nav-group { position: relative; }
-
-    /* Dropdown hidden by default, shown on hover/click */
     .nav-dropdown { display: none; }
     .nav-group:hover .nav-dropdown,
     .nav-group.open .nav-dropdown { display: block; }
-
-    /* Arrow rotation on hover */
     .nav-group:hover .nav-trigger .arrow { transform: rotate(180deg); }
 }
 
 /* ===== Mobile (≤767px) ===== */
 @media (max-width: 767px) {
-    /* Force-hide ALL desktop nav elements */
     .desktop-nav { display: none !important; }
-
-    /* Show hamburger trigger */
     .hamburger { display: flex !important; }
-
-    /* Sidebar + overlay: hidden by default */
     .sidebar-overlay { display: none; }
     .sidebar-overlay.open { display: block; opacity: 1; }
     .mobile-sidebar { display: none; }
