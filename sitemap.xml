@@ -121,6 +121,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://keenerpet.com/guides/puppy-development-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://keenerpet.com/privacy/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
