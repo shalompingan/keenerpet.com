@@ -597,15 +597,15 @@ footer {
 }
 .sidebar-overlay.open { display: block; opacity: 1; }
 
-/* Mobile sidebar */
+/* Mobile sidebar — hidden by default, slides in on open */
 .mobile-sidebar {
-    position: fixed; top: 0; right: -100%;
+    display: none; position: fixed; top: 0; right: -100%;
     width: 300px; max-width: 80vw; height: 100vh;
     background: white; z-index: 100; overflow-y: auto;
     transition: right 0.3s ease;
     box-shadow: -4px 0 24px rgba(0,0,0,0.1);
 }
-.mobile-sidebar.open { right: 0; }
+.mobile-sidebar.open { display: block; right: 0; }
 .sidebar-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 18px; border-bottom: 1px solid var(--border);
