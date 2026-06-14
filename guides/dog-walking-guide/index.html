@@ -137,6 +137,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <script src="/nav.js" defer></script>
 
     <link rel="prefetch" href="/pet-walking-calculator/">
     <link rel="prefetch" href="/pet-calorie-calculator/">
@@ -201,19 +202,75 @@
 <header>
     <div class="container">
         <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
-        <nav>
-            <a href="/">Food</a>
-            <a href="/pet-age-calculator/">Age</a>
-            <a href="/pet-water-intake/">Water</a>
-            <a href="/pet-calorie-calculator/">Calories</a>
-            <a href="/pet-walking-calculator/" class="active">Walk</a>
-            <a href="/pet-insurance/">Insurance</a>
-            <a href="/pet-toxicity-checker/">Toxicity</a>
-            <a href="/dog-breed-match/">Breeds</a>
-            <a href="/dog-separation-anxiety/">Anxiety</a>
-            <a href="/dog-pregnancy-calculator/">Pregnancy</a>
-            <a href="/dog-ear-checker/">Ears</a>
-        </nav>
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav">
+            <div class="nav-group">
+                <button class="nav-trigger">Tools <span class="arrow">▾</span></button>
+                <div class="nav-dropdown wide">
+                    <div class="dropdown-grid">
+                        <a href="/" class="dropdown-item">🍖 Food Calculator</a>
+                        <a href="/pet-age-calculator/" class="dropdown-item">🎂 Age Calculator</a>
+                        <a href="/pet-water-intake/" class="dropdown-item">💧 Water Intake</a>
+                        <a href="/pet-calorie-calculator/" class="dropdown-item">🔥 Calorie Calculator</a>
+                        <a href="/pet-walking-calculator/" class="dropdown-item">🚶 Walking Calculator</a>
+                        <a href="/pet-insurance/" class="dropdown-item">🛡️ Insurance Estimator</a>
+                        <a href="/pet-toxicity-checker/" class="dropdown-item">☠️ Toxicity Checker</a>
+                        <a href="/dog-breed-match/" class="dropdown-item">🐕 Breed Match</a>
+                        <a href="/dog-separation-anxiety/" class="dropdown-item">😰 Anxiety Relief</a>
+                        <a href="/dog-pregnancy-calculator/" class="dropdown-item">🤰 Pregnancy Calc</a>
+                        <a href="/dog-ear-checker/" class="dropdown-item">👂 Ear Checker</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-group">
+                <button class="nav-trigger">Guides <span class="arrow">▾</span></button>
+                <div class="nav-dropdown">
+                    <a href="/guides/dog-feeding-guide/" class="dropdown-item">Dog Feeding Guide</a>
+                    <a href="/guides/dog-walking-guide/" class="dropdown-item">Dog Walking Guide</a>
+                    <a href="/guides/pet-water-guide/" class="dropdown-item">Pet Water Guide</a>
+                    <a href="/guides/pet-calorie-guide/" class="dropdown-item">Pet Calorie Guide</a>
+                    <a href="/guides/pet-age-guide/" class="dropdown-item">Pet Age Guide</a>
+                    <a href="/guides/pet-insurance-guide/" class="dropdown-item">Pet Insurance Guide</a>
+                    <a href="/guides/hypoallergenic-dog-food-guide/" class="dropdown-item">Hypoallergenic Dog Food</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" aria-label="Toggle menu">☰</button>
+        <div class="sidebar-overlay"></div>
+        <div class="mobile-sidebar">
+            <div class="sidebar-header">
+                <span class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></span>
+                <button class="sidebar-close">✕</button>
+            </div>
+            <div class="sidebar-body">
+                <div class="sidebar-section">
+                    <h3>🔧 Tools</h3>
+                    <a href="/">🍖 Food Calculator</a>
+                    <a href="/pet-age-calculator/">🎂 Age Calculator</a>
+                    <a href="/pet-water-intake/">💧 Water Intake</a>
+                    <a href="/pet-calorie-calculator/">🔥 Calorie Calculator</a>
+                    <a href="/pet-walking-calculator/">🚶 Walking Calculator</a>
+                    <a href="/pet-insurance/">🛡️ Insurance Estimator</a>
+                    <a href="/pet-toxicity-checker/">☠️ Toxicity Checker</a>
+                    <a href="/dog-breed-match/">🐕 Breed Match</a>
+                    <a href="/dog-separation-anxiety/">😰 Anxiety Relief</a>
+                    <a href="/dog-pregnancy-calculator/">🤰 Pregnancy Calc</a>
+                    <a href="/dog-ear-checker/">👂 Ear Checker</a>
+                </div>
+                <div class="sidebar-section">
+                    <h3>📖 Guides</h3>
+                    <a href="/guides/dog-feeding-guide/">Dog Feeding Guide</a>
+                    <a href="/guides/dog-walking-guide/">Dog Walking Guide</a>
+                    <a href="/guides/pet-water-guide/">Pet Water Guide</a>
+                    <a href="/guides/pet-calorie-guide/">Pet Calorie Guide</a>
+                    <a href="/guides/pet-age-guide/">Pet Age Guide</a>
+                    <a href="/guides/pet-insurance-guide/">Pet Insurance Guide</a>
+                    <a href="/guides/hypoallergenic-dog-food-guide/">Hypoallergenic Dog Food</a>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
