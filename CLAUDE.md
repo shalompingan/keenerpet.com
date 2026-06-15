@@ -13,7 +13,8 @@
 ## 页面主题色
 | 页面 | 主题色 | Primary |
 |------|--------|---------|
-| 首页 (Food) | 青色 | `#0d9488` |
+| 首页 (Cost) | 琥珀 | `#d97706` |
+| Food | 青色 | `#0d9488` |
 | Age | 紫色 | `#8b5cf6` |
 | Water | 蓝色 | `#0ea5e9` |
 | Calories | 橙色 | `#f97316` |
@@ -23,7 +24,8 @@
 ## 文件结构
 ```
 keenerpet.com/
-├── index.html                  # 首页 — Pet Food Calculator
+├── index.html                  # 首页 — Pet Cost Calculator（养宠成本计算器）
+├── pet-food-calculator/index.html   # Pet Food Calculator（子页面）
 ├── pet-age-calculator/index.html
 ├── pet-water-intake/index.html
 ├── pet-calorie-calculator/index.html
