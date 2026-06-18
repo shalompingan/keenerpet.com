@@ -768,6 +768,9 @@
 
         // Generate breed recommendations
         recommendBreeds(annualTotal);
+
+        // Scroll down to results
+        document.getElementById('cost-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     // ====== Breed Recommendation Algorithm ======
