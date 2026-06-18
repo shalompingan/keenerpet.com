@@ -768,9 +768,6 @@
 
         // Generate breed recommendations
         recommendBreeds(annualTotal);
-
-        // Scroll down to results
-        document.getElementById('cost-results').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     // ====== Breed Recommendation Algorithm ======
@@ -858,7 +855,10 @@
         });
     });
 
-    calcBtn.addEventListener('click', calculate);
+    calcBtn.addEventListener('click', function() {
+        calculate();
+        document.getElementById('cost-results').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
 
     // ====== Newsletter ======
     var newsEmail = document.getElementById('newsletter-email');
