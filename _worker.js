@@ -32,8 +32,9 @@ export default {
         }
 
         // Send notification via MailChannels (free, no API key needed)
+        let mailStatus = 'not_sent';
         try {
-          await fetch('https://api.mailchannels.net/tx/v1/send', {
+          const mcResp = await fetch('https://api.mailchannels.net/tx/v1/send', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -43,12 +44,12 @@ export default {
               content: [{ type: 'text/plain', value: `Email: ${email}\nSource: ${source}\nTool: ${tool || 'N/A'}\nNote: ${note || 'N/A'}` }]
             })
           });
+          mailStatus = `mc_status:${mcResp.status}_${await mcResp.text()}`;
         } catch(e) {
-          // Email notification is best-effort
-          console.error('MailChannels error:', e);
+          mailStatus = `mc_error:${e.message}`;
         }
 
-        return new Response(JSON.stringify({ success: true }), {
+        return new Response(JSON.stringify({ success: true, mailStatus }), {
           status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });
       } catch (err) {
