@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet</title>
-    <meta name="description" content="ASPCA-calibrated pet cost calculator: estimate first-year and lifetime expenses for your dog or cat. Plan your budget with breed recommendations and nearby adoptable pets.">
+    <meta name="description" content="ASPCA-calibrated pet cost calculator: estimate first-year and lifetime expenses for your dog or cat. Plan your budget with breed recommendations.">
     <link rel="canonical" href="https://keenerpet.com/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 
     <meta property="og:title" content="Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet">
-    <meta property="og:description" content="ASPCA-calibrated pet cost calculator. Estimate first-year and lifetime expenses. Get breed recommendations and find adoptable dogs near you.">
+    <meta property="og:description" content="ASPCA-calibrated pet cost calculator. Estimate first-year and lifetime expenses. Get breed recommendations for your budget.">
     <meta property="og:url" content="https://keenerpet.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KeenerPet">
@@ -179,38 +179,6 @@
         .breed-card .breed-tags span { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--primary-light); color: var(--primary-dark); font-weight: 500; }
         .breed-card .breed-cost { font-size: 12px; color: var(--text-muted); }
 
-        /* ====== RescueGroups Mock + Skeleton ====== */
-        .adopt-section { margin-top: 24px; }
-        .adopt-section h3 { font-size: 17px; font-weight: 700; color: #1c1917; margin-bottom: 4px; }
-        .adopt-section > p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
-        .adopt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-        @media (max-width: 640px) { .adopt-grid { grid-template-columns: 1fr; } }
-        .adopt-card {
-            background: white; border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 16px; transition: all 0.2s;
-        }
-        .adopt-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
-        .adopt-card .adopt-emoji { font-size: 32px; text-align: center; margin-bottom: 6px; }
-        .adopt-card .adopt-name { font-size: 15px; font-weight: 700; color: #1c1917; }
-        .adopt-card .adopt-meta { font-size: 12px; color: var(--text-muted); }
-        .adopt-card .adopt-meta span { display: inline-block; margin-right: 10px; }
-        .adopt-card .adopt-days { font-size: 11px; color: var(--text-muted); margin: 4px 0 8px; }
-        .adopt-card .adopt-cta {
-            display: inline-block; padding: 8px 16px; background: var(--primary);
-            color: white; border-radius: 6px; font-size: 12px; font-weight: 600; transition: background 0.2s;
-        }
-        .adopt-card .adopt-cta:hover { background: var(--primary-dark); }
-
-        /* Skeleton screen */
-        .skeleton { animation: shimmer 1.4s ease-in-out infinite; background: linear-gradient(90deg, #e7e5e4 25%, #f5f5f4 50%, #e7e5e4 75%); background-size: 200% 100%; border-radius: 8px; }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        .skeleton-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; min-height: 140px; }
-        .skeleton-card .s-img { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 8px; }
-        .skeleton-card .s-line { height: 14px; margin: 6px auto; border-radius: 4px; }
-        .skeleton-card .s-line.w60 { width: 60%; }
-        .skeleton-card .s-line.w80 { width: 80%; }
-        .skeleton-card .s-line.w40 { width: 40%; }
-
         /* ====== AdSense Placeholder ====== */
         .adsense-placeholder {
             margin: 24px 0; padding: 20px; border: 2px dashed #d4d4d4; border-radius: 12px;
@@ -317,7 +285,7 @@
     <section class="hero">
         <div class="container">
             <h1>Pet Cost <span>Calculator</span></h1>
-            <p>How much will your dog or cat <em>really</em> cost? Based on ASPCA baseline data — get a realistic estimate for the first year and beyond. Then find a breed that fits your budget and discover adoptable dogs near you.</p>
+            <p>How much will your dog or cat <em>really</em> cost? Based on ASPCA baseline data — get a realistic estimate for the first year and beyond. Then find a breed that fits your budget.</p>
         </div>
     </section>
 
@@ -426,20 +394,6 @@
                     <!-- AdSense Placeholder -->
                     <div class="adsense-placeholder">
                         <span class="ad-label">— Advertisement —</span>
-                    </div>
-
-                    <!-- ====== RescueGroups Mock + Skeleton ====== -->
-                    <div class="adopt-section" id="adopt-section">
-                        <h3>📍 Adoptable Dogs Near You</h3>
-                        <p>These pups are looking for a home right now. Enter a ZIP code to find adoptable dogs in your area, or browse a few featured profiles below.</p>
-                        <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-                            <input type="text" id="zip-input" placeholder="Enter ZIP code" style="padding:8px 14px;border:2px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;flex:1;min-width:140px;outline:none" maxlength="5">
-                            <button id="zip-search-btn" style="padding:8px 20px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Search →</button>
-                        </div>
-                        <div class="adopt-grid" id="adopt-grid"></div>
-                        <p style="font-size:12px;color:var(--text-muted);margin-top:10px;text-align:center">
-                            🐾 Can't adopt right now? <a href="https://www.petfinder.com/search/dogs-for-adoption/us/" target="_blank" rel="sponsored" style="color:var(--primary-dark);font-weight:600">Browse all adoptable dogs on Petfinder →</a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -653,30 +607,6 @@
         { name:"Saint Bernard", size:"giant", emoji:"🐶", budget:"premium", temperament:"Patient, gentle", energy:"Low", coat:"Long" }
     ];
 
-    // ====== Mock Adoptable Dogs ======
-    var mockAdoptable = {
-        small: [
-            { name:"Bella", breed:"Chihuahua Mix", age:"2 yrs", gender:"Female", location:"Austin, TX", days:12, emoji:"🐕" },
-            { name:"Milo", breed:"Pomeranian", age:"1 yr", gender:"Male", location:"Denver, CO", days:5, emoji:"🐶" },
-            { name:"Luna", breed:"French Bulldog", age:"3 yrs", gender:"Female", location:"Portland, OR", days:8, emoji:"🐕" }
-        ],
-        medium: [
-            { name:"Charlie", breed:"Beagle Mix", age:"4 yrs", gender:"Male", location:"Chicago, IL", days:18, emoji:"🐶" },
-            { name:"Daisy", breed:"Corgi", age:"1 yr", gender:"Female", location:"Seattle, WA", days:3, emoji:"🐕" },
-            { name:"Cooper", breed:"Border Collie", age:"2 yrs", gender:"Male", location:"Raleigh, NC", days:10, emoji:"🐶" }
-        ],
-        large: [
-            { name:"Max", breed:"Labrador Mix", age:"3 yrs", gender:"Male", location:"Atlanta, GA", days:7, emoji:"🐕" },
-            { name:"Stella", breed:"Golden Retriever", age:"1 yr", gender:"Female", location:"Nashville, TN", days:4, emoji:"🐶" },
-            { name:"Rocky", breed:"German Shepherd", age:"5 yrs", gender:"Male", location:"Phoenix, AZ", days:22, emoji:"🐕" }
-        ],
-        giant: [
-            { name:"Titan", breed:"Great Dane", age:"2 yrs", gender:"Male", location:"Dallas, TX", days:9, emoji:"🐶" },
-            { name:"Maisy", breed:"Bernese Mountain Dog", age:"4 yrs", gender:"Female", location:"Boston, MA", days:15, emoji:"🐕" },
-            { name:"Bear", breed:"Saint Bernard", age:"3 yrs", gender:"Male", location:"Minneapolis, MN", days:6, emoji:"🐶" }
-        ]
-    };
-
     // ====== DOM refs ======
     var petType = 'dog';
     var size = 'medium';
@@ -838,8 +768,6 @@
 
         // Generate breed recommendations
         recommendBreeds(annualTotal);
-        // Show adoptable dogs
-        showAdoptableDogs();
     }
 
     // ====== Breed Recommendation Algorithm ======
@@ -887,44 +815,6 @@
         });
     }
 
-    // ====== RescueGroups Mock with Skeleton ======
-    function showAdoptableDogs() {
-        var grid = document.getElementById('adopt-grid');
-        // Show skeleton first
-        grid.innerHTML = '';
-        for (var s = 0; s < 3; s++) {
-            var skel = document.createElement('div');
-            skel.className = 'skeleton-card';
-            skel.innerHTML =
-                '<div class="skeleton s-img"></div>' +
-                '<div class="skeleton s-line w60" style="margin-top:8px"></div>' +
-                '<div class="skeleton s-line w80"></div>' +
-                '<div class="skeleton s-line w40"></div>';
-            grid.appendChild(skel);
-        }
-
-        // After 1.2s delay, show mock data
-        setTimeout(function() {
-            grid.innerHTML = '';
-            var dogs = mockAdoptable[size] || mockAdoptable.medium;
-            dogs.forEach(function(dog) {
-                var card = document.createElement('div');
-                card.className = 'adopt-card';
-                // Build Petfinder search URL for this breed
-                var breedSlug = dog.breed.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                var petfinderUrl = 'https://www.petfinder.com/search/dogs-for-adoption/us/?breed%5B0%5D=' + encodeURIComponent(dog.breed);
-                card.innerHTML =
-                    '<div class="adopt-emoji">' + dog.emoji + '</div>' +
-                    '<div class="adopt-name">' + dog.name + '</div>' +
-                    '<div class="adopt-meta"><span>🐾 ' + dog.breed + '</span><span>🎂 ' + dog.age + '</span><span>' + dog.gender + '</span></div>' +
-                    '<div class="adopt-meta">📍 ' + dog.location + '</div>' +
-                    '<div class="adopt-days">⏱ ' + dog.days + ' days on Petfinder</div>' +
-                    '<a href="' + petfinderUrl + '" target="_blank" rel="sponsored" class="adopt-cta">View Adoption Profile →</a>';
-                grid.appendChild(card);
-            });
-        }, 1200);
-    }
-
     // ====== Event wiring ======
     document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -966,22 +856,6 @@
     });
 
     calcBtn.addEventListener('click', calculate);
-
-    // ZIP search button - navigates to Petfinder
-    document.getElementById('zip-search-btn').addEventListener('click', function() {
-        var zip = document.getElementById('zip-input').value.trim();
-        if (!zip || zip.length < 5) {
-            document.getElementById('zip-input').style.borderColor = '#ef4444';
-            return;
-        }
-        document.getElementById('zip-input').style.borderColor = '';
-        var petfinderSearch = 'https://www.petfinder.com/search/dogs-for-adoption/us/' + zip + '/';
-        window.open(petfinderSearch, '_blank');
-    });
-
-    document.getElementById('zip-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') document.getElementById('zip-search-btn').click();
-    });
 
     // ====== Newsletter ======
     var newsEmail = document.getElementById('newsletter-email');
