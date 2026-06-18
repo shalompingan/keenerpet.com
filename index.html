@@ -196,6 +196,25 @@
         .data-citation p { font-size: 12px; line-height: 1.7; color: #78716c; margin-bottom: 8px; }
         .data-citation p:last-child { margin-bottom: 0; }
         .data-citation a { color: var(--primary-dark); font-weight: 600; }
+
+        /* ====== Print Styles ====== */
+        @media print {
+            header, .tools-section, .about-section, .newsletter-section, .faq-section,
+            .adsense-placeholder, footer, .cost-actions, .food-cta, .calc-btn,
+            .breed-section, .data-citation { display: none !important; }
+            .cost-results { display: block !important; }
+            .cost-summary { break-inside: avoid; border: 1px solid #d4d4d4; }
+            .cost-breakdown { break-inside: avoid; }
+            body { background: white; font-size: 12px; }
+            .hero { padding: 10px 0; }
+            .hero h1 { font-size: 20px; }
+            .hero p { font-size: 12px; }
+            .calc-card { box-shadow: none; padding: 0; }
+            .cost-summary .big-number { font-size: 28px; }
+        }
+
+        .cost-action-card .print-cta { display: inline-block; margin-top: 10px; padding: 10px 24px; background: var(--text-muted); color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+        .cost-action-card .print-cta:hover { background: #57534e; }
     </style>
 </head>
 <body>
@@ -370,6 +389,12 @@
                             <h4>New Pet Starter Kit</h4>
                             <p>Everything you need for your new family member — food, bowls, beds, and toys.</p>
                             <a href="https://www.chewy.com/s?query=new+puppy+starter+kit" target="_blank" rel="sponsored" class="cta">Shop Supplies →</a>
+                        </div>
+                        <div class="cost-action-card">
+                            <div class="icon">📄</div>
+                            <h4>Save as PDF</h4>
+                            <p>Export your cost breakdown as a PDF to save or share.</p>
+                            <button class="print-cta" onclick="window.print()">Export PDF →</button>
                         </div>
                     </div>
 
@@ -617,6 +642,54 @@
     var results = document.getElementById('cost-results');
     var calcBtn = document.getElementById('calc-btn');
 
+    // ====== LocalStorage Persistence ======
+    var STORAGE_KEY = 'keenerpet_cost_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+                petType: petType,
+                size: size,
+                budgetLevel: budgetLevel,
+                lifeYears: lifeYears,
+                enabledItems: enabledItems
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return false;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType = s.petType;
+            if (s.size !== undefined) size = s.size;
+            if (s.lifeYears !== undefined) lifeYears = s.lifeYears;
+            if (s.budgetLevel !== undefined) budgetLevel = s.budgetLevel;
+            if (s.enabledItems !== undefined) enabledItems = s.enabledItems;
+            return true;
+        } catch(e) { return false; }
+    }
+
+    function applyStateToUI() {
+        // Sync pet type pills
+        document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.value === petType);
+        });
+        // Sync size pills (only if dog, cat hides them)
+        var showSize = petType === 'dog';
+        document.querySelectorAll('#size-group .pill-btn').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.value === size);
+            p.style.display = showSize ? '' : 'none';
+        });
+        // Sync budget pills
+        document.querySelectorAll('.budget-toggle .pill').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.level === budgetLevel);
+        });
+        // Sync life years
+        document.getElementById('life-years').value = lifeYears;
+    }
+
     // ====== Build cost grid ======
     function buildGrid() {
         costGrid.innerHTML = '';
@@ -625,7 +698,9 @@
             var icon = item[1];
             var name = item[2];
             var sub = item[3];
-            enabledItems[key] = true;
+            var savedState = enabledItems[key];
+            var isChecked = savedState !== undefined ? savedState : true;
+            enabledItems[key] = isChecked;
 
             var div = document.createElement('div');
             div.className = 'cost-item';
@@ -635,7 +710,7 @@
             toggle.className = 'cost-toggle';
             var input = document.createElement('input');
             input.type = 'checkbox';
-            input.checked = true;
+            input.checked = isChecked;
             input.dataset.key = key;
             var slider = document.createElement('span');
             slider.className = 'slider';
@@ -666,6 +741,7 @@
             div.appendChild(iconSpan);
             div.appendChild(info);
             div.appendChild(amt);
+            if (!isChecked) div.classList.add('disabled');
             costGrid.appendChild(div);
 
             input.addEventListener('change', function() {
@@ -674,6 +750,7 @@
                 if (this.checked) parent.classList.remove('disabled');
                 else parent.classList.add('disabled');
                 calculate();
+                saveState();
             });
         });
     }
@@ -825,10 +902,12 @@
             if (petType === 'cat') {
                 sizePills.forEach(function(p) { p.style.display = 'none'; });
                 size = 'medium';
+                sizePills.forEach(function(p) { p.classList.toggle('active', p.dataset.value === 'medium'); });
             } else {
                 sizePills.forEach(function(p) { p.style.display = ''; });
             }
             calculate();
+            saveState();
         });
     });
 
@@ -838,12 +917,14 @@
             this.classList.add('active');
             size = this.dataset.value;
             calculate();
+            saveState();
         });
     });
 
     document.getElementById('life-years').addEventListener('change', function() {
         lifeYears = parseInt(this.value) || 12;
         calculate();
+        saveState();
     });
 
     document.querySelectorAll('.budget-toggle .pill').forEach(function(btn) {
@@ -852,11 +933,13 @@
             this.classList.add('active');
             budgetLevel = this.dataset.level;
             calculate();
+            saveState();
         });
     });
 
     calcBtn.addEventListener('click', function() {
         calculate();
+        saveState();
         document.getElementById('cost-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
@@ -899,6 +982,8 @@
 
     newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
 
+    loadState();
+    applyStateToUI();
     buildGrid();
     calculate();
 </script>
