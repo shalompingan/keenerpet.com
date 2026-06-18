@@ -303,6 +303,32 @@
     const calcBtn = document.getElementById('calc-btn');
     const results = document.getElementById('results');
 
+    // ====== LocalStorage Persistence ======
+    var CALORIE_KEY = 'keenerpet_calorie_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(CALORIE_KEY, JSON.stringify({
+                petType: petType.value,
+                weight: weight.value,
+                ageGroup: ageGroup.value,
+                condition: condition.value
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(CALORIE_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.weight !== undefined) weight.value = s.weight;
+            if (s.ageGroup !== undefined) ageGroup.value = s.ageGroup;
+            if (s.condition !== undefined) condition.value = s.condition;
+        } catch(e) {}
+    }
+
     function calculate() {
         const type = petType.value;
         const w = parseFloat(weight.value);
@@ -343,6 +369,7 @@
         document.getElementById('weight-status').textContent = status;
 
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -351,6 +378,7 @@
     ageGroup.addEventListener('change', calculate);
     condition.addEventListener('change', calculate);
     weight.addEventListener('input', calculate);
+    loadState();
     calculate();
 
     // === Newsletter ===

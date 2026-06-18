@@ -468,6 +468,39 @@
 
     let unit = 'kg';
 
+    // ====== LocalStorage Persistence ======
+    var FOOD_KEY = 'keenerpet_food_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(FOOD_KEY, JSON.stringify({
+                petType: petType.value,
+                weight: weightInput.value,
+                ageGroup: ageGroup.value,
+                bodyCondition: bodyCondition.value,
+                unit: unit
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(FOOD_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.weight !== undefined) weightInput.value = s.weight;
+            if (s.ageGroup !== undefined) ageGroup.value = s.ageGroup;
+            if (s.bodyCondition !== undefined) bodyCondition.value = s.bodyCondition;
+            if (s.unit !== undefined) {
+                unit = s.unit;
+                document.getElementById('unit-kg').classList.toggle('active', unit === 'kg');
+                document.getElementById('unit-lbs').classList.toggle('active', unit === 'lbs');
+                weightInput.placeholder = unit === 'kg' ? 'e.g. 25' : 'e.g. 55';
+            }
+        } catch(e) {}
+    }
+
     document.getElementById('unit-kg').addEventListener('click', function() {
         unit = 'kg';
         document.getElementById('unit-kg').classList.add('active');
@@ -557,6 +590,7 @@
         }
 
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -567,6 +601,7 @@
     weightInput.addEventListener('input', calculate);
 
     // Calculate on load
+    loadState();
     calculate();
 
     // ====== Newsletter ======

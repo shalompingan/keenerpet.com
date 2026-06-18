@@ -872,6 +872,32 @@
     const calcBtn = document.getElementById('calc-btn');
     const results = document.getElementById('results');
 
+    // ====== LocalStorage Persistence ======
+    var INS_KEY = 'keenerpet_insurance_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(INS_KEY, JSON.stringify({
+                petType: petType.value,
+                petAge: petAge.value,
+                breedSize: breedSize.value,
+                coverage: coverage.value
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(INS_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.petAge !== undefined) petAge.value = s.petAge;
+            if (s.breedSize !== undefined) breedSize.value = s.breedSize;
+            if (s.coverage !== undefined) coverage.value = s.coverage;
+        } catch(e) {}
+    }
+
     function calculate() {
         const type = petType.value;
         const age = petAge.value;
@@ -898,6 +924,7 @@
         document.getElementById('lemonade-price').textContent = '$' + lemonade + '/mo';
         document.getElementById('healthypaws-price').textContent = '$' + healthypaws + '/mo';
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -919,6 +946,10 @@
         document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
+    loadState();
+    // Sync breed-size visibility for restored pet type
+    document.getElementById('breed-size').style.display = petType.value === 'dog' ? '' : 'none';
+    document.getElementById('breed-size-label').textContent = petType.value === 'dog' ? 'Breed Size (Dog)' : 'Breed Size';
     calculate();
 
     // ====== Newsletter ======

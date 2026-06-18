@@ -303,6 +303,32 @@
     const calcBtn = document.getElementById('calc-btn');
     const results = document.getElementById('results');
 
+    // ====== LocalStorage Persistence ======
+    var WATER_KEY = 'keenerpet_water_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(WATER_KEY, JSON.stringify({
+                petType: petType.value,
+                weight: weight.value,
+                dietType: dietType.value,
+                activity: activity.value
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(WATER_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.weight !== undefined) weight.value = s.weight;
+            if (s.dietType !== undefined) dietType.value = s.dietType;
+            if (s.activity !== undefined) activity.value = s.activity;
+        } catch(e) {}
+    }
+
     function calculate() {
         const w = parseFloat(weight.value);
         if (isNaN(w) || w <= 0) { results.classList.remove('show'); return; }
@@ -333,6 +359,7 @@
         document.getElementById('from-food').textContent = Math.round(foodWater) + ' ml';
         document.getElementById('from-drinking').textContent = shouldDrink + ' ml';
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -341,6 +368,7 @@
     dietType.addEventListener('change', calculate);
     activity.addEventListener('change', calculate);
     weight.addEventListener('input', calculate);
+    loadState();
     calculate();
 
     // === Newsletter ===

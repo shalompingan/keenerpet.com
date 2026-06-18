@@ -336,6 +336,36 @@
     const calcBtn = document.getElementById('calc-btn');
     const results = document.getElementById('results');
 
+    // ====== LocalStorage Persistence ======
+    var WALK_KEY = 'keenerpet_walk_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(WALK_KEY, JSON.stringify({
+                petType: petType.value,
+                weight: weight.value,
+                breedSize: breedSize.value,
+                ageGroup: ageGroup.value,
+                walkTime: walkTime.value,
+                pace: pace.value
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(WALK_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.weight !== undefined) weight.value = s.weight;
+            if (s.breedSize !== undefined) breedSize.value = s.breedSize;
+            if (s.ageGroup !== undefined) ageGroup.value = s.ageGroup;
+            if (s.walkTime !== undefined) walkTime.value = s.walkTime;
+            if (s.pace !== undefined) pace.value = s.pace;
+        } catch(e) {}
+    }
+
     function calculate() {
         const type = petType.value;
         const w = parseFloat(weight.value);
@@ -409,6 +439,7 @@
         }
 
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -420,6 +451,7 @@
     pace.addEventListener('change', calculate);
     weight.addEventListener('input', calculate);
     walkTime.addEventListener('input', calculate);
+    loadState();
     calculate();
 
     // === Newsletter ===

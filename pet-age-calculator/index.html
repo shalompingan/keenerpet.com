@@ -280,6 +280,30 @@
     const results = document.getElementById('results');
     const humanAge = document.getElementById('human-age');
 
+    // ====== LocalStorage Persistence ======
+    var AGE_KEY = 'keenerpet_age_state';
+
+    function saveState() {
+        try {
+            localStorage.setItem(AGE_KEY, JSON.stringify({
+                petType: petType.value,
+                breedSize: breedSize.value,
+                petAge: petAge.value
+            }));
+        } catch(e) {}
+    }
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(AGE_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            if (s.petType !== undefined) petType.value = s.petType;
+            if (s.breedSize !== undefined) breedSize.value = s.breedSize;
+            if (s.petAge !== undefined) petAge.value = s.petAge;
+        } catch(e) {}
+    }
+
     function calculate() {
         const type = petType.value;
         const age = parseFloat(petAge.value);
@@ -314,6 +338,7 @@
         humanAge.textContent = Math.round(hAge) + ' human years';
         if (hAge >= 60) humanAge.textContent += ' 🎉';
         results.classList.add('show');
+        saveState();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -321,6 +346,7 @@
     petType.addEventListener('change', calculate);
     breedSize.addEventListener('change', calculate);
     petAge.addEventListener('input', calculate);
+    loadState();
     calculate();
 
     // === Newsletter ===

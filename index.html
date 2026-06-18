@@ -168,6 +168,7 @@
         .pill-group .pill-btn { padding: 8px 16px; border: 2px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text-muted); transition: all 0.2s; }
         .pill-group .pill-btn:hover { border-color: var(--primary); color: var(--primary); }
         .pill-group .pill-btn.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); }
+        @media (max-width: 480px) { #size-group { display: grid; grid-template-columns: 1fr 1fr; } #size-group .pill-btn { width: 100%; text-align: center; } }
         .years-select { padding: 8px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--text); background: white; outline: none; cursor: pointer; transition: border-color 0.2s; min-width: 80px; }
         .years-select:focus { border-color: var(--primary); }
 
