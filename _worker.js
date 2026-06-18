@@ -7,9 +7,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
-const SENDGRID_KEY = '';
-const FROM_EMAIL = 'hello@keenerpet.com';
-const FROM_NAME = 'KeenerPet';
+const FROM_EMAIL = 'support@keenerpet.com';
+const FROM_NAME = 'KeenerPet Newsletter';
 
 export default {
   async fetch(request, env, ctx) {
@@ -32,29 +31,21 @@ export default {
           });
         }
 
-        // Store in KV if bound
-        if (typeof env !== 'undefined' && env.EMAIL_KV) {
-          await env.EMAIL_KV.put(
-            `email:${Date.now()}`,
-            JSON.stringify({ email, source, tool: tool || '', note: note || '', timestamp: new Date().toISOString() })
-          );
-        }
-
-        // Send notification via SendGrid if configured
-        if (SENDGRID_KEY) {
-          await fetch('https://api.sendgrid.com/v3/mail/send', {
+        // Send notification via MailChannels (free, no API key needed)
+        try {
+          await fetch('https://api.mailchannels.net/tx/v1/send', {
             method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${SENDGRID_KEY}`,
-              'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              personalizations: [{ to: [{ email: FROM_EMAIL }] }],
+              personalizations: [{ to: [{ email: FROM_EMAIL, name: 'Support' }] }],
               from: { email: FROM_EMAIL, name: FROM_NAME },
               subject: `New ${source} signup from KeenerPet`,
               content: [{ type: 'text/plain', value: `Email: ${email}\nSource: ${source}\nTool: ${tool || 'N/A'}\nNote: ${note || 'N/A'}` }]
             })
           });
+        } catch(e) {
+          // Email notification is best-effort
+          console.error('MailChannels error:', e);
         }
 
         return new Response(JSON.stringify({ success: true }), {
