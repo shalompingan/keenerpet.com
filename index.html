@@ -121,14 +121,7 @@
             border: 2px solid var(--primary); border-radius: var(--radius-lg); margin-bottom: 20px;
         }
         .cost-summary .label { font-size: 14px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .cost-summary .big-number { font-size: 48px; font-weight: 800; color: var(--primary-dark); letter-spacing: -1.5px; line-height: 1.1; display: inline-flex; align-items: center; gap: 14px; }
-        .cost-summary .big-number .print-badge {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border: 2px solid var(--primary); border-radius: 10px;
-            background: white; cursor: pointer; font-size: 18px; transition: all 0.2s;
-            vertical-align: middle; flex-shrink: 0;
-        }
-        .cost-summary .big-number .print-badge:hover { background: var(--primary-light); transform: scale(1.1); }
+        .cost-summary .big-number { font-size: 48px; font-weight: 800; color: var(--primary-dark); letter-spacing: -1.5px; line-height: 1.1; }
         .cost-summary .big-number span { font-size: 24px; font-weight: 600; color: var(--text-muted); }
         .cost-summary .desc { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
         .cost-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
@@ -144,6 +137,13 @@
         .lifetime-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #f5f5f4; border-radius: var(--radius); margin-top: 12px; }
         .lifetime-row .label { font-size: 14px; font-weight: 600; color: #1c1917; }
         .lifetime-row .val { font-size: 22px; font-weight: 800; color: var(--primary-dark); }
+        .print-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 34px; height: 34px; border: 2px solid var(--primary); border-radius: 8px;
+            background: white; cursor: pointer; font-size: 15px; transition: all 0.2s;
+            vertical-align: middle; flex-shrink: 0; margin-left: 8px;
+        }
+        .print-badge:hover { background: var(--primary-light); transform: scale(1.1); }
         .cost-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
         @media (max-width: 540px) { .cost-actions { grid-template-columns: 1fr; } }
         .cost-action-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; background: white; text-align: center; transition: all 0.2s; }
@@ -361,7 +361,7 @@
                 <div class="cost-results" id="cost-results">
                     <div class="cost-summary">
                         <div class="label">Estimated First-Year Cost</div>
-                        <div class="big-number"><span id="year1-total">—</span><button class="print-badge" onclick="window.print()" title="Save as PDF">📄</button></div>
+                        <div class="big-number" id="year1-total">—</div>
                         <div class="desc">That's about <strong id="year1-monthly">—</strong> per month in the first year</div>
                     </div>
 
@@ -380,7 +380,7 @@
 
                     <div class="lifetime-row">
                         <span class="label">🐾 Total over <span id="lifetime-years">12</span> years</span>
-                        <span class="val" id="lifetime-total">$0</span>
+                        <span><span class="val" id="lifetime-total">$0</span><button class="print-badge" onclick="window.print()" title="Save as PDF">📄</button></span>
                     </div>
 
                     <div class="cost-actions">
