@@ -328,7 +328,7 @@
                             <button class="pill-btn" data-value="cat">🐱 Cat</button>
                         </div>
                     </div>
-                    <div class="quick-pick-group">
+                    <div class="quick-pick-group" id="size-group-container">
                         <label>Size</label>
                         <div class="pill-group" id="size-group">
                             <button class="pill-btn" data-value="small">Small</button>
@@ -588,17 +588,17 @@
         },
         cat: {
             annual: {
-                food:        { small: 300, medium: 350, large: 400, giant: 450 },
-                routineMed:  { small: 180, medium: 200, large: 220, giant: 240 },
-                preventatives:{small: 150, medium: 160, large: 170, giant: 180 },
-                toysTreats:  { small: 70,  medium: 80,  large: 90,  giant: 100 },
-                license:     { small: 30,  medium: 35,  large: 40,  giant: 45 },
-                insurance:   { small: 250, medium: 300, large: 350, giant: 400 }
+                food:        350,
+                routineMed:  200,
+                preventatives: 160,
+                toysTreats:   80,
+                license:      35,
+                insurance:   300
             },
             oneTime: {
-                adoption:    { small: [0,100,500], medium: [0,100,500], large: [0,100,500], giant: [0,100,500] },
-                spayNeuter:  { small: [150,300,500], medium: [150,300,500], large: [150,300,500], giant: [150,300,500] },
-                setup:       { small: [100,250,500], medium: [100,250,500], large: [100,250,500], giant: [100,250,500] }
+                adoption:    [0, 100, 500],
+                spayNeuter:  [150, 300, 500],
+                setup:       [100, 250, 500]
             }
         }
     };
@@ -618,21 +618,43 @@
 
     // ====== Breed Data ======
     var breedData = [
+        // ====== Small ======
         { name:"Chihuahua", size:"small", emoji:"🐕", budget:"frugal", temperament:"Loyal, alert", energy:"Moderate", coat:"Short" },
+        { name:"Dachshund", size:"small", emoji:"🐶", budget:"frugal", temperament:"Curious, brave", energy:"Moderate", coat:"Short" },
+        { name:"Boston Terrier", size:"small", emoji:"🐕", budget:"frugal", temperament:"Friendly, bright", energy:"Moderate", coat:"Short" },
         { name:"French Bulldog", size:"small", emoji:"🐶", budget:"moderate", temperament:"Playful, adaptable", energy:"Low", coat:"Short" },
         { name:"Pomeranian", size:"small", emoji:"🐕", budget:"moderate", temperament:"Intelligent, lively", energy:"Moderate", coat:"Long" },
+        { name:"Shih Tzu", size:"small", emoji:"🐶", budget:"moderate", temperament:"Affectionate, lively", energy:"Low", coat:"Long" },
+        { name:"Yorkshire Terrier", size:"small", emoji:"🐕", budget:"moderate", temperament:"Confident, intelligent", energy:"Moderate", coat:"Long" },
+        { name:"Pug", size:"small", emoji:"🐶", budget:"moderate", temperament:"Charming, mischievous", energy:"Low", coat:"Short" },
         { name:"Cavalier King Charles", size:"small", emoji:"🐶", budget:"premium", temperament:"Gentle, affectionate", energy:"Low", coat:"Long" },
+        // ====== Medium ======
         { name:"Beagle", size:"medium", emoji:"🐕", budget:"frugal", temperament:"Friendly, curious", energy:"High", coat:"Short" },
+        { name:"Shiba Inu", size:"medium", emoji:"🐕", budget:"frugal", temperament:"Independent, alert", energy:"Moderate", coat:"Medium" },
+        { name:"Basset Hound", size:"medium", emoji:"🐶", budget:"frugal", temperament:"Patient, low-key", energy:"Low", coat:"Short" },
         { name:"Corgi", size:"medium", emoji:"🐶", budget:"moderate", temperament:"Smart, affectionate", energy:"Moderate", coat:"Medium" },
         { name:"Border Collie", size:"medium", emoji:"🐕", budget:"moderate", temperament:"Intelligent, energetic", energy:"Very High", coat:"Medium" },
         { name:"Australian Shepherd", size:"medium", emoji:"🐶", budget:"moderate", temperament:"Smart, active", energy:"Very High", coat:"Medium" },
-        { name:"Shiba Inu", size:"medium", emoji:"🐕", budget:"frugal", temperament:"Independent, alert", energy:"Moderate", coat:"Medium" },
+        { name:"Siberian Husky", size:"medium", emoji:"🐕", budget:"moderate", temperament:"Outgoing, alert", energy:"Very High", coat:"Thick" },
+        { name:"Boxer", size:"medium", emoji:"🐶", budget:"moderate", temperament:"Playful, energetic", energy:"High", coat:"Short" },
+        { name:"Cocker Spaniel", size:"medium", emoji:"🐕", budget:"premium", temperament:"Gentle, happy", energy:"Moderate", coat:"Long" },
+        { name:"Shetland Sheepdog", size:"medium", emoji:"🐶", budget:"premium", temperament:"Intelligent, loyal", energy:"Moderate", coat:"Long" },
+        // ====== Large ======
+        { name:"Rottweiler", size:"large", emoji:"🐕", budget:"frugal", temperament:"Loyal, confident", energy:"Moderate", coat:"Short" },
+        { name:"Rhodesian Ridgeback", size:"large", emoji:"🐶", budget:"frugal", temperament:"Strong, dignified", energy:"High", coat:"Short" },
         { name:"Golden Retriever", size:"large", emoji:"🐕", budget:"moderate", temperament:"Friendly, reliable", energy:"High", coat:"Long" },
         { name:"Labrador Retriever", size:"large", emoji:"🐶", budget:"moderate", temperament:"Outgoing, even-tempered", energy:"High", coat:"Short" },
         { name:"German Shepherd", size:"large", emoji:"🐕", budget:"moderate", temperament:"Confident, brave", energy:"High", coat:"Medium" },
+        { name:"Doberman Pinscher", size:"large", emoji:"🐶", budget:"moderate", temperament:"Alert, obedient", energy:"High", coat:"Short" },
+        { name:"Akita", size:"large", emoji:"🐕", budget:"premium", temperament:"Dignified, courageous", energy:"Moderate", coat:"Thick" },
+        { name:"Weimaraner", size:"large", emoji:"🐶", budget:"premium", temperament:"Energetic, fearless", energy:"Very High", coat:"Short" },
+        // ====== Giant ======
+        { name:"Anatolian Shepherd", size:"giant", emoji:"🐕", budget:"frugal", temperament:"Independent, loyal", energy:"Moderate", coat:"Short" },
+        { name:"Newfoundland", size:"giant", emoji:"🐶", budget:"moderate", temperament:"Gentle, patient", energy:"Moderate", coat:"Long" },
         { name:"Bernese Mountain Dog", size:"giant", emoji:"🐶", budget:"premium", temperament:"Calm, affectionate", energy:"Moderate", coat:"Long" },
         { name:"Great Dane", size:"giant", emoji:"🐕", budget:"premium", temperament:"Gentle, friendly", energy:"Low", coat:"Short" },
-        { name:"Saint Bernard", size:"giant", emoji:"🐶", budget:"premium", temperament:"Patient, gentle", energy:"Low", coat:"Long" }
+        { name:"Saint Bernard", size:"giant", emoji:"🐶", budget:"premium", temperament:"Patient, gentle", energy:"Low", coat:"Long" },
+        { name:"Irish Wolfhound", size:"giant", emoji:"🐕", budget:"premium", temperament:"Calm, dignified", energy:"Low", coat:"Rough" }
     ];
 
     // ====== DOM refs ======
@@ -644,6 +666,7 @@
     var costGrid = document.getElementById('cost-grid');
     var results = document.getElementById('cost-results');
     var calcBtn = document.getElementById('calc-btn');
+    var breedSection = document.getElementById('breed-section');
 
     // ====== LocalStorage Persistence ======
     var STORAGE_KEY = 'keenerpet_cost_state';
@@ -667,6 +690,7 @@
             var s = JSON.parse(raw);
             if (s.petType !== undefined) petType = s.petType;
             if (s.size !== undefined) size = s.size;
+            if (petType === 'cat') size = 'default';
             if (s.lifeYears !== undefined) lifeYears = s.lifeYears;
             if (s.budgetLevel !== undefined) budgetLevel = s.budgetLevel;
             if (s.enabledItems !== undefined) enabledItems = s.enabledItems;
@@ -679,12 +703,16 @@
         document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(p) {
             p.classList.toggle('active', p.dataset.value === petType);
         });
-        // Sync size pills (only if dog, cat hides them)
-        var showSize = petType === 'dog';
-        document.querySelectorAll('#size-group .pill-btn').forEach(function(p) {
-            p.classList.toggle('active', p.dataset.value === size);
-            p.style.display = showSize ? '' : 'none';
-        });
+        // Sync size pills / hide for cat
+        var sizeContainer = document.getElementById('size-group-container');
+        if (petType === 'cat') {
+            sizeContainer.style.display = 'none';
+        } else {
+            sizeContainer.style.display = '';
+            document.querySelectorAll('#size-group .pill-btn').forEach(function(p) {
+                p.classList.toggle('active', p.dataset.value === size);
+            });
+        }
         // Sync budget pills
         document.querySelectorAll('.budget-toggle .pill').forEach(function(p) {
             p.classList.toggle('active', p.dataset.level === budgetLevel);
@@ -771,9 +799,11 @@
         }
 
         if (isAnnual) {
-            return data.annual[key][sizeKey] || 0;
+            var v = data.annual[key];
+            return typeof v === 'number' ? v : (v[sizeKey] || 0);
         } else {
-            return data.oneTime[key][sizeKey][levelIndex] || 0;
+            var v = data.oneTime[key];
+            return Array.isArray(v) ? v[levelIndex] : (v[sizeKey] ? v[sizeKey][levelIndex] : 0);
         }
     }
 
@@ -846,8 +876,13 @@
         document.getElementById('lifetime-total').textContent = '$' + lifetime.toLocaleString();
         results.classList.add('show');
 
-        // Generate breed recommendations
-        recommendBreeds(annualTotal);
+        // Breed recommendations (dog only)
+        if (petType === 'cat') {
+            breedSection.style.display = 'none';
+        } else {
+            breedSection.style.display = '';
+            recommendBreeds(annualTotal);
+        }
     }
 
     // ====== Breed Recommendation Algorithm ======
@@ -901,27 +936,34 @@
             document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
             this.classList.add('active');
             petType = this.dataset.value;
-            var sizePills = document.querySelectorAll('#size-group .pill-btn');
+            var sizeGroup = document.getElementById('size-group');
+            var sizeContainer = document.getElementById('size-group-container');
             if (petType === 'cat') {
-                sizePills.forEach(function(p) { p.style.display = 'none'; });
-                size = 'medium';
-                sizePills.forEach(function(p) { p.classList.toggle('active', p.dataset.value === 'medium'); });
+                sizeContainer.style.display = 'none';
+                size = 'default';
             } else {
-                sizePills.forEach(function(p) { p.style.display = ''; });
+                sizeContainer.style.display = '';
+                sizeGroup.innerHTML =
+                    '<button class="pill-btn" data-value="small">Small</button>' +
+                    '<button class="pill-btn active" data-value="medium">Medium</button>' +
+                    '<button class="pill-btn" data-value="large">Large</button>' +
+                    '<button class="pill-btn" data-value="giant">Giant</button>';
+                size = 'medium';
             }
             calculate();
             saveState();
         });
     });
 
-    document.querySelectorAll('#size-group .pill-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('#size-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
-            size = this.dataset.value;
-            calculate();
-            saveState();
-        });
+    // Event delegation for size pills (pills are dynamically swapped)
+    document.getElementById('size-group').addEventListener('click', function(e) {
+        var pill = e.target.closest('.pill-btn');
+        if (!pill) return;
+        document.querySelectorAll('#size-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
+        pill.classList.add('active');
+        size = pill.dataset.value;
+        calculate();
+        saveState();
     });
 
     document.getElementById('life-years').addEventListener('change', function() {
