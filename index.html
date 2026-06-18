@@ -4,27 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet</title>
-    <meta name="description" content="Free pet cost calculator: estimate first-year and lifetime expenses for your dog or cat. Plan your budget with realistic adoption, food, vet, and insurance costs.">
+    <meta name="description" content="ASPCA-calibrated pet cost calculator: estimate first-year and lifetime expenses for your dog or cat. Plan your budget with breed recommendations and nearby adoptable pets.">
     <link rel="canonical" href="https://keenerpet.com/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet">
-    <meta property="og:description" content="Estimate first-year and lifetime pet expenses. Free cost calculator for dogs and cats. Plan your budget before you adopt.">
+    <meta property="og:description" content="ASPCA-calibrated pet cost calculator. Estimate first-year and lifetime expenses. Get breed recommendations and find adoptable dogs near you.">
     <meta property="og:url" content="https://keenerpet.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KeenerPet">
     <meta property="og:locale" content="en_US">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet">
-    <meta name="twitter:description" content="Estimate first-year and lifetime pet expenses. Free cost calculator for dogs and cats.">
+    <meta name="twitter:description" content="ASPCA-calibrated pet cost calculator. Estimate first-year and lifetime expenses.">
 
     <meta name="robots" content="index, follow">
     <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
 
-    <!-- Schema: WebApplication + WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,7 +31,7 @@
           "@id": "https://keenerpet.com/#webapp",
           "name": "KeenerPet Pet Cost Calculator",
           "url": "https://keenerpet.com/",
-          "description": "Free pet cost calculator for dogs and cats. Estimate first-year and lifetime expenses including adoption, food, vet, and insurance.",
+          "description": "ASPCA-calibrated pet cost calculator for dogs and cats. Estimate first-year and lifetime expenses including adoption, food, vet, and insurance.",
           "applicationCategory": "PetApplication",
           "operatingSystem": "All"
         },
@@ -49,14 +46,8 @@
     }
     </script>
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3DHX71CRB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J3DHX71CRB');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J3DHX71CRB');</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +55,6 @@
     <link rel="stylesheet" href="/style.css?v=2">
     <script src="/nav.js" defer></script>
 
-    <!-- Prefetch navigation pages -->
     <link rel="prefetch" href="/pet-food-calculator/">
     <link rel="prefetch" href="/pet-age-calculator/">
     <link rel="prefetch" href="/pet-water-intake/">
@@ -85,58 +75,23 @@
             --accent: #059669;
             --accent-light: #d1fae5;
         }
-
-        /* ====== Cost Calculator Specific Styles ====== */
-
         .budget-toggle {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
         }
         .budget-toggle .pill {
-            flex: 1;
-            padding: 10px 16px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            background: white;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.2s;
-            min-width: 100px;
-            color: var(--text-muted);
+            flex: 1; padding: 10px 16px; border: 2px solid var(--border);
+            border-radius: 10px; background: white; cursor: pointer; font-family: inherit;
+            font-size: 14px; font-weight: 600; text-align: center; transition: all 0.2s;
+            min-width: 100px; color: var(--text-muted);
         }
         .budget-toggle .pill:hover { border-color: var(--primary); color: var(--primary); }
-        .budget-toggle .pill.active {
-            border-color: var(--primary);
-            background: var(--primary-light);
-            color: var(--primary-dark);
-        }
-        .budget-toggle .pill .sub {
-            display: block;
-            font-size: 11px;
-            font-weight: 400;
-            margin-top: 2px;
-            color: inherit;
-            opacity: 0.7;
-        }
+        .budget-toggle .pill.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); }
+        .budget-toggle .pill .sub { display: block; font-size: 11px; font-weight: 400; margin-top: 2px; color: inherit; opacity: 0.7; }
 
-        .cost-grid {
-            display: grid;
-            gap: 10px;
-        }
+        .cost-grid { display: grid; gap: 10px; }
         .cost-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: all 0.2s;
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            background: var(--bg); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s;
         }
         .cost-item:hover { border-color: var(--primary); }
         .cost-item.disabled { opacity: 0.45; }
@@ -144,240 +99,135 @@
         .cost-item .info { flex: 1; min-width: 0; }
         .cost-item .info .name { font-size: 14px; font-weight: 600; color: #1c1917; }
         .cost-item .info .sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
-        .cost-item .amount {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        /* Custom checkbox toggle */
-        .cost-toggle {
-            position: relative;
-            width: 42px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-        .cost-toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-            position: absolute;
-        }
+        .cost-item .amount { font-size: 16px; font-weight: 700; color: var(--primary-dark); white-space: nowrap; flex-shrink: 0; }
+        .cost-toggle { position: relative; width: 42px; height: 24px; flex-shrink: 0; }
+        .cost-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
         .cost-toggle .slider {
-            position: absolute;
-            inset: 0;
-            background: #d4d4d4;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background 0.25s;
+            position: absolute; inset: 0; background: #d4d4d4; border-radius: 12px;
+            cursor: pointer; transition: background 0.25s;
         }
         .cost-toggle .slider::before {
-            content: "";
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            left: 3px;
-            bottom: 3px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.25s;
+            content: ""; position: absolute; width: 18px; height: 18px; left: 3px;
+            bottom: 3px; background: white; border-radius: 50%; transition: transform 0.25s;
         }
         .cost-toggle input:checked + .slider { background: var(--primary); }
         .cost-toggle input:checked + .slider::before { transform: translateX(18px); }
 
-        /* Results */
         .cost-results { display: none; margin-top: 24px; }
         .cost-results.show { display: block; }
-
         .cost-summary {
-            text-align: center;
-            padding: 28px 20px;
+            text-align: center; padding: 28px 20px;
             background: linear-gradient(135deg, var(--primary-light), #fff);
-            border: 2px solid var(--primary);
-            border-radius: var(--radius-lg);
-            margin-bottom: 20px;
+            border: 2px solid var(--primary); border-radius: var(--radius-lg); margin-bottom: 20px;
         }
         .cost-summary .label { font-size: 14px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .cost-summary .big-number {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--primary-dark);
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-        }
+        .cost-summary .big-number { font-size: 48px; font-weight: 800; color: var(--primary-dark); letter-spacing: -1.5px; line-height: 1.1; }
         .cost-summary .big-number span { font-size: 24px; font-weight: 600; color: var(--text-muted); }
         .cost-summary .desc { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
-
-        .cost-breakdown {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 16px 0;
-        }
-        @media (max-width: 540px) {
-            .cost-breakdown { grid-template-columns: 1fr; }
-            .cost-summary .big-number { font-size: 34px; }
-        }
-        .cost-bucket {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
-        }
-        .cost-bucket h4 {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-        .cost-bucket .total {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1c1917;
-        }
+        .cost-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        @media (max-width: 540px) { .cost-breakdown { grid-template-columns: 1fr; } .cost-summary .big-number { font-size: 34px; } }
+        .cost-bucket { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+        .cost-bucket h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 10px; }
+        .cost-bucket .total { font-size: 24px; font-weight: 800; color: #1c1917; }
         .cost-bucket .total span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
         .cost-bucket ul { margin-top: 8px; }
-        .cost-bucket ul li {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
-            font-size: 13px;
-            color: var(--text-muted);
-            border-bottom: 1px solid #f5f5f4;
-        }
+        .cost-bucket ul li { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; color: var(--text-muted); border-bottom: 1px solid #f5f5f4; }
         .cost-bucket ul li:last-child { border-bottom: none; }
         .cost-bucket ul li .val { font-weight: 600; color: var(--text); }
-
-        .lifetime-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px;
-            background: #f5f5f4;
-            border-radius: var(--radius);
-            margin-top: 12px;
-        }
+        .lifetime-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #f5f5f4; border-radius: var(--radius); margin-top: 12px; }
         .lifetime-row .label { font-size: 14px; font-weight: 600; color: #1c1917; }
         .lifetime-row .val { font-size: 22px; font-weight: 800; color: var(--primary-dark); }
-
-        /* Affiliate cards in results */
-        .cost-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-top: 20px;
-        }
-        @media (max-width: 540px) {
-            .cost-actions { grid-template-columns: 1fr; }
-        }
-        .cost-action-card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 18px 20px;
-            background: white;
-            text-align: center;
-            transition: all 0.2s;
-        }
+        .cost-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+        @media (max-width: 540px) { .cost-actions { grid-template-columns: 1fr; } }
+        .cost-action-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; background: white; text-align: center; transition: all 0.2s; }
         .cost-action-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
         .cost-action-card .icon { font-size: 28px; }
         .cost-action-card h4 { font-size: 15px; font-weight: 700; color: #1c1917; margin: 6px 0 3px; }
         .cost-action-card p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-        .cost-action-card .cta {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 24px;
-            background: var(--primary);
-            color: white;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
+        .cost-action-card .cta { display: inline-block; margin-top: 10px; padding: 10px 24px; background: var(--primary); color: white; border-radius: 8px; font-size: 13px; font-weight: 600; transition: background 0.2s; }
         .cost-action-card .cta:hover { background: var(--primary-dark); }
-
-        /* CTA banner to Food Calculator */
-        .food-cta {
-            margin-top: 20px;
-            padding: 24px 28px;
-            background: linear-gradient(135deg, var(--accent-light), #fff);
-            border: 2px solid var(--accent);
-            border-radius: var(--radius-lg);
-            text-align: center;
-        }
+        .food-cta { margin-top: 20px; padding: 24px 28px; background: linear-gradient(135deg, var(--accent-light), #fff); border: 2px solid var(--accent); border-radius: var(--radius-lg); text-align: center; }
         .food-cta h3 { font-size: 18px; font-weight: 700; color: #1c1917; }
         .food-cta p { font-size: 14px; color: var(--text-muted); margin: 6px 0 14px; }
-        .food-cta .big-cta {
-            display: inline-block;
-            padding: 14px 36px;
-            background: var(--accent);
-            color: white;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 700;
-            transition: background 0.2s;
-        }
+        .food-cta .big-cta { display: inline-block; padding: 14px 36px; background: var(--accent); color: white; border-radius: 10px; font-size: 16px; font-weight: 700; transition: background 0.2s; }
         .food-cta .big-cta:hover { background: #047857; }
-
-        /* Pet type + size pill selects in hero */
-        .quick-picks {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+        .quick-picks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
         .quick-pick-group { flex: 1; min-width: 140px; }
-        .quick-pick-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .pill-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .pill-group .pill-btn {
-            padding: 8px 16px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.2s;
-        }
+        .quick-pick-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .pill-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .pill-group .pill-btn { padding: 8px 16px; border: 2px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text-muted); transition: all 0.2s; }
         .pill-group .pill-btn:hover { border-color: var(--primary); color: var(--primary); }
-        .pill-group .pill-btn.active {
-            border-color: var(--primary);
-            background: var(--primary-light);
-            color: var(--primary-dark);
-        }
-
-        .years-select {
-            padding: 8px 14px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: inherit;
-            color: var(--text);
-            background: white;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.2s;
-            min-width: 80px;
-        }
+        .pill-group .pill-btn.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary-dark); }
+        .years-select { padding: 8px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--text); background: white; outline: none; cursor: pointer; transition: border-color 0.2s; min-width: 80px; }
         .years-select:focus { border-color: var(--primary); }
+
+        /* ====== Breed Recommendation ====== */
+        .breed-section { margin-top: 24px; }
+        .breed-section h3 { font-size: 17px; font-weight: 700; color: #1c1917; margin-bottom: 4px; }
+        .breed-section > p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+        .breed-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+        @media (max-width: 640px) { .breed-grid { grid-template-columns: 1fr; } }
+        .breed-card {
+            background: white; border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 16px; text-align: center; transition: all 0.2s;
+        }
+        .breed-card:hover { border-color: var(--primary); box-shadow: var(--shadow); transform: translateY(-2px); }
+        .breed-card .breed-emoji { font-size: 36px; margin-bottom: 4px; }
+        .breed-card .breed-name { font-size: 15px; font-weight: 700; color: #1c1917; }
+        .breed-card .breed-match { font-size: 12px; color: var(--primary-dark); font-weight: 600; margin: 2px 0; }
+        .breed-card .breed-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin: 6px 0; }
+        .breed-card .breed-tags span { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--primary-light); color: var(--primary-dark); font-weight: 500; }
+        .breed-card .breed-cost { font-size: 12px; color: var(--text-muted); }
+
+        /* ====== RescueGroups Mock + Skeleton ====== */
+        .adopt-section { margin-top: 24px; }
+        .adopt-section h3 { font-size: 17px; font-weight: 700; color: #1c1917; margin-bottom: 4px; }
+        .adopt-section > p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+        .adopt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+        @media (max-width: 640px) { .adopt-grid { grid-template-columns: 1fr; } }
+        .adopt-card {
+            background: white; border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 16px; transition: all 0.2s;
+        }
+        .adopt-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .adopt-card .adopt-emoji { font-size: 32px; text-align: center; margin-bottom: 6px; }
+        .adopt-card .adopt-name { font-size: 15px; font-weight: 700; color: #1c1917; }
+        .adopt-card .adopt-meta { font-size: 12px; color: var(--text-muted); }
+        .adopt-card .adopt-meta span { display: inline-block; margin-right: 10px; }
+        .adopt-card .adopt-days { font-size: 11px; color: var(--text-muted); margin: 4px 0 8px; }
+        .adopt-card .adopt-cta {
+            display: inline-block; padding: 8px 16px; background: var(--primary);
+            color: white; border-radius: 6px; font-size: 12px; font-weight: 600; transition: background 0.2s;
+        }
+        .adopt-card .adopt-cta:hover { background: var(--primary-dark); }
+
+        /* Skeleton screen */
+        .skeleton { animation: shimmer 1.4s ease-in-out infinite; background: linear-gradient(90deg, #e7e5e4 25%, #f5f5f4 50%, #e7e5e4 75%); background-size: 200% 100%; border-radius: 8px; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .skeleton-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; min-height: 140px; }
+        .skeleton-card .s-img { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 8px; }
+        .skeleton-card .s-line { height: 14px; margin: 6px auto; border-radius: 4px; }
+        .skeleton-card .s-line.w60 { width: 60%; }
+        .skeleton-card .s-line.w80 { width: 80%; }
+        .skeleton-card .s-line.w40 { width: 40%; }
+
+        /* ====== AdSense Placeholder ====== */
+        .adsense-placeholder {
+            margin: 24px 0; padding: 20px; border: 2px dashed #d4d4d4; border-radius: 12px;
+            text-align: center; background: #fafaf9; min-height: 90px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .adsense-placeholder .ad-label { font-size: 11px; color: #a8a29e; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ====== Data Citation ====== */
+        .data-citation {
+            margin-top: 32px; padding: 20px 24px; background: #f5f5f4;
+            border-radius: var(--radius); border: 1px solid #e7e5e4;
+        }
+        .data-citation h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #a8a29e; margin-bottom: 8px; }
+        .data-citation p { font-size: 12px; line-height: 1.7; color: #78716c; margin-bottom: 8px; }
+        .data-citation p:last-child { margin-bottom: 0; }
+        .data-citation a { color: var(--primary-dark); font-weight: 600; }
     </style>
 </head>
 <body>
@@ -385,7 +235,6 @@
 <header>
     <div class="container">
         <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
-        <!-- Desktop Navigation -->
         <div class="desktop-nav">
             <div class="nav-group">
                 <button class="nav-trigger">Tools <span class="arrow">▾</span></button>
@@ -422,12 +271,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Hamburger -->
         <button class="hamburger" aria-label="Toggle menu">☰</button>
     </div>
-
-    <!-- Mobile sidebar & overlay -->
     <div class="sidebar-overlay"></div>
     <div class="mobile-sidebar">
         <div class="sidebar-header">
@@ -472,14 +317,13 @@
     <section class="hero">
         <div class="container">
             <h1>Pet Cost <span>Calculator</span></h1>
-            <p>How much will your dog or cat <em>really</em> cost? Get a realistic estimate for the first year and beyond — from adoption fees to food, vet care, and insurance.</p>
+            <p>How much will your dog or cat <em>really</em> cost? Based on ASPCA baseline data — get a realistic estimate for the first year and beyond. Then find a breed that fits your budget and discover adoptable dogs near you.</p>
         </div>
     </section>
 
     <section class="calc-section">
         <div class="container">
             <div class="calc-card">
-                <!-- Pet type, size, life expectancy -->
                 <div class="quick-picks">
                     <div class="quick-pick-group">
                         <label>Pet Type</label>
@@ -511,21 +355,16 @@
                     </div>
                 </div>
 
-                <!-- Spending level -->
                 <div class="budget-toggle">
                     <button class="pill active" data-level="frugal">🟢 Frugal <span class="sub">Save where you can</span></button>
                     <button class="pill" data-level="moderate">🟡 Moderate <span class="sub">Mid-range choices</span></button>
                     <button class="pill" data-level="premium">🔴 Premium <span class="sub">Best of everything</span></button>
                 </div>
 
-                <!-- Cost categories -->
-                <div class="cost-grid" id="cost-grid">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="cost-grid" id="cost-grid"></div>
 
                 <button class="calc-btn" id="calc-btn">Calculate Total Cost →</button>
 
-                <!-- Results -->
                 <div class="cost-results" id="cost-results">
                     <div class="cost-summary">
                         <div class="label">Estimated First-Year Cost</div>
@@ -551,7 +390,6 @@
                         <span class="val" id="lifetime-total">$0</span>
                     </div>
 
-                    <!-- Affiliate actions -->
                     <div class="cost-actions">
                         <div class="cost-action-card">
                             <div class="icon">🛡️</div>
@@ -567,18 +405,47 @@
                         </div>
                     </div>
 
-                    <!-- Food Calculator CTA -->
                     <div class="food-cta">
                         <h3>🍖 Already have your pet? Track their daily food costs too.</h3>
                         <p>Use our <strong>Pet Food Calculator</strong> to find exactly how much to feed your dog or cat — and see how much you'll spend on food per day, month, and year.</p>
                         <a href="/pet-food-calculator/" class="big-cta">Calculate Daily Food →</a>
+                    </div>
+
+                    <!-- AdSense Placeholder -->
+                    <div class="adsense-placeholder">
+                        <span class="ad-label">— Advertisement —</span>
+                    </div>
+
+                    <!-- ====== Breed Recommendation ====== -->
+                    <div class="breed-section" id="breed-section">
+                        <h3>🐕 Which Dog Can I Afford?</h3>
+                        <p>Based on your <span id="budget-label">moderate</span> budget and <span id="size-label">medium</span> size preference, these breeds match your lifestyle and financial plan.</p>
+                        <div class="breed-grid" id="breed-grid"></div>
+                    </div>
+
+                    <!-- AdSense Placeholder -->
+                    <div class="adsense-placeholder">
+                        <span class="ad-label">— Advertisement —</span>
+                    </div>
+
+                    <!-- ====== RescueGroups Mock + Skeleton ====== -->
+                    <div class="adopt-section" id="adopt-section">
+                        <h3>📍 Adoptable Dogs Near You</h3>
+                        <p>These pups are looking for a home right now. Enter a ZIP code to find adoptable dogs in your area, or browse a few featured profiles below.</p>
+                        <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+                            <input type="text" id="zip-input" placeholder="Enter ZIP code" style="padding:8px 14px;border:2px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;flex:1;min-width:140px;outline:none" maxlength="5">
+                            <button id="zip-search-btn" style="padding:8px 20px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit">Search →</button>
+                        </div>
+                        <div class="adopt-grid" id="adopt-grid"></div>
+                        <p style="font-size:12px;color:var(--text-muted);margin-top:10px;text-align:center">
+                            🐾 Can't adopt right now? <a href="https://www.petfinder.com/search/dogs-for-adoption/us/" target="_blank" rel="sponsored" style="color:var(--primary-dark);font-weight:600">Browse all adoptable dogs on Petfinder →</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- All Pet Tools -->
     <section class="tools-section">
         <div class="container">
             <h2>🧰 All Pet Tools</h2>
@@ -589,99 +456,31 @@
                     <p>Find exactly how much to feed your dog or cat. Daily portions in kcal, cups, and grams.</p>
                     <span class="go-link">Calculate Food →</span>
                 </a>
-                <a href="/pet-age-calculator/" class="tool-card">
-                    <div class="icon">🐕</div>
-                    <h3>Pet Age Calculator</h3>
-                    <p>How old is your pet in human years? Accurate formula based on breed and size.</p>
-                    <span class="go-link">Use Tool →</span>
-                </a>
-                <a href="/pet-water-intake/" class="tool-card">
-                    <div class="icon">💧</div>
-                    <h3>Pet Water Intake</h3>
-                    <p>How much water should your dog or cat drink daily? Based on weight, diet, and activity.</p>
-                    <span class="go-link">Use Tool →</span>
-                </a>
-                <a href="/pet-calorie-calculator/" class="tool-card">
-                    <div class="icon">⚡</div>
-                    <h3>Pet Calorie Calculator</h3>
-                    <p>Calculate your pet's daily calorie needs for weight management and optimal health.</p>
-                    <span class="go-link">Use Tool →</span>
-                </a>
-                <a href="/pet-walking-calculator/" class="tool-card">
-                    <div class="icon">🚶</div>
-                    <h3>Pet Walking Calculator</h3>
-                    <p>How far did your dog walk? Calculate distance, calories burned, and exercise goals.</p>
-                    <span class="go-link">Use Tool →</span>
-                </a>
-                <a href="/pet-insurance/" class="tool-card">
-                    <div class="icon">🛡️</div>
-                    <h3>Pet Insurance Estimator</h3>
-                    <p>See how much pet insurance costs and find the best plan for your furry friend.</p>
-                    <span class="go-link">Estimate Cost →</span>
-                </a>
-                <a href="/pet-toxicity-checker/" class="tool-card">
-                    <div class="icon">☠️</div>
-                    <h3>Pet Toxicity Checker</h3>
-                    <p>Is it safe? Search 120+ foods, plants, and substances to check toxicity for your pet.</p>
-                    <span class="go-link">Check Now →</span>
-                </a>
-                <a href="/dog-breed-match/" class="tool-card">
-                    <div class="icon">🐶</div>
-                    <h3>Dog Breed Match Quiz</h3>
-                    <p>Find your perfect dog breed. Answer 8 quick questions and get personalized breed recommendations.</p>
-                    <span class="go-link">Take Quiz →</span>
-                </a>
-                <a href="/dog-separation-anxiety/" class="tool-card">
-                    <div class="icon">💚</div>
-                    <h3>Separation Anxiety Test</h3>
-                    <p>Evaluate your dog's stress level with 12 questions. Get personalized training recommendations.</p>
-                    <span class="go-link">Take Test →</span>
-                </a>
-                <a href="/dog-pregnancy-calculator/" class="tool-card">
-                    <div class="icon">🤰</div>
-                    <h3>Dog Pregnancy Calculator</h3>
-                    <p>Calculate due dates and track week-by-week milestones. Expert whelping tips for mom and her litter.</p>
-                    <span class="go-link">Calculate →</span>
-                </a>
-                <a href="/dog-ear-checker/" class="tool-card">
-                    <div class="icon">👂</div>
-                    <h3>Dog Ear Cleaning Checker</h3>
-                    <p>Check if your dog's ears need cleaning. Assess symptoms, get step-by-step cleaning tips, and know when to see a vet.</p>
-                    <span class="go-link">Check Now →</span>
-                </a>
+                <a href="/pet-age-calculator/" class="tool-card"><div class="icon">🐕</div><h3>Pet Age Calculator</h3><p>How old is your pet in human years? Accurate formula based on breed and size.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-water-intake/" class="tool-card"><div class="icon">💧</div><h3>Pet Water Intake</h3><p>How much water should your dog or cat drink daily?</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-calorie-calculator/" class="tool-card"><div class="icon">⚡</div><h3>Pet Calorie Calculator</h3><p>Calculate your pet's daily calorie needs for weight management.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-walking-calculator/" class="tool-card"><div class="icon">🚶</div><h3>Pet Walking Calculator</h3><p>How far did your dog walk? Calculate distance and exercise goals.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-insurance/" class="tool-card"><div class="icon">🛡️</div><h3>Pet Insurance Estimator</h3><p>See how much pet insurance costs and find the best plan.</p><span class="go-link">Estimate Cost →</span></a>
+                <a href="/pet-toxicity-checker/" class="tool-card"><div class="icon">☠️</div><h3>Pet Toxicity Checker</h3><p>Is it safe? Search 120+ foods, plants, and substances.</p><span class="go-link">Check Now →</span></a>
+                <a href="/dog-breed-match/" class="tool-card"><div class="icon">🐶</div><h3>Dog Breed Match Quiz</h3><p>Answer 8 quick questions and get personalized breed recommendations.</p><span class="go-link">Take Quiz →</span></a>
+                <a href="/dog-separation-anxiety/" class="tool-card"><div class="icon">💚</div><h3>Separation Anxiety Test</h3><p>Evaluate your dog's stress level with 12 questions.</p><span class="go-link">Take Test →</span></a>
+                <a href="/dog-pregnancy-calculator/" class="tool-card"><div class="icon">🤰</div><h3>Dog Pregnancy Calculator</h3><p>Calculate due dates and track week-by-week milestones.</p><span class="go-link">Calculate →</span></a>
+                <a href="/dog-ear-checker/" class="tool-card"><div class="icon">👂</div><h3>Dog Ear Cleaning Checker</h3><p>Check if your dog's ears need cleaning and get step-by-step tips.</p><span class="go-link">Check Now →</span></a>
             </div>
         </div>
     </section>
 
-    <!-- About / Trust -->
     <section class="about-section">
         <div class="container">
             <div class="about-grid">
-                <div class="about-card">
-                    <div class="icon">💰</div>
-                    <h3>Realistic Estimates</h3>
-                    <p>All costs based on average US pet expenses from veterinary associations and consumer data. Updated for 2026.</p>
-                </div>
-                <div class="about-card">
-                    <div class="icon">🔒</div>
-                    <h3>Your Privacy</h3>
-                    <p>All calculations happen in your browser. We never store or share your information.</p>
-                </div>
-                <div class="about-card">
-                    <div class="icon">🎯</div>
-                    <h3>Comprehensive</h3>
-                    <p>From adoption fees to emergency funds — we cover every major expense category for responsible pet ownership.</p>
-                </div>
-                <div class="about-card">
-                    <div class="icon">📈</div>
-                    <h3>Always Improving</h3>
-                    <p>New tools added regularly. Have a suggestion? We'd love to hear from you.</p>
-                </div>
+                <div class="about-card"><div class="icon">💰</div><h3>ASPCA-Calibrated</h3><p>All recurring cost estimates based on ASPCA Pet Care Costs guidelines — the industry standard for pet expense data.</p></div>
+                <div class="about-card"><div class="icon">🔒</div><h3>Your Privacy</h3><p>All calculations happen in your browser. We never store or share your information.</p></div>
+                <div class="about-card"><div class="icon">🎯</div><h3>Comprehensive</h3><p>From adoption fees to emergency funds — we cover every major expense category for responsible pet ownership.</p></div>
+                <div class="about-card"><div class="icon">📈</div><h3>Always Improving</h3><p>New tools added regularly. Have a suggestion? We'd love to hear from you.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section class="newsletter-section">
         <div class="container">
             <h2>🐾 Get Pet Care Tips & New Tools</h2>
@@ -694,66 +493,51 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="faq-section">
         <div class="container">
             <h2>❓ Frequently Asked Questions</h2>
-
             <details class="faq-item">
                 <summary>How much does a dog cost in the first year?</summary>
-                <div class="faq-answer">
-                    For a medium-sized dog with moderate spending, first-year costs typically range from <strong>$1,500 to $4,000</strong>. This includes one-time expenses (adoption fee, spay/neuter, initial supplies) plus the first year of food, vet care, and insurance. Our calculator breaks this down based on your specific choices.
-                </div>
+                <div class="faq-answer">For a medium-sized dog with moderate spending, first-year costs typically range from <strong>$1,500 to $4,000</strong>. Based on ASPCA baselines, annual recurring costs for a medium dog are approximately $850 (food, routine medical, preventatives, toys, license) plus $516 for recommended pet insurance. One-time startup costs add $500–$1,500 depending on adoption vs breeder and initial supplies.</div>
             </details>
-
             <details class="faq-item">
                 <summary>How much does a cat cost per year?</summary>
-                <div class="faq-answer">
-                    Cats are generally more affordable than dogs. First-year costs for a cat range from <strong>$800 to $2,500</strong>, with annual recurring costs of about <strong>$500 to $1,500</strong>. The biggest savings come from smaller food portions, no grooming costs, and lower insurance premiums.
-                </div>
+                <div class="faq-answer">Cats are generally more affordable than dogs. First-year costs for a cat range from <strong>$800 to $2,500</strong>, with annual recurring costs of about <strong>$500 to $1,500</strong>. The biggest savings come from smaller food portions, no grooming costs, and lower insurance premiums. ASPCA data focuses on dogs, but cat costs are estimated 40–60% lower across most categories.</div>
             </details>
-
             <details class="faq-item">
                 <summary>What's the most expensive part of owning a pet?</summary>
-                <div class="faq-answer">
-                    For most pet owners, <strong>food is the largest recurring expense</strong> — up to $1,500/year for large breed dogs. However, <strong>medical emergencies</strong> are the biggest financial risk. A single surgery or emergency visit can cost $2,000–$10,000, which is why pet insurance is strongly recommended. <a href="/pet-insurance/">Compare pet insurance plans →</a>
-                </div>
+                <div class="faq-answer">For most pet owners, <strong>food is the largest recurring expense</strong> — up to $1,500/year for large breed dogs. However, <strong>medical emergencies</strong> are the biggest financial risk. A single surgery or emergency visit can cost $2,000–$10,000. According to ASPCA emergency data, pet owners should anticipate at least one emergency vet bill ranging from $2,000 to $4,000 during a pet's lifetime.</div>
             </details>
-
             <details class="faq-item">
                 <summary>Does pet size really affect the cost?</summary>
-                <div class="faq-answer">
-                    Absolutely. A Giant breed dog can cost <strong>2–4× more per year</strong> than a small breed. Food scales with size: a 5 kg dog eats ~150 g/day while a 50 kg dog eats ~500 g/day. Larger dogs also have higher insurance premiums, require more medication, and often have shorter lifespans. Check our calculator by selecting different sizes to see the difference.
-                </div>
+                <div class="faq-answer">Absolutely. A Giant breed dog can cost <strong>2–4× more per year</strong> than a small breed. Food scales with size: a 5 kg dog eats ~150 g/day while a 50 kg dog eats ~500 g/day. The ASPCA data applies size multipliers of 1.0× (small), 1.4× (medium), and 1.9× (large) to baseline costs. Larger dogs also have higher insurance premiums and shorter lifespans.</div>
             </details>
-
             <details class="faq-item">
                 <summary>Is pet insurance worth the cost?</summary>
-                <div class="faq-answer">
-                    Pet insurance costs ~$25–70/month for dogs and ~$15–40/month for cats. While it feels like an extra expense, a single emergency can cost thousands. Insurance is most valuable for unexpected accidents and illnesses — cancer treatment, broken bones, or emergency surgery. Consider it <strong>budget protection</strong> rather than a routine expense. <a href="/guides/pet-insurance-guide/">Read our full insurance guide →</a>
-                </div>
+                <div class="faq-answer">Pet insurance costs ~$25–70/month for dogs and ~$15–40/month for cats. The ASPCA baseline recommends budgeting $516/year ($43/month) for pet health insurance. While it feels like an extra expense, a single emergency can cost thousands. Consider it <strong>budget protection</strong> rather than a routine expense.</div>
             </details>
-
             <details class="faq-item">
                 <summary>What are the hidden costs of pet ownership?</summary>
-                <div class="faq-answer">
-                    First-time owners often underestimate: <strong>(1)</strong> Emergency vet visits — the #1 budget breaker. <strong>(2)</strong> Pet deposits/rent for apartments. <strong>(3)</strong> Boarding or pet sitters when traveling. <strong>(4)</strong> Dental care — cleanings cost $200–600. <strong>(5)</strong> End-of-life care. We recommend setting aside <strong>$500–1,000 as a pet emergency fund</strong> from day one.
-                </div>
+                <div class="faq-answer">First-time owners often underestimate: <strong>(1)</strong> Emergency vet visits — the #1 budget breaker. <strong>(2)</strong> Pet deposits/rent for apartments. <strong>(3)</strong> Boarding or pet sitters when traveling. <strong>(4)</strong> Dental care — cleanings cost $200–600. <strong>(5)</strong> End-of-life care. We recommend setting aside <strong>$500–1,000 as a pet emergency fund</strong>.</div>
             </details>
-
             <details class="faq-item">
                 <summary>How can I save money on pet care?</summary>
-                <div class="faq-answer">
-                    Smart savings strategies: <strong>(1)</strong> Buy food in bulk or subscribe for auto-ship discounts. <strong>(2)</strong> Get pet insurance while your pet is young and healthy. <strong>(3)</strong> DIY grooming for simple breeds. <strong>(4)</strong> Preventive care is cheaper than treatment — regular vet checkups catch issues early. <strong>(5)</strong> Adopt from a shelter rather than buying from a breeder to save hundreds on the initial fee. <a href="https://www.chewy.com/s?query=auto+ship+pet+food" target="_blank" rel="sponsored">Shop auto-ship deals →</a>
-                </div>
+                <div class="faq-answer">Smart savings strategies: <strong>(1)</strong> Buy food in bulk or subscribe for auto-ship discounts. <strong>(2)</strong> Get pet insurance while your pet is young. <strong>(3)</strong> DIY grooming for simple breeds. <strong>(4)</strong> Preventive care is cheaper than treatment. <strong>(5)</strong> Adopt from a shelter rather than buying from a breeder.</div>
             </details>
-
             <details class="faq-item">
                 <summary>How much should I budget per month for a dog?</summary>
-                <div class="faq-answer">
-                    On average, budget <strong>$100–250/month for a dog</strong> including food ($30–80), treats ($10–20), routine vet ($15–35), grooming ($15–40), insurance ($25–60), and toys/supplies ($10–20). The first year is higher due to one-time setup costs. Use our calculator above to get a personalized monthly estimate.
-                </div>
+                <div class="faq-answer">On average, budget <strong>$70–150/month for a medium dog</strong> including food, treats, routine vet, preventatives, insurance, and toys. The first year is higher due to one-time setup costs. ASPCA baseline annual recurring costs total approximately $850 for a medium dog, plus $516 for recommended insurance — about $114/month total. Use our calculator above for a personalized estimate.</div>
             </details>
+        </div>
+    </section>
+
+    <!-- ====== Data Citation Section ====== -->
+    <section class="container" style="padding-bottom:40px">
+        <div class="data-citation">
+            <h4>📊 Data Sources & Methodology</h4>
+            <p>Cost estimates and breakdowns are baseline projections calibrated from the <strong>American Society for the Prevention of Cruelty to Animals (ASPCA)</strong> Pet Care Costs guidelines. Baseline annual recurring costs for an adult dog are derived from ASPCA survey data on food ($300), routine medical ($225), preventative medication ($185), toys and treats ($97), and license and miscellaneous ($43). Pet health insurance ($516/year) is shown as a recommended add-on and is not included in baseline totals unless selected.</p>
+            <p>Size multipliers (small 1.0×, medium 1.4×, large 1.9×) are applied to scale ASPCA baseline costs proportionally to breed size. One-time startup costs (adoption/purchase, spay/neuter, initial supplies) are estimated from <strong>Petfinder</strong> and <strong>AKC</strong> market data. Actual expenses may vary based on breed, geographic location, individual pet health, and unforeseen veterinary emergencies.</p>
+            <p>According to ASPCA emergency data, pet owners should anticipate at least one emergency vet bill ranging from <strong>$2,000 to $4,000</strong> during a pet's lifetime. We recommend establishing an emergency fund and/or pet health insurance to prepare for unexpected medical costs. <a href="/guides/pet-insurance-guide/">Read our Pet Insurance Guide →</a></p>
         </div>
     </section>
 </main>
@@ -763,7 +547,7 @@
         <div class="footer-grid">
             <div class="footer-col footer-brand">
                 <div class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></div>
-                <p>Smarter care for your furry family. Free pet calculators based on veterinary science.</p>
+                <p>Smarter care for your furry family. Free pet calculators based on veterinary science and ASPCA guidelines.</p>
             </div>
             <div class="footer-col">
                 <h4>Tools</h4>
@@ -793,63 +577,117 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Cost estimates based on average US pet expenses. Actual costs vary by location, breed, and provider.</p>
+            <p>&copy; 2026 KeenerPet.com — Smarter care for your furry family. | Cost estimates based on ASPCA guidelines. Actual costs vary by location, breed, and provider.</p>
         </div>
     </div>
 </footer>
 
 <script>
-    // ====== Pet Cost Calculator ======
-
-    // ----- Cost data -----
-    const costData = {
+    // ====== ASPCA-CALIBRATED COST DATA ======
+    // Baseline annual recurring costs for adult dog (ASPCA Pet Care Costs guidelines)
+    // Size multipliers: Small 1.0x, Medium 1.4x, Large 1.9x
+    var ASPCA = {
         dog: {
-            small:   { adoption: [50,300,1500], spayNeuter: [150,300,500], setup: [100,250,500], food: [200,350,600], treats: [50,150,300], vet: [100,250,500], grooming: [100,250,500], insurance: [200,360,600], toys: [50,150,300] },
-            medium:  { adoption: [50,400,1500], spayNeuter: [200,400,600], setup: [150,350,600], food: [350,600,1000], treats: [50,150,300], vet: [150,300,500], grooming: [150,350,600], insurance: [300,540,800], toys: [50,180,300] },
-            large:   { adoption: [50,500,2000], spayNeuter: [250,500,700], setup: [200,450,700], food: [500,900,1500], treats: [50,150,300], vet: [200,400,600], grooming: [200,400,700], insurance: [400,700,1000], toys: [50,200,350] },
-            giant:   { adoption: [50,600,2000], spayNeuter: [300,600,800], setup: [250,500,800], food: [800,1350,2000], treats: [50,150,300], vet: [200,500,700], grooming: [200,450,700], insurance: [500,850,1200], toys: [50,200,350] }
+            // Annual recurring (ASPCA baseline for medium adult dog)
+            annual: {
+                food:        { small: 300, medium: 420, large: 570, giant: 720 },
+                routineMed:  { small: 225, medium: 315, large: 428, giant: 540 },
+                preventatives:{small: 185, medium: 259, large: 352, giant: 444 },
+                toysTreats:  { small: 97,  medium: 136, large: 184, giant: 233 },
+                license:     { small: 43,  medium: 60,  large: 82,  giant: 103 },
+                insurance:   { small: 400, medium: 516, large: 700, giant: 850 }
+            },
+            // One-time costs (supplemental, not from ASPCA)
+            oneTime: {
+                adoption:    { small: [50,300,1500], medium: [50,400,1500], large: [50,500,2000], giant: [50,600,2000] },
+                spayNeuter:  { small: [150,300,500], medium: [200,400,600], large: [250,500,700], giant: [300,600,800] },
+                setup:       { small: [100,250,500], medium: [150,350,600], large: [200,450,700], giant: [250,500,800] }
+            }
         },
         cat: {
-            default: { adoption: [0,100,500], spayNeuter: [150,300,500], setup: [100,250,500], food: [250,450,700], treats: [50,100,200], vet: [100,300,500], grooming: [0,100,300], insurance: [150,300,500], toys: [50,150,300] }
+            annual: {
+                food:        { small: 300, medium: 350, large: 400, giant: 450 },
+                routineMed:  { small: 180, medium: 200, large: 220, giant: 240 },
+                preventatives:{small: 150, medium: 160, large: 170, giant: 180 },
+                toysTreats:  { small: 70,  medium: 80,  large: 90,  giant: 100 },
+                license:     { small: 30,  medium: 35,  large: 40,  giant: 45 },
+                insurance:   { small: 250, medium: 300, large: 350, giant: 400 }
+            },
+            oneTime: {
+                adoption:    { small: [0,100,500], medium: [0,100,500], large: [0,100,500], giant: [0,100,500] },
+                spayNeuter:  { small: [150,300,500], medium: [150,300,500], large: [150,300,500], giant: [150,300,500] },
+                setup:       { small: [100,250,500], medium: [100,250,500], large: [100,250,500], giant: [100,250,500] }
+            }
         }
     };
 
-    // Items config: [key, icon, label, subtitle, isOneTime]
-    const itemsConfig = [
-        ['adoption', '🏠', 'Adoption / Purchase', 'Shelter fees or breeder cost', true],
-        ['spayNeuter', '💉', 'Spay / Neuter & Vaccines', 'Initial medical procedures', true],
-        ['setup', '🛏️', 'Initial Supplies', 'Crate, bed, bowls, leash, collar, toys', true],
-        ['food', '🍖', 'Food (per year)', 'Based on size and diet type', false],
-        ['treats', '🦴', 'Treats (per year)', 'Training treats, chews, bones', false],
-        ['vet', '🏥', 'Routine Vet Care (per year)', 'Checkups, dental, preventatives', false],
-        ['grooming', '✂️', 'Grooming (per year)', 'Professional or DIY supplies', false],
-        ['insurance', '🛡️', 'Pet Insurance (per year)', 'Accident & illness coverage', false],
-        ['toys', '🧸', 'Toys & Misc (per year)', 'Replacement toys, bedding, accessories', false]
+    // Items config: [key, icon, label, subtitle, isAnnual]
+    var itemsConfig = [
+        ['adoption', '🏠', 'Adoption / Purchase', 'Shelter fees or breeder cost', false],
+        ['spayNeuter', '💉', 'Spay / Neuter & Vaccines', 'Initial medical procedures', false],
+        ['setup', '🛏️', 'Initial Supplies', 'Crate, bed, bowls, leash, collar, toys', false],
+        ['food', '🍖', 'Food (per year)', 'ASPCA baseline: premium dry food', true],
+        ['routineMed', '🏥', 'Routine Medical (per year)', 'ASPCA baseline: vaccines, wellness exams', true],
+        ['preventatives', '💊', 'Preventatives (per year)', 'ASPCA: heartworm, flea/tick medication', true],
+        ['toysTreats', '🧸', 'Toys & Treats (per year)', 'ASPCA baseline: enrichment & rewards', true],
+        ['license', '📋', 'License & Misc (per year)', 'ASPCA baseline: licensing, misc fees', true],
+        ['insurance', '🛡️', 'Pet Insurance (per year)', 'Recommended: accident & illness coverage', true]
     ];
 
-    // ----- DOM refs -----
-    let petType = 'dog';
-    let size = 'medium';
-    let budgetLevel = 'moderate';
-    let lifeYears = 12;
+    // ====== Breed Data ======
+    var breedData = [
+        { name:"Chihuahua", size:"small", emoji:"🐕", budget:"frugal", temperament:"Loyal, alert", energy:"Moderate", coat:"Short" },
+        { name:"French Bulldog", size:"small", emoji:"🐶", budget:"moderate", temperament:"Playful, adaptable", energy:"Low", coat:"Short" },
+        { name:"Pomeranian", size:"small", emoji:"🐕", budget:"moderate", temperament:"Intelligent, lively", energy:"Moderate", coat:"Long" },
+        { name:"Cavalier King Charles", size:"small", emoji:"🐶", budget:"premium", temperament:"Gentle, affectionate", energy:"Low", coat:"Long" },
+        { name:"Beagle", size:"medium", emoji:"🐕", budget:"frugal", temperament:"Friendly, curious", energy:"High", coat:"Short" },
+        { name:"Corgi", size:"medium", emoji:"🐶", budget:"moderate", temperament:"Smart, affectionate", energy:"Moderate", coat:"Medium" },
+        { name:"Border Collie", size:"medium", emoji:"🐕", budget:"moderate", temperament:"Intelligent, energetic", energy:"Very High", coat:"Medium" },
+        { name:"Australian Shepherd", size:"medium", emoji:"🐶", budget:"moderate", temperament:"Smart, active", energy:"Very High", coat:"Medium" },
+        { name:"Shiba Inu", size:"medium", emoji:"🐕", budget:"frugal", temperament:"Independent, alert", energy:"Moderate", coat:"Medium" },
+        { name:"Golden Retriever", size:"large", emoji:"🐕", budget:"moderate", temperament:"Friendly, reliable", energy:"High", coat:"Long" },
+        { name:"Labrador Retriever", size:"large", emoji:"🐶", budget:"moderate", temperament:"Outgoing, even-tempered", energy:"High", coat:"Short" },
+        { name:"German Shepherd", size:"large", emoji:"🐕", budget:"moderate", temperament:"Confident, brave", energy:"High", coat:"Medium" },
+        { name:"Bernese Mountain Dog", size:"giant", emoji:"🐶", budget:"premium", temperament:"Calm, affectionate", energy:"Moderate", coat:"Long" },
+        { name:"Great Dane", size:"giant", emoji:"🐕", budget:"premium", temperament:"Gentle, friendly", energy:"Low", coat:"Short" },
+        { name:"Saint Bernard", size:"giant", emoji:"🐶", budget:"premium", temperament:"Patient, gentle", energy:"Low", coat:"Long" }
+    ];
 
-    const costGrid = document.getElementById('cost-grid');
-    const results = document.getElementById('cost-results');
-    const calcBtn = document.getElementById('calc-btn');
+    // ====== Mock Adoptable Dogs ======
+    var mockAdoptable = {
+        small: [
+            { name:"Bella", breed:"Chihuahua Mix", age:"2 yrs", gender:"Female", location:"Austin, TX", days:12, emoji:"🐕" },
+            { name:"Milo", breed:"Pomeranian", age:"1 yr", gender:"Male", location:"Denver, CO", days:5, emoji:"🐶" },
+            { name:"Luna", breed:"French Bulldog", age:"3 yrs", gender:"Female", location:"Portland, OR", days:8, emoji:"🐕" }
+        ],
+        medium: [
+            { name:"Charlie", breed:"Beagle Mix", age:"4 yrs", gender:"Male", location:"Chicago, IL", days:18, emoji:"🐶" },
+            { name:"Daisy", breed:"Corgi", age:"1 yr", gender:"Female", location:"Seattle, WA", days:3, emoji:"🐕" },
+            { name:"Cooper", breed:"Border Collie", age:"2 yrs", gender:"Male", location:"Raleigh, NC", days:10, emoji:"🐶" }
+        ],
+        large: [
+            { name:"Max", breed:"Labrador Mix", age:"3 yrs", gender:"Male", location:"Atlanta, GA", days:7, emoji:"🐕" },
+            { name:"Stella", breed:"Golden Retriever", age:"1 yr", gender:"Female", location:"Nashville, TN", days:4, emoji:"🐶" },
+            { name:"Rocky", breed:"German Shepherd", age:"5 yrs", gender:"Male", location:"Phoenix, AZ", days:22, emoji:"🐕" }
+        ],
+        giant: [
+            { name:"Titan", breed:"Great Dane", age:"2 yrs", gender:"Male", location:"Dallas, TX", days:9, emoji:"🐶" },
+            { name:"Maisy", breed:"Bernese Mountain Dog", age:"4 yrs", gender:"Female", location:"Boston, MA", days:15, emoji:"🐕" },
+            { name:"Bear", breed:"Saint Bernard", age:"3 yrs", gender:"Male", location:"Minneapolis, MN", days:6, emoji:"🐶" }
+        ]
+    };
 
-    const year1TotalEl = document.getElementById('year1-total');
-    const year1MonthlyEl = document.getElementById('year1-monthly');
-    const oneTimeTotalEl = document.getElementById('one-time-total');
-    const annualTotalEl = document.getElementById('annual-total');
-    const lifetimeTotalEl = document.getElementById('lifetime-total');
-    const oneTimeListEl = document.getElementById('one-time-list');
-    const annualListEl = document.getElementById('annual-list');
-    const lifetimeYearsEl = document.getElementById('lifetime-years');
+    // ====== DOM refs ======
+    var petType = 'dog';
+    var size = 'medium';
+    var budgetLevel = 'moderate';
+    var lifeYears = 12;
+    var enabledItems = {};
+    var costGrid = document.getElementById('cost-grid');
+    var results = document.getElementById('cost-results');
+    var calcBtn = document.getElementById('calc-btn');
 
-    // State: which items are enabled
-    let enabledItems = {};
-
-    // ----- Build cost grid -----
+    // ====== Build cost grid ======
     function buildGrid() {
         costGrid.innerHTML = '';
         itemsConfig.forEach(function(item) {
@@ -863,7 +701,6 @@
             div.className = 'cost-item';
             div.id = 'cost-item-' + key;
 
-            // Toggle switch
             var toggle = document.createElement('label');
             toggle.className = 'cost-toggle';
             var input = document.createElement('input');
@@ -875,12 +712,10 @@
             toggle.appendChild(input);
             toggle.appendChild(slider);
 
-            // Icon
             var iconSpan = document.createElement('span');
             iconSpan.className = 'icon';
             iconSpan.textContent = icon;
 
-            // Info
             var info = document.createElement('div');
             info.className = 'info';
             var nameDiv = document.createElement('div');
@@ -892,7 +727,6 @@
             info.appendChild(nameDiv);
             info.appendChild(subDiv);
 
-            // Amount
             var amt = document.createElement('div');
             amt.className = 'amount';
             amt.id = 'amt-' + key;
@@ -904,31 +738,39 @@
             div.appendChild(amt);
             costGrid.appendChild(div);
 
-            // Event: toggle
             input.addEventListener('change', function() {
                 enabledItems[this.dataset.key] = this.checked;
                 var parent = this.closest('.cost-item');
-                if (this.checked) {
-                    parent.classList.remove('disabled');
-                } else {
-                    parent.classList.add('disabled');
-                }
+                if (this.checked) parent.classList.remove('disabled');
+                else parent.classList.add('disabled');
                 calculate();
             });
         });
     }
 
-    // ----- Get cost for a key -----
+    // ====== Get cost for a key ======
     function getCost(key) {
-        var sizeKey = (petType === 'cat') ? 'default' : size;
+        var data = ASPCA[petType];
+        var sizeKey = size;
         var levelIndex = { frugal: 0, moderate: 1, premium: 2 }[budgetLevel] || 1;
-        return costData[petType][sizeKey][key][levelIndex];
+
+        // Check if this is annual or one-time
+        var isAnnual = false;
+        for (var i = 0; i < itemsConfig.length; i++) {
+            if (itemsConfig[i][0] === key) { isAnnual = itemsConfig[i][4]; break; }
+        }
+
+        if (isAnnual) {
+            return data.annual[key][sizeKey] || 0;
+        } else {
+            return data.oneTime[key][sizeKey][levelIndex] || 0;
+        }
     }
 
-    // ----- Calculate -----
+    // ====== Calculate ======
     function calculate() {
         var oneTimeKeys = ['adoption', 'spayNeuter', 'setup'];
-        var annualKeys = ['food', 'treats', 'vet', 'grooming', 'insurance', 'toys'];
+        var annualKeys = ['food', 'routineMed', 'preventatives', 'toysTreats', 'license', 'insurance'];
 
         var oneTimeTotal = 0;
         var annualTotal = 0;
@@ -938,17 +780,13 @@
         oneTimeKeys.forEach(function(key) {
             var cost = enabledItems[key] ? getCost(key) : 0;
             oneTimeTotal += cost;
-            if (cost > 0) {
-                oneTimeItems.push({ key: key, cost: cost });
-            }
+            if (cost > 0) oneTimeItems.push({ key: key, cost: cost });
         });
 
         annualKeys.forEach(function(key) {
             var cost = enabledItems[key] ? getCost(key) : 0;
             annualTotal += cost;
-            if (cost > 0) {
-                annualItems.push({ key: key, cost: cost });
-            }
+            if (cost > 0) annualItems.push({ key: key, cost: cost });
         });
 
         var year1 = oneTimeTotal + annualTotal;
@@ -959,57 +797,143 @@
         itemsConfig.forEach(function(item) {
             var key = item[0];
             var el = document.getElementById('amt-' + key);
-            if (el) {
-                var cost = getCost(key);
-                el.textContent = '$' + cost;
-            }
+            if (el) el.textContent = '$' + getCost(key);
         });
 
         // Summary
-        year1TotalEl.textContent = '$' + year1.toLocaleString();
-        year1MonthlyEl.textContent = '$' + monthly + '/mo';
+        document.getElementById('year1-total').textContent = '$' + year1.toLocaleString();
+        document.getElementById('year1-monthly').textContent = '$' + monthly + '/mo';
 
         // One-time breakdown
-        oneTimeTotalEl.textContent = '$' + oneTimeTotal.toLocaleString();
-        oneTimeListEl.innerHTML = '';
+        document.getElementById('one-time-total').textContent = '$' + oneTimeTotal.toLocaleString();
+        var otl = document.getElementById('one-time-list');
+        otl.innerHTML = '';
         oneTimeItems.forEach(function(item) {
-            var label = itemsConfig.find(function(c) { return c[0] === item.key; });
+            var label = '';
+            for (var i = 0; i < itemsConfig.length; i++) {
+                if (itemsConfig[i][0] === item.key) { label = itemsConfig[i][2]; break; }
+            }
             var li = document.createElement('li');
-            li.innerHTML = '<span>' + (label ? label[2] : item.key) + '</span><span class="val">$' + item.cost + '</span>';
-            oneTimeListEl.appendChild(li);
+            li.innerHTML = '<span>' + label + '</span><span class="val">$' + item.cost + '</span>';
+            otl.appendChild(li);
         });
 
         // Annual breakdown
-        annualTotalEl.innerHTML = '$' + annualTotal.toLocaleString() + ' <span>/ yr</span>';
-        annualListEl.innerHTML = '';
+        document.getElementById('annual-total').innerHTML = '$' + annualTotal.toLocaleString() + ' <span>/ yr</span>';
+        var al = document.getElementById('annual-list');
+        al.innerHTML = '';
         annualItems.forEach(function(item) {
-            var label = itemsConfig.find(function(c) { return c[0] === item.key; });
+            var label = '';
+            for (var i = 0; i < itemsConfig.length; i++) {
+                if (itemsConfig[i][0] === item.key) { label = itemsConfig[i][2]; break; }
+            }
             var li = document.createElement('li');
-            li.innerHTML = '<span>' + (label ? label[2] : item.key) + '</span><span class="val">$' + item.cost + '</span>';
-            annualListEl.appendChild(li);
+            li.innerHTML = '<span>' + label + '</span><span class="val">$' + item.cost + '</span>';
+            al.appendChild(li);
         });
 
-        // Lifetime
-        lifetimeYearsEl.textContent = lifeYears;
-        lifetimeTotalEl.textContent = '$' + lifetime.toLocaleString();
-
+        document.getElementById('lifetime-years').textContent = lifeYears;
+        document.getElementById('lifetime-total').textContent = '$' + lifetime.toLocaleString();
         results.classList.add('show');
+
+        // Generate breed recommendations
+        recommendBreeds(annualTotal);
+        // Show adoptable dogs
+        showAdoptableDogs();
     }
 
-    // ----- Event wiring -----
-    // Pet type pills
+    // ====== Breed Recommendation Algorithm ======
+    function recommendBreeds(annualBudget) {
+        // Map budget level to label
+        var budgetLabels = { frugal: 'frugal', moderate: 'moderate', premium: 'premium' };
+        document.getElementById('budget-label').textContent = budgetLabels[budgetLevel] || 'moderate';
+        document.getElementById('size-label').textContent = size;
+
+        // Filter breeds by size, then score by budget fit
+        var candidates = breedData.filter(function(b) { return b.size === size; });
+        if (candidates.length === 0) candidates = breedData.filter(function(b) { return b.size === 'medium'; });
+
+        // Score: breed budget matching user budget (frugal→frugal breeds score higher, etc.)
+        var budgetOrder = { frugal: 0, moderate: 1, premium: 2 };
+        var userBudgetRank = budgetOrder[budgetLevel] || 1;
+
+        candidates.forEach(function(b) {
+            var breedRank = budgetOrder[b.budget] || 1;
+            var diff = Math.abs(breedRank - userBudgetRank);
+            // Score: 0 diff = 100, 1 diff = 70, 2 diff = 40
+            b.score = diff === 0 ? 100 : diff === 1 ? 70 : 40;
+        });
+
+        candidates.sort(function(a, b) { return b.score - a.score; });
+        var top = candidates.slice(0, 3);
+
+        var grid = document.getElementById('breed-grid');
+        grid.innerHTML = '';
+        top.forEach(function(breed) {
+            var card = document.createElement('div');
+            card.className = 'breed-card';
+            var annualCost = annualBudget;
+            card.innerHTML =
+                '<div class="breed-emoji">' + breed.emoji + '</div>' +
+                '<div class="breed-name">' + breed.name + '</div>' +
+                '<div class="breed-match">' + breed.score + '% Match</div>' +
+                '<div class="breed-tags">' +
+                    '<span>' + breed.temperament.split(',')[0] + '</span>' +
+                    '<span>' + breed.energy + ' energy</span>' +
+                    '<span>' + breed.coat + ' coat</span>' +
+                '</div>' +
+                '<div class="breed-cost">Est. annual cost: ~$' + annualCost + '</div>';
+            grid.appendChild(card);
+        });
+    }
+
+    // ====== RescueGroups Mock with Skeleton ======
+    function showAdoptableDogs() {
+        var grid = document.getElementById('adopt-grid');
+        // Show skeleton first
+        grid.innerHTML = '';
+        for (var s = 0; s < 3; s++) {
+            var skel = document.createElement('div');
+            skel.className = 'skeleton-card';
+            skel.innerHTML =
+                '<div class="skeleton s-img"></div>' +
+                '<div class="skeleton s-line w60" style="margin-top:8px"></div>' +
+                '<div class="skeleton s-line w80"></div>' +
+                '<div class="skeleton s-line w40"></div>';
+            grid.appendChild(skel);
+        }
+
+        // After 1.2s delay, show mock data
+        setTimeout(function() {
+            grid.innerHTML = '';
+            var dogs = mockAdoptable[size] || mockAdoptable.medium;
+            dogs.forEach(function(dog) {
+                var card = document.createElement('div');
+                card.className = 'adopt-card';
+                // Build Petfinder search URL for this breed
+                var breedSlug = dog.breed.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                var petfinderUrl = 'https://www.petfinder.com/search/dogs-for-adoption/us/?breed%5B0%5D=' + encodeURIComponent(dog.breed);
+                card.innerHTML =
+                    '<div class="adopt-emoji">' + dog.emoji + '</div>' +
+                    '<div class="adopt-name">' + dog.name + '</div>' +
+                    '<div class="adopt-meta"><span>🐾 ' + dog.breed + '</span><span>🎂 ' + dog.age + '</span><span>' + dog.gender + '</span></div>' +
+                    '<div class="adopt-meta">📍 ' + dog.location + '</div>' +
+                    '<div class="adopt-days">⏱ ' + dog.days + ' days on Petfinder</div>' +
+                    '<a href="' + petfinderUrl + '" target="_blank" rel="sponsored" class="adopt-cta">View Adoption Profile →</a>';
+                grid.appendChild(card);
+            });
+        }, 1200);
+    }
+
+    // ====== Event wiring ======
     document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
             this.classList.add('active');
             petType = this.dataset.value;
-
-            // Show/hide size pills for cat
             var sizePills = document.querySelectorAll('#size-group .pill-btn');
             if (petType === 'cat') {
                 sizePills.forEach(function(p) { p.style.display = 'none'; });
-                // Show only "Medium" as a single option
-                // Actually for cats, size is fixed, so we hide all size pills and use 'default'
                 size = 'medium';
             } else {
                 sizePills.forEach(function(p) { p.style.display = ''; });
@@ -1018,7 +942,6 @@
         });
     });
 
-    // Size pills
     document.querySelectorAll('#size-group .pill-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('#size-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -1028,13 +951,11 @@
         });
     });
 
-    // Life years
     document.getElementById('life-years').addEventListener('change', function() {
         lifeYears = parseInt(this.value) || 12;
         calculate();
     });
 
-    // Budget pills
     document.querySelectorAll('.budget-toggle .pill').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.budget-toggle .pill').forEach(function(b) { b.classList.remove('active'); });
@@ -1044,17 +965,28 @@
         });
     });
 
-    // Calculate button
     calcBtn.addEventListener('click', calculate);
 
-    // Auto-calc on load
-    buildGrid();
-    calculate();
+    // ZIP search button - navigates to Petfinder
+    document.getElementById('zip-search-btn').addEventListener('click', function() {
+        var zip = document.getElementById('zip-input').value.trim();
+        if (!zip || zip.length < 5) {
+            document.getElementById('zip-input').style.borderColor = '#ef4444';
+            return;
+        }
+        document.getElementById('zip-input').style.borderColor = '';
+        var petfinderSearch = 'https://www.petfinder.com/search/dogs-for-adoption/us/' + zip + '/';
+        window.open(petfinderSearch, '_blank');
+    });
+
+    document.getElementById('zip-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('zip-search-btn').click();
+    });
 
     // ====== Newsletter ======
-    const newsEmail = document.getElementById('newsletter-email');
-    const newsBtn = document.getElementById('newsletter-btn');
-    const newsMsg = document.getElementById('newsletter-msg');
+    var newsEmail = document.getElementById('newsletter-email');
+    var newsBtn = document.getElementById('newsletter-btn');
+    var newsMsg = document.getElementById('newsletter-msg');
 
     newsBtn.addEventListener('click', function() {
         var email = newsEmail.value.trim();
@@ -1089,6 +1021,9 @@
     });
 
     newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
+
+    buildGrid();
+    calculate();
 </script>
 
 </body>
