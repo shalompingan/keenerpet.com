@@ -208,6 +208,48 @@
         .data-citation p:last-child { margin-bottom: 0; }
         .data-citation a { color: var(--primary-dark); font-weight: 600; }
 
+        /* ====== Source Popover (ⓘ) ====== */
+        .source-btn {
+            background: none; border: none; cursor: pointer; padding: 0;
+            font-size: 13px; line-height: 1; color: var(--primary); flex-shrink: 0;
+            position: relative; opacity: 0.7; transition: opacity 0.15s;
+        }
+        .source-btn:hover { opacity: 1; }
+        .source-popover {
+            display: none; position: absolute; bottom: calc(100% + 8px);
+            left: 50%; transform: translateX(-50%); background: #292524;
+            color: #fff; font-size: 11px; line-height: 1.5; padding: 8px 10px;
+            border-radius: 6px; width: 220px; text-align: center; z-index: 100;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2); pointer-events: none;
+        }
+        .source-popover::after {
+            content: ''; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); border: 5px solid transparent;
+            border-top-color: #292524;
+        }
+        .source-popover.show { display: block; }
+        @media (max-width: 480px) {
+            .source-popover { width: 180px; left: auto; right: 0; transform: none; }
+            .source-popover::after { left: auto; right: 10px; }
+        }
+
+        /* ====== Calculation Details Panel ====== */
+        .calc-details {
+            margin-top: 16px; border: 1px solid #e7e5e4; border-radius: var(--radius);
+            background: #fafaf9; overflow: hidden;
+        }
+        .calc-details summary {
+            padding: 12px 16px; cursor: pointer; font-size: 13px; font-weight: 600;
+            color: var(--text-muted); user-select: none; transition: color 0.15s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .calc-details summary:hover { color: var(--text); }
+        .calc-details[open] summary { border-bottom: 1px solid #e7e5e4; color: var(--text); }
+        .calc-details-inner { padding: 14px 16px; }
+        .calc-details-inner p { font-size: 12px; line-height: 1.7; color: #78716c; margin-bottom: 6px; }
+        .calc-details-inner p:last-child { margin-bottom: 0; }
+        .calc-details-inner .formula { font-family: 'Courier New', monospace; font-size: 11px; background: #f5f5f4; padding: 8px 10px; border-radius: 6px; margin: 6px 0; color: #444; }
+
         /* ====== Print Styles ====== */
         @media print {
             header, .tools-section, .about-section, .newsletter-section, .faq-section,
@@ -394,6 +436,15 @@
                         <span class="label">🐾 Total over <span id="lifetime-years">12</span> years</span>
                         <span><span class="val" id="lifetime-total">$0</span><button class="print-badge" onclick="window.print()" aria-label="Save as PDF"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>PDF</button></span>
                     </div>
+
+                    <details class="calc-details" id="calc-details">
+                        <summary>📊 View calculation details</summary>
+                        <div class="calc-details-inner">
+                            <p id="calc-details-summary">Loading your cost breakdown...</p>
+                            <div class="formula" id="calc-details-formula"></div>
+                            <p style="font-size:11px;color:#a8a29e;margin-top:6px">Baseline data from Rover 2025 Cost of Pet Parenthood Report, APPA 2025 Pet Care Survey, ASPCA guidelines, and NAPHIA 2025 State of Pet Insurance Report.</p>
+                        </div>
+                    </details>
 
                     <div class="cost-actions">
                         <div class="cost-action-card">
@@ -614,15 +665,15 @@
 
     // Items config: [key, icon, label, subtitle, isAnnual]
     var itemsConfig = [
-        ['adoption', '🏠', 'Getting Your Pet', 'Adoption fees or breeder purchase', false],
-        ['spayNeuter', '💉', 'Spay / Neuter & Vaccines', 'Initial medical procedures', false],
-        ['setup', '🛏️', 'Initial Supplies', 'Crate, bed, bowls, leash, collar, toys', false],
-        ['food', '🍖', 'Food (per year)', 'ASPCA baseline: premium dry food', true],
-        ['routineMed', '🏥', 'Routine Medical (per year)', 'ASPCA baseline: vaccines, wellness exams', true],
-        ['preventatives', '💊', 'Preventatives (per year)', 'ASPCA: heartworm, flea/tick medication', true],
-        ['toysTreats', '🧸', 'Toys & Treats (per year)', 'ASPCA baseline: enrichment & rewards', true],
-        ['license', '📋', 'License & Misc (per year)', 'ASPCA baseline: licensing, misc fees', true],
-        ['insurance', '🛡️', 'Pet Insurance (per year)', 'Recommended: accident & illness coverage', true]
+        ['adoption', '🏠', 'Getting Your Pet', 'Adoption fees or breeder purchase', false, 'Petfinder 2025 shelter survey: $50-300 adoption fee; AKC breeder data: $800-5,000+'],
+        ['spayNeuter', '💉', 'Spay / Neuter & Vaccines', 'Initial medical procedures', false, 'ASPCA: spay/neuter $150-500; initial vaccine series $50-100'],
+        ['setup', '🛏️', 'Initial Supplies', 'Crate, bed, bowls, leash, collar, toys', false, 'APPA 2025 Pet Care Survey: initial supplies average $150-800'],
+        ['food', '🍖', 'Food (per year)', 'Rover 2025: premium dry food cost by breed size', true, 'Rover 2025 Cost of Pet Parenthood: $300-1,200/yr by breed size'],
+        ['routineMed', '🏥', 'Routine Medical (per year)', 'APPA: vaccines, wellness exams', true, 'APPA 2025 survey: routine vet care averages $200-600/yr'],
+        ['preventatives', '💊', 'Preventatives (per year)', 'ASPCA: heartworm, flea/tick medication', true, 'ASPCA guidelines: heartworm + flea/tick prevention $150-450/yr'],
+        ['toysTreats', '🧸', 'Toys & Treats (per year)', 'APPA: enrichment & rewards', true, 'APPA 2025 survey: toys, treats & enrichment $80-250/yr'],
+        ['license', '📋', 'License & Misc (per year)', 'APPA: licensing, misc fees', true, 'APPA 2025: licensing & misc fees average $35-100/yr'],
+        ['insurance', '🛡️', 'Pet Insurance (per year)', 'NAPHIA: accident & illness coverage', true, 'NAPHIA 2025 State of Pet Insurance: avg premium $250-850/yr']
     ];
 
     // ====== Breed Data ======
@@ -767,13 +818,37 @@
 
             var info = document.createElement('div');
             info.className = 'info';
+            var nameRow = document.createElement('div');
+            nameRow.style.cssText = 'display:flex;align-items:center;gap:4px';
             var nameDiv = document.createElement('div');
             nameDiv.className = 'name';
             nameDiv.textContent = name;
+            nameRow.appendChild(nameDiv);
+
+            var source = item[5];
+            if (source) {
+                var srcBtn = document.createElement('button');
+                srcBtn.type = 'button';
+                srcBtn.className = 'source-btn';
+                srcBtn.textContent = 'ⓘ';
+                srcBtn.setAttribute('aria-label', 'Data source: ' + source);
+                var popover = document.createElement('div');
+                popover.className = 'source-popover';
+                popover.textContent = source;
+                srcBtn.appendChild(popover);
+                srcBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var vis = popover.classList.contains('show');
+                    document.querySelectorAll('.source-popover.show').forEach(function(p) { p.classList.remove('show'); });
+                    if (!vis) popover.classList.add('show');
+                });
+                nameRow.appendChild(srcBtn);
+            }
+
             var subDiv = document.createElement('div');
             subDiv.className = 'sub';
             subDiv.textContent = sub;
-            info.appendChild(nameDiv);
+            info.appendChild(nameRow);
             info.appendChild(subDiv);
 
             var amt = document.createElement('div');
@@ -944,6 +1019,43 @@
                 insBanner.parentNode.insertBefore(compWrap, insBanner.nextSibling);
             }
         }
+
+        // Fill calculation details panel
+        var calcDetails = document.getElementById('calc-details');
+        var sizeLabels = { small: 'Small', medium: 'Medium', large: 'Large', giant: 'Giant' };
+        var budgetLabels = { frugal: 'Frugal', moderate: 'Moderate', premium: 'Premium' };
+        var detailSummary = 'Your selections: ' + (petType === 'dog' ? 'Dog' : 'Cat') +
+            (petType === 'dog' ? ' · ' + (sizeLabels[size] || 'Medium') : '') +
+            ' · ' + (budgetLabels[budgetLevel] || 'Moderate') + ' budget · ' + lifeYears + ' year lifespan';
+        document.getElementById('calc-details-summary').textContent = detailSummary;
+        var formulaHtml = '';
+        var catMode = petType === 'cat';
+        var detailKeys = catMode ? ['food', 'routineMed', 'preventatives', 'toysTreats', 'license', 'insurance'] : ['food', 'routineMed', 'preventatives', 'toysTreats', 'license', 'insurance'];
+        detailKeys.forEach(function(key) {
+            var cost = getCost(key);
+            if (cost > 0) {
+                var label = '';
+                for (var i = 0; i < itemsConfig.length; i++) {
+                    if (itemsConfig[i][0] === key) { label = itemsConfig[i][2]; break; }
+                }
+                formulaHtml += '<span style="display:block;padding:3px 0"><strong>' + label + ':</strong> $' + cost + '/yr</span>';
+            }
+        });
+        // One-time items
+        ['adoption', 'spayNeuter', 'setup'].forEach(function(key) {
+            var cost = getCost(key);
+            if (cost > 0) {
+                var label = '';
+                for (var i = 0; i < itemsConfig.length; i++) {
+                    if (itemsConfig[i][0] === key) { label = itemsConfig[i][2]; break; }
+                }
+                formulaHtml += '<span style="display:block;padding:3px 0"><strong>' + label + ':</strong> $' + cost + ' (one-time)</span>';
+            }
+        });
+        formulaHtml += '<span style="display:block;padding:3px 0;border-top:1px solid #e7e5e4;margin-top:4px;padding-top:6px"><strong>Year 1 Total:</strong> $' + year1.toLocaleString() + '</span>';
+        formulaHtml += '<span style="display:block;padding:3px 0"><strong>Annual (recurring):</strong> $' + annualTotal.toLocaleString() + '/yr</span>';
+        formulaHtml += '<span style="display:block;padding:3px 0"><strong>Monthly:</strong> $' + monthly + '/mo</span>';
+        document.getElementById('calc-details-formula').innerHTML = formulaHtml;
 
         document.getElementById('lifetime-years').textContent = lifeYears;
         document.getElementById('lifetime-total').textContent = '$' + lifetime.toLocaleString();
@@ -1135,6 +1247,14 @@
     });
 
     newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
+
+    // Close source popovers on outside click or Escape
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.source-popover.show').forEach(function(p) { p.classList.remove('show'); });
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') document.querySelectorAll('.source-popover.show').forEach(function(p) { p.classList.remove('show'); });
+    });
 
     loadState();
     applyStateToUI();
