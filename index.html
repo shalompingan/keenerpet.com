@@ -1191,41 +1191,73 @@
         if (!totalCost || totalCost <= 0) return;
 
         var medicalRisk = Math.round(totalCost * 0.3);
-        var premium = 516;
-        var monthly = 43;
-        var netExposure = Math.round(medicalRisk * 0.1);
-        var riskReduction = Math.round((1 - netExposure / medicalRisk) * 100);
-        var efficiency = (premium / medicalRisk).toFixed(2);
+        var insEnabled = enabledItems['insurance'] !== false;
+        var premiumCost = getCost('insurance');
+        var monthlyCost = Math.round(premiumCost / 12);
         var isMobile = window.innerWidth <= 640;
         var partnerizeUrl = 'https://www.chewy.com/pet-insurance/b/126371704';
+
+        var netExposure, riskReduction, efficiency, ctaText, ctaLabel, disclosureText, headline, subText;
+
+        if (insEnabled) {
+            netExposure = Math.round(medicalRisk * 0.1);
+            riskReduction = Math.round((1 - netExposure / medicalRisk) * 100);
+            efficiency = (premiumCost / medicalRisk).toFixed(2);
+            ctaLabel = 'Check Insurance Quotes →';
+            if (isMobile) {
+                headline = '$' + medicalRisk.toLocaleString() + ' medical risk gap — insured for $' + monthlyCost + '/mo';
+                subText = '$' + totalCost.toLocaleString() + ' total → $' + medicalRisk.toLocaleString() + ' risk → $' + premiumCost + '/yr insurance → $' + netExposure + ' net';
+            } else {
+                headline = 'Your pet\'s $' + totalCost.toLocaleString() + ' annual cost includes a $' + medicalRisk.toLocaleString() + ' medical risk gap';
+                subText = 'Here\'s the math: a routine $50 vet visit isn\'t what breaks the budget. It\'s the 1-in-3 chance of an unexpected illness or injury costing $2,000+ that creates real financial exposure.';
+            }
+            disclosureText = 'Data based on average US pet medical costs (2025–2026). Your actual risk varies by breed, age, and location. Insurance policy terms and exclusions apply — read the fine print. We may earn a commission if you purchase through this link.';
+        } else {
+            netExposure = medicalRisk;
+            riskReduction = 0;
+            efficiency = '0.00';
+            ctaLabel = '→ Add Insurance from $' + monthlyCost + '/mo';
+            if (isMobile) {
+                headline = '⚠️ $' + medicalRisk.toLocaleString() + ' risk gap — no insurance selected';
+                subText = '$' + totalCost.toLocaleString() + ' total → $' + medicalRisk.toLocaleString() + ' uninsured risk — you\'re covering 100% yourself';
+            } else {
+                headline = 'Your pet\'s $' + totalCost.toLocaleString() + ' annual cost includes a $' + medicalRisk.toLocaleString() + ' medical risk gap — and it\'s not insured';
+                subText = 'You\'re currently shouldering 100% of this medical risk yourself. Insurance was excluded from this estimate. Here\'s what it would cost to close the gap.';
+            }
+            disclosureText = 'Data based on average US pet medical costs (2025–2026). Your actual risk varies by breed, age, and location. Insurance policy terms and exclusions apply — read the fine print. We may earn a commission if you purchase through this link.';
+        }
 
         var html = '<div id="risk-banner-wrap" class="risk-banner">';
         html += '<button class="risk-banner-close" aria-label="Dismiss">×</button>';
 
         if (isMobile) {
-            html += '<h4>$' + medicalRisk.toLocaleString() + ' medical risk gap — insure for $' + monthly + '/mo?</h4>';
-            html += '<div class="sub">$' + totalCost.toLocaleString() + ' total → $' + medicalRisk.toLocaleString() + ' uninsured risk → $' + premium + '/yr insurance → $' + netExposure + ' net exposure</div>';
+            html += '<h4>' + headline + '</h4>';
+            html += '<div class="sub">' + subText + '</div>';
             html += '<div style="font-size:13px;margin:6px 0 10px">';
             html += '<div>• Risk reduction: ' + riskReduction + '%</div>';
             html += '<div>• Cost efficiency: $' + efficiency + '/$1 hedged</div>';
-            html += '<div>• Net exposure after insurance: $' + netExposure + '/yr</div>';
+            html += '<div>• Net exposure' + (insEnabled ? ' after insurance' : ' (uninsured') + ': $' + netExposure + '/yr</div>';
             html += '</div>';
-            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="mobile">Check Insurance Quotes →</a>';
-            html += '<div class="risk-banner-disclosure">Avg US data. Terms apply. We may earn a commission.</div>';
+            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="mobile">' + ctaLabel + '</a>';
+            html += '<div class="risk-banner-disclosure">' + (insEnabled ? 'Avg US data. Terms apply. We may earn a commission.' : 'Avg US data. Terms apply. We may earn a commission.') + '</div>';
         } else {
-            html += '<h4>Your pet\'s $' + totalCost.toLocaleString() + ' annual cost includes a $' + medicalRisk.toLocaleString() + ' medical risk gap</h4>';
-            html += '<div class="sub">Here\'s the math: a routine $50 vet visit isn\'t what breaks the budget. It\'s the 1-in-3 chance of an unexpected illness or injury costing $2,000+ that creates real financial exposure.</div>';
+            html += '<h4>' + headline + '</h4>';
+            html += '<div class="sub">' + subText + '</div>';
             html += '<table class="risk-banner-table">';
             html += '<tr><td>Total annual pet cost</td><td>$' + totalCost.toLocaleString() + '</td></tr>';
             html += '<tr><td>Uninsured medical risk exposure (30%)</td><td>$' + medicalRisk.toLocaleString() + '/year</td></tr>';
-            html += '<tr><td>Pet insurance premium (full coverage)</td><td>~$' + premium + '/year ($' + monthly + '/month)</td></tr>';
-            html += '<tr class="highlight"><td>Net exposure after insurance</td><td>$' + netExposure + '/year</td></tr>';
+            html += '<tr><td>Pet insurance premium (full coverage)</td><td>~$' + premiumCost + '/year ($' + monthlyCost + '/month)</td></tr>';
+            html += '<tr class="highlight"><td>' + (insEnabled ? 'Net exposure after insurance' : 'Your risk if uninsured') + '</td><td>$' + netExposure + '/year</td></tr>';
             html += '<tr><td>Risk reduction</td><td>' + riskReduction + '%</td></tr>';
             html += '<tr><td>Cost efficiency</td><td>$' + efficiency + ' per $1 of exposure hedged</td></tr>';
             html += '</table>';
-            html += '<div style="font-size:14px;color:#78716c;line-height:1.6;margin-bottom:8px">For less than the cost of one emergency vet visit per year, you eliminate ' + riskReduction + '% of your financial downside. At $' + efficiency + ' per dollar of risk covered, this is the single highest-ROI line item in your pet budget.</div>';
-            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="desktop">→ Check Pet Insurance Quotes</a>';
-            html += '<div class="risk-banner-disclosure">Data based on average US pet medical costs (2025–2026). Your actual risk varies by breed, age, and location. Insurance policy terms and exclusions apply — read the fine print. We may earn a commission if you purchase through this link.</div>';
+            if (insEnabled) {
+                html += '<div style="font-size:14px;color:#78716c;line-height:1.6;margin-bottom:8px">For less than the cost of one emergency vet visit per year, you eliminate ' + riskReduction + '% of your financial downside. At $' + efficiency + ' per dollar of risk covered, this is the single highest-ROI line item in your pet budget.</div>';
+            } else {
+                html += '<div style="font-size:14px;color:#78716c;line-height:1.6;margin-bottom:8px">Without insurance, the full $' + medicalRisk.toLocaleString() + ' medical risk falls on you. Adding coverage from $' + monthlyCost + '/month would reduce your exposure to just $' + Math.round(medicalRisk * 0.1) + '/year — a ' + Math.round((1 - 0.1) * 100) + '% reduction.</div>';
+            }
+            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="desktop">' + ctaLabel + '</a>';
+            html += '<div class="risk-banner-disclosure">' + disclosureText + '</div>';
         }
         html += '</div>';
 
@@ -1265,7 +1297,7 @@
             tool: 'cost-calculator',
             total_cost: totalCost,
             medical_risk: medicalRisk,
-            insurance_premium: premium,
+            insurance_premium: premiumCost,
             risk_gap_shown: true,
             pet_type: petType,
             pet_size: size
