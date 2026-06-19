@@ -7,6 +7,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
+const ADMIN_PASSWORD = 'keenerpet888';
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -68,8 +70,8 @@ async function handleApi(request, env, url) {
             },
             body: JSON.stringify({
               personalizations: [{ to: [{ email: 'support@keenerpet.com' }] }],
-              from: { email: 'support@keenerpet.com', name: 'KeenerPet Newsletter' },
-              subject: `New ${source} signup from KeenerPet`,
+              from: { email: 'hello@toolpackpro.com', name: 'KeenerPet Newsletter' },
+              subject: `[KeenerPet] New ${source} signup`,
               content: [{ type: 'text/plain', value: `Email: ${email}\nSource: ${source}\nTool: ${tool || 'N/A'}\nNote: ${note || 'N/A'}` }]
             })
           });
@@ -90,7 +92,7 @@ async function handleApi(request, env, url) {
 
   // === GET /api/collect-email/admin — admin panel ===
   if (request.method === 'GET' && path === '/api/collect-email/admin') {
-    const password = env.ADMIN_KEY || 'keenerpet2026';
+    const password = ADMIN_PASSWORD;
     const keyParam = url.searchParams.get('key');
 
     if (!keyParam || keyParam !== password) {
