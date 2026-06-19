@@ -90,17 +90,11 @@ async function handleApi(request, env, url) {
     }
   }
 
-  // === GET /api/collect-email/admin — admin panel ===
-  if (request.method === 'GET' && path === '/api/collect-email/admin') {
-    const password = ADMIN_PASSWORD;
-    const keyParam = url.searchParams.get('key');
-
-    if (!keyParam || keyParam !== password) {
-      const error = keyParam ? true : false;
-      return new Response(loginPage(error), {
-        status: 401,
-        headers: { 'Content-Type': 'text/html', ...corsHeaders },
-      });
+  // === GET /api/admin/<token> — admin panel (no password form, secret URL) ===
+  if (request.method === 'GET' && path.startsWith('/api/admin/')) {
+    const token = path.replace('/api/admin/', '');
+    if (token !== ADMIN_PASSWORD) {
+      return new Response('Not found', { status: 404 });
     }
 
     if (!env.NEWSLETTER) {
@@ -121,38 +115,6 @@ async function handleApi(request, env, url) {
   }
 
   return new Response('Not found', { status: 404 });
-}
-
-function loginPage(showError) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="utf-8"><title>Admin — KeenerPet</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, system-ui, sans-serif; background: #1c1917; color: #e7e5e4; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-  .box { background: #292524; border-radius: 16px; padding: 40px 32px; max-width: 380px; width: 90%; text-align: center; }
-  h1 { font-size: 20px; color: #d97706; margin-bottom: 6px; }
-  p { font-size: 13px; color: #a8a29e; margin-bottom: 24px; }
-  input { width: 100%; padding: 12px 16px; border: 1px solid #44403c; border-radius: 10px; background: #1c1917; color: #e7e5e4; font-size: 14px; outline: none; font-family: inherit; margin-bottom: 16px; }
-  input:focus { border-color: #d97706; }
-  button { width: 100%; padding: 12px; background: #d97706; color: #1c1917; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
-  button:hover { background: #b45309; }
-  .error { color: #ef4444; font-size: 13px; margin-bottom: 16px; display: ${showError ? 'block' : 'none'}; }
-</style></head>
-<body>
-<div class="box">
-  <h1>KeenerPet</h1>
-  <p>Enter admin password to view subscribers</p>
-  <div class="error" id="error">Incorrect password</div>
-  <input type="password" id="pwd" placeholder="Password" autofocus>
-  <button onclick="login()">Unlock</button>
-</div>
-<script>
-function login() { var p = document.getElementById('pwd').value; if (p) window.location.href = '?key=' + encodeURIComponent(p); }
-document.getElementById('pwd').addEventListener('keydown', function(e) { if (e.key === 'Enter') login(); });
-<\/script>
-</body></html>`;
 }
 
 function adminPage(entries) {
