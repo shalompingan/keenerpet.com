@@ -250,6 +250,43 @@
         .calc-details-inner p:last-child { margin-bottom: 0; }
         .calc-details-inner .formula { font-family: 'Courier New', monospace; font-size: 11px; background: #f5f5f4; padding: 8px 10px; border-radius: 6px; margin: 6px 0; color: #444; }
 
+        /* ====== Risk Gap Banner ====== */
+        .risk-banner {
+            margin-top: 20px; padding: 20px 24px;
+            background: #fffbeb; border-left: 4px solid var(--primary);
+            border-radius: var(--radius); position: relative;
+        }
+        .risk-banner-close {
+            position: absolute; top: 8px; right: 10px; background: none;
+            border: none; font-size: 18px; cursor: pointer;
+            color: #a8a29e; padding: 2px 6px; border-radius: 4px; line-height: 1;
+        }
+        .risk-banner-close:hover { background: #f5f5f4; color: #292524; }
+        .risk-banner h4 { font-size: 17px; font-weight: 700; color: #1c1917; margin-bottom: 4px; }
+        .risk-banner .sub { font-size: 14px; color: #78716c; margin-bottom: 12px; line-height: 1.6; }
+        .risk-banner-table { width: 100%; font-size: 13px; border-collapse: collapse; margin: 10px 0; }
+        .risk-banner-table td { padding: 5px 8px; border-bottom: 1px solid #f5f5f4; }
+        .risk-banner-table td:first-child { color: #78716c; }
+        .risk-banner-table td:last-child { text-align: right; font-weight: 600; color: #1c1917; }
+        .risk-banner-table tr.highlight td { font-weight: 700; color: var(--primary-dark); font-size: 14px; }
+        .risk-banner-cta {
+            display: inline-block; margin-top: 12px; padding: 12px 28px;
+            background: var(--primary); color: #fff; border-radius: 8px;
+            font-size: 14px; font-weight: 700; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .risk-banner-cta:hover { background: var(--primary-dark); }
+        .risk-banner-disclosure {
+            font-size: 11px; color: #a8a29e; margin-top: 10px; line-height: 1.5;
+        }
+        @media (max-width: 640px) {
+            .risk-banner { padding: 16px 18px; }
+            .risk-banner h4 { font-size: 15px; }
+            .risk-banner .sub { font-size: 13px; }
+            .risk-banner-table { font-size: 12px; }
+            .risk-banner-cta { display: block; width: 100%; text-align: center; padding: 14px; font-size: 15px; }
+        }
+
         /* ====== Print Styles ====== */
         @media print {
             header, .tools-section, .about-section, .newsletter-section, .faq-section,
@@ -1096,6 +1133,9 @@
             breedSection.style.display = '';
             recommendBreeds(annualTotal);
         }
+
+        // Risk gap banner
+        renderRiskBanner(year1);
     }
 
     // ====== Breed Recommendation Algorithm ======
@@ -1140,6 +1180,95 @@
                 '</div>' +
                 '<div class="breed-cost">Est. annual cost: ~$' + annualCost + '</div>';
             grid.appendChild(card);
+        });
+    }
+
+    // ====== Risk Gap Banner ======
+    function renderRiskBanner(totalCost) {
+        var existing = document.getElementById('risk-banner-wrap');
+        if (existing) existing.remove();
+        if (localStorage.getItem('keenerpet_risk_banner_dismissed') === 'true') return;
+        if (!totalCost || totalCost <= 0) return;
+
+        var medicalRisk = Math.round(totalCost * 0.3);
+        var premium = 516;
+        var monthly = 43;
+        var netExposure = Math.round(medicalRisk * 0.1);
+        var riskReduction = Math.round((1 - netExposure / medicalRisk) * 100);
+        var efficiency = (premium / medicalRisk).toFixed(2);
+        var isMobile = window.innerWidth <= 640;
+        var partnerizeUrl = 'https://www.chewy.com/pet-insurance/b/126371704';
+
+        var html = '<div id="risk-banner-wrap" class="risk-banner">';
+        html += '<button class="risk-banner-close" aria-label="Dismiss">×</button>';
+
+        if (isMobile) {
+            html += '<h4>$' + medicalRisk.toLocaleString() + ' medical risk gap — insure for $' + monthly + '/mo?</h4>';
+            html += '<div class="sub">$' + totalCost.toLocaleString() + ' total → $' + medicalRisk.toLocaleString() + ' uninsured risk → $' + premium + '/yr insurance → $' + netExposure + ' net exposure</div>';
+            html += '<div style="font-size:13px;margin:6px 0 10px">';
+            html += '<div>• Risk reduction: ' + riskReduction + '%</div>';
+            html += '<div>• Cost efficiency: $' + efficiency + '/$1 hedged</div>';
+            html += '<div>• Net exposure after insurance: $' + netExposure + '/yr</div>';
+            html += '</div>';
+            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="mobile">Check Insurance Quotes →</a>';
+            html += '<div class="risk-banner-disclosure">Avg US data. Terms apply. We may earn a commission.</div>';
+        } else {
+            html += '<h4>Your pet\'s $' + totalCost.toLocaleString() + ' annual cost includes a $' + medicalRisk.toLocaleString() + ' medical risk gap</h4>';
+            html += '<div class="sub">Here\'s the math: a routine $50 vet visit isn\'t what breaks the budget. It\'s the 1-in-3 chance of an unexpected illness or injury costing $2,000+ that creates real financial exposure.</div>';
+            html += '<table class="risk-banner-table">';
+            html += '<tr><td>Total annual pet cost</td><td>$' + totalCost.toLocaleString() + '</td></tr>';
+            html += '<tr><td>Uninsured medical risk exposure (30%)</td><td>$' + medicalRisk.toLocaleString() + '/year</td></tr>';
+            html += '<tr><td>Pet insurance premium (full coverage)</td><td>~$' + premium + '/year ($' + monthly + '/month)</td></tr>';
+            html += '<tr class="highlight"><td>Net exposure after insurance</td><td>$' + netExposure + '/year</td></tr>';
+            html += '<tr><td>Risk reduction</td><td>' + riskReduction + '%</td></tr>';
+            html += '<tr><td>Cost efficiency</td><td>$' + efficiency + ' per $1 of exposure hedged</td></tr>';
+            html += '</table>';
+            html += '<div style="font-size:14px;color:#78716c;line-height:1.6;margin-bottom:8px">For less than the cost of one emergency vet visit per year, you eliminate ' + riskReduction + '% of your financial downside. At $' + efficiency + ' per dollar of risk covered, this is the single highest-ROI line item in your pet budget.</div>';
+            html += '<a href="' + partnerizeUrl + '" rel="sponsored" target="_blank" class="risk-banner-cta" data-cta="desktop">→ Check Pet Insurance Quotes</a>';
+            html += '<div class="risk-banner-disclosure">Data based on average US pet medical costs (2025–2026). Your actual risk varies by breed, age, and location. Insurance policy terms and exclusions apply — read the fine print. We may earn a commission if you purchase through this link.</div>';
+        }
+        html += '</div>';
+
+        var temp = document.createElement('div');
+        temp.innerHTML = html;
+        var banner = temp.firstElementChild;
+
+        // Close button
+        banner.querySelector('.risk-banner-close').addEventListener('click', function() {
+            banner.remove();
+            localStorage.setItem('keenerpet_risk_banner_dismissed', 'true');
+            gtag('event', 'risk_banner_dismiss', { action: 'dismiss', total_cost: totalCost });
+        });
+
+        // CTA click tracking
+        banner.querySelectorAll('.risk-banner-cta').forEach(function(link) {
+            link.addEventListener('click', function() {
+                gtag('event', 'insurance_cta_click', {
+                    tool: 'cost-calculator',
+                    version: 'C',
+                    strategy: 'risk_gap',
+                    total_cost: totalCost,
+                    cta_text: this.textContent.trim(),
+                    placement: 'results_banner'
+                });
+            });
+        });
+
+        // Insert after cost-summary, before cost-breakdown
+        var summary = document.querySelector('.cost-summary');
+        if (summary && summary.parentNode) {
+            summary.parentNode.insertBefore(banner, summary.nextSibling);
+        }
+
+        // Track banner impression
+        gtag('event', 'calculate_complete', {
+            tool: 'cost-calculator',
+            total_cost: totalCost,
+            medical_risk: medicalRisk,
+            insurance_premium: premium,
+            risk_gap_shown: true,
+            pet_type: petType,
+            pet_size: size
         });
     }
 
