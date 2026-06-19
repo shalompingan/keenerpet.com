@@ -332,18 +332,18 @@
                 <div class="quick-picks">
                     <div class="quick-pick-group">
                         <label>Pet Type</label>
-                        <div class="pill-group" id="pet-type-group">
-                            <button class="pill-btn active" data-value="dog">🐕 Dog</button>
-                            <button class="pill-btn" data-value="cat">🐱 Cat</button>
+                        <div class="pill-group" id="pet-type-group" role="radiogroup" aria-label="Pet type">
+                            <button class="pill-btn active" data-value="dog" role="radio" aria-checked="true">🐕 Dog</button>
+                            <button class="pill-btn" data-value="cat" role="radio" aria-checked="false">🐱 Cat</button>
                         </div>
                     </div>
                     <div class="quick-pick-group" id="size-group-container">
                         <label>Size</label>
-                        <div class="pill-group" id="size-group">
-                            <button class="pill-btn" data-value="small">Small</button>
-                            <button class="pill-btn active" data-value="medium">Medium</button>
-                            <button class="pill-btn" data-value="large">Large</button>
-                            <button class="pill-btn" data-value="giant">Giant</button>
+                        <div class="pill-group" id="size-group" role="radiogroup" aria-label="Pet size">
+                            <button class="pill-btn" data-value="small" role="radio" aria-checked="false">Small</button>
+                            <button class="pill-btn active" data-value="medium" role="radio" aria-checked="true">Medium</button>
+                            <button class="pill-btn" data-value="large" role="radio" aria-checked="false">Large</button>
+                            <button class="pill-btn" data-value="giant" role="radio" aria-checked="false">Giant</button>
                         </div>
                     </div>
                     <div class="quick-pick-group">
@@ -360,17 +360,17 @@
                     </div>
                 </div>
 
-                <div class="budget-toggle">
-                    <button class="pill active" data-level="frugal">🟢 Frugal <span class="sub">Save where you can</span></button>
-                    <button class="pill" data-level="moderate">🟡 Moderate <span class="sub">Mid-range choices</span></button>
-                    <button class="pill" data-level="premium">🔴 Premium <span class="sub">Best of everything</span></button>
+                <div class="budget-toggle" role="radiogroup" aria-label="Budget level">
+                    <button class="pill active" data-level="frugal" role="radio" aria-checked="true">🟢 Frugal <span class="sub">Save where you can</span></button>
+                    <button class="pill" data-level="moderate" role="radio" aria-checked="false">🟡 Moderate <span class="sub">Mid-range choices</span></button>
+                    <button class="pill" data-level="premium" role="radio" aria-checked="false">🔴 Premium <span class="sub">Best of everything</span></button>
                 </div>
 
                 <div class="cost-grid" id="cost-grid"></div>
 
                 <button class="calc-btn" id="calc-btn">Calculate Total Cost →</button>
 
-                <div class="cost-results" id="cost-results">
+                <div class="cost-results" id="cost-results" tabindex="-1" role="region" aria-live="polite" aria-label="Cost calculation results">
                     <div class="cost-summary">
                         <div class="label">Estimated First-Year Cost</div>
                         <div class="big-number" id="year1-total">—</div>
@@ -411,9 +411,9 @@
                     </div>
 
                     <div class="food-cta">
-                        <h3>🍖 Already have your pet? Track their daily food costs too.</h3>
-                        <p>Use our <strong>Pet Food Calculator</strong> to find exactly how much to feed your dog or cat — and see how much you'll spend on food per day, month, and year.</p>
-                        <a href="/pet-food-calculator/" class="big-cta">Calculate Daily Food →</a>
+                        <h3>🍖 Stop Guessing — Feed Your Pet the Right Amount</h3>
+                        <p><strong>Free</strong> pet food calculator based on NRC veterinary formulas. Find exact daily portions in cups and grams, plus see exactly how much you'll spend on food per day, month, and year. Takes 10 seconds.</p>
+                        <a href="/pet-food-calculator/" class="big-cta">Calculate Free Daily Food →</a>
                     </div>
 
                     <!-- AdSense Placeholder -->
@@ -480,7 +480,7 @@
                 <input type="email" id="newsletter-email" placeholder="your@email.com">
                 <button id="newsletter-btn">Subscribe</button>
             </div>
-            <div id="newsletter-msg"></div>
+            <div id="newsletter-msg" role="alert"></div>
         </div>
     </section>
 
@@ -711,6 +711,7 @@
         // Sync pet type pills
         document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(p) {
             p.classList.toggle('active', p.dataset.value === petType);
+            p.setAttribute('aria-checked', p.dataset.value === petType);
         });
         // Sync size pills / hide for cat
         var sizeContainer = document.getElementById('size-group-container');
@@ -720,11 +721,13 @@
             sizeContainer.style.display = '';
             document.querySelectorAll('#size-group .pill-btn').forEach(function(p) {
                 p.classList.toggle('active', p.dataset.value === size);
+                p.setAttribute('aria-checked', p.dataset.value === size);
             });
         }
         // Sync budget pills
         document.querySelectorAll('.budget-toggle .pill').forEach(function(p) {
             p.classList.toggle('active', p.dataset.level === budgetLevel);
+            p.setAttribute('aria-checked', p.dataset.level === budgetLevel);
         });
         // Sync life years
         document.getElementById('life-years').value = lifeYears;
@@ -752,6 +755,7 @@
             input.type = 'checkbox';
             input.checked = isChecked;
             input.dataset.key = key;
+            input.setAttribute('aria-label', 'Toggle ' + name);
             var slider = document.createElement('span');
             slider.className = 'slider';
             toggle.appendChild(input);
@@ -881,9 +885,73 @@
             al.appendChild(li);
         });
 
+        // Insurance recommendation inline
+        var insEnabled = enabledItems['insurance'] !== false;
+        var insCost = getCost('insurance');
+        var insBanner = document.getElementById('ins-banner');
+        if (!insBanner) {
+            insBanner = document.createElement('div');
+            insBanner.id = 'ins-banner';
+            insBanner.style.cssText = 'margin-top:12px;padding:12px 16px;background:linear-gradient(135deg,#fef3c7,#fffbeb);border:1px solid #fde68a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap';
+            var annualListEl = document.getElementById('annual-list');
+            if (annualListEl && annualListEl.parentNode) {
+                annualListEl.parentNode.insertBefore(insBanner, annualListEl.nextSibling);
+            }
+        }
+        if (insEnabled) {
+            insBanner.innerHTML = '<span style="font-size:13px;color:#92400e"><strong>🛡️ Insurance:</strong> ~$' + insCost + '/year included. <a href="/pet-insurance/" style="color:#d97706;font-weight:600">Compare plans →</a></span><a href="/pet-insurance/" style="white-space:nowrap;background:#d97706;color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none">Compare Plans</a>';
+            insBanner.style.display = '';
+        } else {
+            insBanner.innerHTML = '<span style="font-size:13px;color:#92400e"><strong>🛡️ Insurance not included.</strong> Protect your budget — <a href="/pet-insurance/" style="color:#d97706;font-weight:600">see how much pet insurance costs →</a></span><a href="/pet-insurance/" style="white-space:nowrap;background:#d97706;color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none">See Plans</a>';
+            insBanner.style.display = '';
+        }
+
+        // Insurance comparison cards — embedded provider quotes
+        var existingWrap = document.getElementById('ins-compare-wrap');
+        if (existingWrap) existingWrap.remove();
+        if (insEnabled) {
+            var insMonthly = Math.round(insCost / 12);
+            var providers = [
+                { name: 'Lemonade', color: '#1a1a2e', price: Math.round(insMonthly * 0.9), feature: 'Fast AI claims', url: 'https://www.lemonade.com/pet' },
+                { name: 'Healthy Paws', color: '#2d8a4e', price: Math.round(insMonthly * 1.05), feature: 'No payout limits', url: 'https://www.healthypawspetinsurance.com' },
+                { name: 'Pumpkin', color: '#c45a0e', price: Math.round(insMonthly * 1.1), feature: 'Preventive care +', url: 'https://www.petpumpkin.com' }
+            ];
+            var compWrap = document.createElement('div');
+            compWrap.id = 'ins-compare-wrap';
+            compWrap.style.cssText = 'margin-top:8px';
+            var label = document.createElement('div');
+            label.style.cssText = 'font-size:10px;color:#92400e;font-weight:600;margin-bottom:4px;letter-spacing:0.3px';
+            label.textContent = 'Compare real quotes:';
+            compWrap.appendChild(label);
+            var comp = document.createElement('div');
+            comp.id = 'ins-comparison';
+            comp.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px';
+            providers.forEach(function(p) {
+                var card = document.createElement('a');
+                card.href = p.url;
+                card.rel = 'sponsored';
+                card.target = '_blank';
+                card.style.cssText = 'flex:1;min-width:105px;background:' + p.color + ';border-radius:10px;padding:10px 8px;text-align:center;text-decoration:none;color:#fff;transition:transform 0.15s,box-shadow 0.15s;display:block';
+                card.onmouseover = function() { this.style.transform = 'translateY(-2px)'; this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)'; };
+                card.onmouseout = function() { this.style.transform = ''; this.style.boxShadow = ''; };
+                card.innerHTML = '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;opacity:0.9">' + p.name + '</div>' +
+                    '<div style="font-size:20px;font-weight:800;margin:3px 0">$' + p.price + '<span style="font-size:11px;font-weight:400">/mo</span></div>' +
+                    '<div style="font-size:10px;opacity:0.85;margin-bottom:7px">' + p.feature + '</div>' +
+                    '<span style="display:inline-block;background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700">Get Quote →</span>';
+                comp.appendChild(card);
+            });
+            if (insBanner && insBanner.parentNode) {
+                insBanner.parentNode.insertBefore(compWrap, insBanner.nextSibling);
+            }
+        }
+
         document.getElementById('lifetime-years').textContent = lifeYears;
         document.getElementById('lifetime-total').textContent = '$' + lifetime.toLocaleString();
         results.classList.add('show');
+        // Focus results for accessibility — only if triggered by user action
+        if (document.activeElement && document.activeElement.closest('.pill-btn, #calc-btn, .budget-toggle .pill')) {
+            results.focus({ preventScroll: true });
+        }
 
         // Breed recommendations (dog only)
         if (petType === 'cat') {
@@ -940,10 +1008,20 @@
     }
 
     // ====== Event wiring ======
+    function activatePill(btn) {
+        var group = btn.closest('[role="radiogroup"]');
+        if (!group) return;
+        group.querySelectorAll('[role="radio"]').forEach(function(p) {
+            p.classList.remove('active');
+            p.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-checked', 'true');
+    }
+
     document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('#pet-type-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
+            activatePill(this);
             petType = this.dataset.value;
             var sizeGroup = document.getElementById('size-group');
             var sizeContainer = document.getElementById('size-group-container');
@@ -953,10 +1031,10 @@
             } else {
                 sizeContainer.style.display = '';
                 sizeGroup.innerHTML =
-                    '<button class="pill-btn" data-value="small">Small</button>' +
-                    '<button class="pill-btn active" data-value="medium">Medium</button>' +
-                    '<button class="pill-btn" data-value="large">Large</button>' +
-                    '<button class="pill-btn" data-value="giant">Giant</button>';
+                    '<button class="pill-btn" data-value="small" role="radio" aria-checked="false">Small</button>' +
+                    '<button class="pill-btn active" data-value="medium" role="radio" aria-checked="true">Medium</button>' +
+                    '<button class="pill-btn" data-value="large" role="radio" aria-checked="false">Large</button>' +
+                    '<button class="pill-btn" data-value="giant" role="radio" aria-checked="false">Giant</button>';
                 size = 'medium';
             }
             calculate();
@@ -968,12 +1046,35 @@
     document.getElementById('size-group').addEventListener('click', function(e) {
         var pill = e.target.closest('.pill-btn');
         if (!pill) return;
-        document.querySelectorAll('#size-group .pill-btn').forEach(function(b) { b.classList.remove('active'); });
-        pill.classList.add('active');
+        activatePill(pill);
         size = pill.dataset.value;
         calculate();
         saveState();
     });
+
+    // ====== Keyboard navigation for pill groups ======
+    function initPillKeyboard(groupSelector) {
+        var group = document.querySelector(groupSelector);
+        if (!group) return;
+        group.addEventListener('keydown', function(e) {
+            var pills = Array.from(group.querySelectorAll('.pill-btn, .pill'));
+            var activeIndex = pills.findIndex(function(p) { return p.classList.contains('active'); });
+            if (activeIndex === -1) activeIndex = 0;
+            var newIndex = activeIndex;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                newIndex = (activeIndex + 1) % pills.length;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                newIndex = (activeIndex - 1 + pills.length) % pills.length;
+            } else return;
+            pills[newIndex].focus();
+            pills[newIndex].click();
+        });
+    }
+    initPillKeyboard('#pet-type-group');
+    initPillKeyboard('#size-group');
+    initPillKeyboard('.budget-toggle');
 
     document.getElementById('life-years').addEventListener('change', function() {
         lifeYears = parseInt(this.value) || 12;
@@ -983,8 +1084,7 @@
 
     document.querySelectorAll('.budget-toggle .pill').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('.budget-toggle .pill').forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
+            activatePill(this);
             budgetLevel = this.dataset.level;
             calculate();
             saveState();

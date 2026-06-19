@@ -463,7 +463,7 @@
                 <input type="email" id="newsletter-email" placeholder="your@email.com">
                 <button id="newsletter-btn">Subscribe</button>
             </div>
-            <div id="newsletter-msg"></div>
+            <div id="newsletter-msg" role="alert"></div>
         </div>
     </section>
 
@@ -676,7 +676,7 @@ function search(query) {
     statsBar.classList.add('visible');
 
     if (matches.length === 0) {
-        resultsDiv.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try searching for something else, like "chocolate", "lily", or "xylitol".</p></div>`;
+        resultsDiv.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try searching for something else, like "chocolate", "lily", or "xylitol".</p><div style="margin-top:20px;padding-top:20px;border-top:1px solid #e7e5e4"><p style="font-size:13px;margin-bottom:12px;color:#78716c">While you're here, check out these helpful tools:</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><a href="/pet-food-calculator/" style="display:inline-block;padding:8px 16px;background:#f5f5f4;border-radius:8px;font-size:13px;font-weight:600;color:#292524;text-decoration:none">🍖 Food Calculator</a><a href="/pet-insurance/" style="display:inline-block;padding:8px 16px;background:#f5f5f4;border-radius:8px;font-size:13px;font-weight:600;color:#292524;text-decoration:none">🛡️ Insurance Estimator</a><a href="/dog-breed-match/" style="display:inline-block;padding:8px 16px;background:#f5f5f4;border-radius:8px;font-size:13px;font-weight:600;color:#292524;text-decoration:none">🐕 Breed Match</a></div></div></div>`;
         resultsDiv.classList.add('visible');
         detailPanel.classList.remove('visible');
         ctaSection.classList.remove('visible');
