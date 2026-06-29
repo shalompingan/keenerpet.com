@@ -30,12 +30,31 @@
     if (e.key === 'Escape') closeSidebar();
   });
 
-  // --- Desktop Dropdown (click fallback for touch) ---
+  // --- Desktop Dropdown (hover + click fallback for touch) ---
   var navGroups = document.querySelectorAll('.desktop-nav .nav-group');
+  var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   navGroups.forEach(function (group) {
     var trigger = group.querySelector('.nav-trigger');
     if (!trigger) return;
+
+    // Desktop: hover open/close (CSS also handles :hover, but JS ensures clean state)
+    group.addEventListener('mouseenter', function () {
+      if (!isTouchDevice) {
+        navGroups.forEach(function (g) { g.classList.remove('open'); });
+        group.classList.add('open');
+      }
+    });
+    group.addEventListener('mouseleave', function () {
+      if (!isTouchDevice) {
+        group.classList.remove('open');
+      }
+    });
+
+    // Touch devices: toggle with click
     trigger.addEventListener('click', function (e) {
+      if (!isTouchDevice) return;
+      e.stopPropagation();
       var isOpen = group.classList.contains('open');
       navGroups.forEach(function (g) { g.classList.remove('open'); });
       if (!isOpen) group.classList.add('open');
