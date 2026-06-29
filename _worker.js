@@ -5,9 +5,11 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
 };
-
-const ADMIN_PASSWORD = 'keenerpet888';
 
 export default {
   async fetch(request, env, ctx) {
@@ -70,7 +72,7 @@ async function handleApi(request, env, url) {
             },
             body: JSON.stringify({
               personalizations: [{ to: [{ email: 'support@keenerpet.com' }] }],
-              from: { email: 'hello@toolpackpro.com', name: 'KeenerPet Newsletter' },
+              from: { email: 'support@keenerpet.com', name: 'KeenerPet Newsletter' },
               subject: `[KeenerPet] New ${source} signup`,
               content: [{ type: 'text/plain', value: `Email: ${email}\nSource: ${source}\nTool: ${tool || 'N/A'}\nNote: ${note || 'N/A'}` }]
             })
@@ -93,7 +95,7 @@ async function handleApi(request, env, url) {
   // === GET /api/admin/<token> — admin panel (no password form, secret URL) ===
   if (request.method === 'GET' && path.startsWith('/api/admin/')) {
     const token = path.replace('/api/admin/', '');
-    if (token !== ADMIN_PASSWORD) {
+    if (token !== env.ADMIN_PASSWORD) {
       return new Response('Not found', { status: 404 });
     }
 

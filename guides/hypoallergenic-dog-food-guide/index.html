@@ -7,7 +7,8 @@
     <meta name="description" content="Constant scratching, ear infections, or licking paws? Learn the 10 signs of dog food allergies, how to run an elimination diet that works, and the best hypoallergenic foods worth buying.">
     <meta name="keywords" content="hypoallergenic dog food, best hypoallergenic dog food, dog food allergies, limited ingredient dog food, hydrolyzed protein dog food, dog allergy diet, what to feed a dog with allergies, elimination diet dog, novel protein dog food, dog skin allergies food">
     <link rel="canonical" href="https://keenerpet.com/guides/hypoallergenic-dog-food-guide/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png">
 
     <meta property="og:title" content="Is Your Dog Allergic to Their Food? Hypoallergenic Food Guide (2026) | KeenerPet">
     <meta property="og:description" content="Constant scratching, ear infections, or licking paws? Learn the 10 signs of food allergies, how to run an elimination diet, and which hypoallergenic foods actually work.">
@@ -15,11 +16,13 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="KeenerPet">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://keenerpet.com/og-image.svg">
     <meta name="robots" content="index, follow">
     <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Is Your Dog Allergic to Their Food? Hypoallergenic Food Guide (2026) | KeenerPet">
+    <meta name="twitter:image" content="https://keenerpet.com/og-image.svg">
     <meta name="twitter:description" content="Constant scratching, ear infections, or paw licking? Learn 10 signs of food allergies, how to run an elimination diet, and which hypoallergenic foods are worth buying.">
 
     <!-- Article Schema -->
@@ -669,6 +672,20 @@
     </div>
 </main>
 
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg" role="alert"></div>
+        </div>
+    </section>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -729,5 +746,45 @@
     </div>
 </footer>
 
+<script>
+    // ====== Newsletter ======
+    const newsEmail = document.getElementById('newsletter-email');
+    const newsBtn = document.getElementById('newsletter-btn');
+    const newsMsg = document.getElementById('newsletter-msg');
+
+    newsBtn.addEventListener('click', function() {
+        const email = newsEmail.value.trim();
+        if (!email || !email.includes('@')) {
+            newsMsg.textContent = 'Please enter a valid email address.';
+            newsMsg.style.color = '#ef4444';
+            return;
+        }
+        newsMsg.textContent = '';
+        newsBtn.disabled = true;
+        newsBtn.textContent = 'Subscribing...';
+
+        fetch('/api/collect-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'newsletter', tool: 'hypoallergenic-dog-food-guide' })
+        }).then(function(r) {
+            if (r.ok) {
+                newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
+                newsMsg.style.color = '#059669';
+                newsEmail.value = '';
+            } else {
+                throw new Error('API error');
+            }
+        }).catch(function() {
+            newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
+            newsMsg.style.color = '#ef4444';
+        }).finally(function() {
+            newsBtn.disabled = false;
+            newsBtn.textContent = 'Subscribe';
+        });
+    });
+
+    newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
+</script>
 </body>
 </html>

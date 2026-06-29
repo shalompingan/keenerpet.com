@@ -7,7 +7,8 @@
     <meta name="description" content="⚠️ Dog ate chocolate, grapes, or something toxic? Complete emergency guide — immediate vet-approved first aid steps, symptom checker by toxin type, treatment costs ($800–$8,000+), home prevention tips, and poison helpline numbers. Save this before you need it.">
     <meta name="keywords" content="dog poisoning first aid, what to do if dog ate chocolate, signs of poisoning in dogs, how to induce vomiting in dog, common household poisons dogs, dog poisoning treatment cost, pet poison helpline, dog ate grapes what to do, xylitol dog poisoning, dog proof home, pet first aid kit, how to tell if dog is poisoned">
     <link rel="canonical" href="https://keenerpet.com/guides/dog-poisoning-guide/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png">
 
     <meta property="og:title" content="Dog Poisoning First Aid: 8 Vet-Approved Emergency Steps + Symptoms & Prevention (2026) | KeenerPet">
     <meta property="og:description" content="⚠️ Dog ate chocolate, grapes, or something toxic? Complete emergency guide — vet-approved first aid steps, symptom checker, treatment costs, and poison helpline numbers. Save this before you need it.">
@@ -15,6 +16,7 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="KeenerPet">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://keenerpet.com/og-image.svg">
     <meta property="article:published_time" content="2026-06-14T16:00:00-05:00">
     <meta property="article:modified_time" content="2026-06-14T16:00:00-05:00">
     <meta property="article:tag" content="dog poisoning">
@@ -26,6 +28,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dog Poisoning First Aid: 8 Vet-Approved Emergency Steps + Symptoms & Prevention (2026) | KeenerPet">
+    <meta name="twitter:image" content="https://keenerpet.com/og-image.svg">
     <meta name="twitter:description" content="⚠️ Emergency guide: dog ate chocolate, grapes, or something toxic? Vet-approved first aid steps, symptom checker, treatment costs, and poison helpline numbers.">
 
     <!-- Article Schema -->
@@ -765,6 +768,20 @@
     </div>
 </main>
 
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg" role="alert"></div>
+        </div>
+    </section>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -845,5 +862,45 @@
     </div>
 </footer>
 
+<script>
+    // ====== Newsletter ======
+    const newsEmail = document.getElementById('newsletter-email');
+    const newsBtn = document.getElementById('newsletter-btn');
+    const newsMsg = document.getElementById('newsletter-msg');
+
+    newsBtn.addEventListener('click', function() {
+        const email = newsEmail.value.trim();
+        if (!email || !email.includes('@')) {
+            newsMsg.textContent = 'Please enter a valid email address.';
+            newsMsg.style.color = '#ef4444';
+            return;
+        }
+        newsMsg.textContent = '';
+        newsBtn.disabled = true;
+        newsBtn.textContent = 'Subscribing...';
+
+        fetch('/api/collect-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'newsletter', tool: 'dog-poisoning-guide' })
+        }).then(function(r) {
+            if (r.ok) {
+                newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
+                newsMsg.style.color = '#059669';
+                newsEmail.value = '';
+            } else {
+                throw new Error('API error');
+            }
+        }).catch(function() {
+            newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
+            newsMsg.style.color = '#ef4444';
+        }).finally(function() {
+            newsBtn.disabled = false;
+            newsBtn.textContent = 'Subscribe';
+        });
+    });
+
+    newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
+</script>
 </body>
 </html>

@@ -6,7 +6,8 @@
     <title>Dog Age in Human Years: Science-Based Calculator & Chart (2026) | KeenerPet</title>
     <meta name="description" content="Stop using the 7-year myth. Convert your dog's age with the veterinary 15-9-x formula. Complete age chart by breed size, cat conversion, and health milestones.">
     <link rel="canonical" href="https://keenerpet.com/guides/pet-age-guide/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png">
 
     <meta property="og:title" content="Dog Age in Human Years: Science-Based Calculator & Chart (2026)">
     <meta property="og:description" content="Stop using the 7-year myth. Convert your dog's age with the veterinary 15-9-x formula. Complete age chart by breed size, cat conversion, and more.">
@@ -14,11 +15,13 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="KeenerPet">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://keenerpet.com/og-image.svg">
     <meta name="robots" content="index, follow">
     <meta name='impact-site-verification' value='36791491-7a7c-4c0b-a370-794d7b52e3ce'>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dog Age in Human Years: Science-Based Calculator & Chart (2026)">
+    <meta name="twitter:image" content="https://keenerpet.com/og-image.svg">
     <meta name="twitter:description" content="Stop using the 7-year myth. Convert your dog's age with the veterinary 15-9-x formula. Complete age chart by breed size.">
 
     <script type="application/ld+json">
@@ -727,6 +730,20 @@
     </div>
 </main>
 
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>🐾 Get Pet Care Tips & New Tools</h2>
+            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="your@email.com">
+                <button id="newsletter-btn">Subscribe</button>
+            </div>
+            <div id="newsletter-msg" role="alert"></div>
+        </div>
+    </section>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -811,5 +828,45 @@
     </div>
 </footer>
 
+<script>
+    // ====== Newsletter ======
+    const newsEmail = document.getElementById('newsletter-email');
+    const newsBtn = document.getElementById('newsletter-btn');
+    const newsMsg = document.getElementById('newsletter-msg');
+
+    newsBtn.addEventListener('click', function() {
+        const email = newsEmail.value.trim();
+        if (!email || !email.includes('@')) {
+            newsMsg.textContent = 'Please enter a valid email address.';
+            newsMsg.style.color = '#ef4444';
+            return;
+        }
+        newsMsg.textContent = '';
+        newsBtn.disabled = true;
+        newsBtn.textContent = 'Subscribing...';
+
+        fetch('/api/collect-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'newsletter', tool: 'pet-age-guide' })
+        }).then(function(r) {
+            if (r.ok) {
+                newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
+                newsMsg.style.color = '#059669';
+                newsEmail.value = '';
+            } else {
+                throw new Error('API error');
+            }
+        }).catch(function() {
+            newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
+            newsMsg.style.color = '#ef4444';
+        }).finally(function() {
+            newsBtn.disabled = false;
+            newsBtn.textContent = 'Subscribe';
+        });
+    });
+
+    newsEmail.addEventListener('keydown', function(e) { if (e.key === 'Enter') newsBtn.click(); });
+</script>
 </body>
 </html>
