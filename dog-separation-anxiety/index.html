@@ -611,20 +611,6 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="container">
-            <h2>🐾 Get Pet Care Tips & New Tools</h2>
-            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
-            <div class="newsletter-form">
-                <input type="email" id="newsletter-email" placeholder="your@email.com">
-                <button id="newsletter-btn">Subscribe</button>
-            </div>
-            <div id="newsletter-msg" role="alert"></div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
     <section class="faq-section">
         <div class="container">
             <h2>❓ Frequently Asked Questions</h2>
@@ -1166,45 +1152,5 @@ function restart() {
 
 // ====== INIT ======
 renderStart();
-
-// ====== NEWSLETTER ======
-const newsEmail = document.getElementById('newsletter-email');
-const newsBtn = document.getElementById('newsletter-btn');
-const newsMsg = document.getElementById('newsletter-msg');
-
-newsBtn.addEventListener('click', () => {
-    const email = newsEmail.value.trim();
-    if (!email || !email.includes('@')) {
-        newsMsg.textContent = 'Please enter a valid email address.';
-        newsMsg.style.color = '#ef4444';
-        return;
-    }
-    newsMsg.textContent = '';
-    newsBtn.disabled = true;
-    newsBtn.textContent = 'Subscribing...';
-
-    fetch('/api/collect-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'newsletter', tool: 'separation-anxiety' })
-    }).then(r => {
-        if (r.ok) {
-            newsMsg.textContent = 'Subscribed! 🎉 Check your inbox soon.';
-            newsMsg.style.color = '#059669';
-            newsEmail.value = '';
-        } else {
-            throw new Error('API error');
-        }
-    }).catch(() => {
-        newsMsg.textContent = 'Something went wrong. Please email hello@keenerpet.com';
-        newsMsg.style.color = '#ef4444';
-    }).finally(() => {
-        newsBtn.disabled = false;
-        newsBtn.textContent = 'Subscribe';
-    });
-});
-
-newsEmail.addEventListener('keydown', (e) => { if (e.key === 'Enter') newsBtn.click(); });
-</script>
 </body>
 </html>

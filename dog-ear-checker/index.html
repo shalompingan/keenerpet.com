@@ -699,18 +699,6 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="container">
-            <h2>🐾 Get Pet Care Tips &amp; New Tools</h2>
-            <p>Join our newsletter for practical pet care advice, new calculator launches, and exclusive content.</p>
-            <div class="newsletter-form">
-                <input type="email" id="newsletter-email" placeholder="your@email.com">
-                <button id="newsletter-btn">Subscribe</button>
-            </div>
-            <div id="newsletter-msg" role="alert"></div>
-        </div>
-    </section>
 
     <!-- FAQ -->
     <section class="faq-section">
@@ -1035,36 +1023,5 @@
     // ====== Init ======
     renderSymptoms();
     updateButtonState();
-
-    // ====== Newsletter ======
-    document.getElementById('newsletter-btn').addEventListener('click', async () => {
-        const email = document.getElementById('newsletter-email').value.trim();
-        const msg = document.getElementById('newsletter-msg');
-        if (!email || !email.includes('@')) {
-            msg.textContent = 'Please enter a valid email address.';
-            msg.style.color = '#fca5a5';
-            return;
-        }
-        try {
-            const res = await fetch('/api/collect-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, source: 'dog-ear-checker', tool: 'ear-checker' })
-            });
-            if (res.ok) {
-                msg.textContent = 'Thanks for subscribing! 🐾';
-                msg.style.color = '#86efac';
-                document.getElementById('newsletter-email').value = '';
-            } else {
-                msg.textContent = 'Something went wrong. Try again later.';
-                msg.style.color = '#fca5a5';
-            }
-        } catch {
-            msg.textContent = 'Network error. Please try again.';
-            msg.style.color = '#fca5a5';
-        }
-    });
-</script>
-
 </body>
 </html>
