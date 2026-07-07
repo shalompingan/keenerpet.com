@@ -1,13 +1,15 @@
 # KeenerPet — Project Guide
 
 ## 项目概述
-宠物工具网站，静态 HTML 多页站点，Cloudflare Pages 部署。主要通过联盟营销（Chewy、Amazon、宠物保险）变现。
+纯工具站，所有指南内容已移除（清理低质量 AI 内容）。静态 HTML 多页站点，Cloudflare Pages 部署。主要通过联盟营销（Chewy、Amazon、宠物保险）变现。
 
 ## 技术栈
 - 纯静态 HTML（无框架、无 SPA）
 - CSS：共享 `style.css` + 每个页面独立 `:root` 颜色变量
 - 部署：Cloudflare Pages + `_worker.js`（邮件 API）
-- 导航：`<link rel="prefetch">` 预加载页面（非 SPA）
+- 导航：所有页面已统一为 `desktop-nav`（`nav-link` 文字链接）+ `side-overlay > side-panel` 嵌套手机侧边栏
+- JavaScript：`nav.js` 控制移动端侧边栏开关 + 自动高亮当前页面
+- `<link rel="prefetch">` 预加载页面（非 SPA）
 - 字体：Inter（Google Fonts）
 
 ## 页面主题色
@@ -25,15 +27,20 @@
 ```
 keenerpet.com/
 ├── index.html                  # 首页 — Pet Cost Calculator（养宠成本计算器）
-├── pet-food-calculator/index.html   # Pet Food Calculator（子页面）
+├── pet-food-calculator/index.html   # Pet Food Calculator
 ├── pet-age-calculator/index.html
 ├── pet-water-intake/index.html
 ├── pet-calorie-calculator/index.html
 ├── pet-walking-calculator/index.html
 ├── pet-insurance/index.html
+├── pet-toxicity-checker/index.html
+├── dog-breed-match/index.html
+├── dog-separation-anxiety/index.html
+├── dog-pregnancy-calculator/index.html
+├── dog-ear-checker/index.html
+├── tools/index.html             # 工具中心页
 ├── privacy/index.html
-├── guides/
-│   └── dog-walking-guide/index.html   # SEO 指南文章
+├── 404.html
 ├── logo.svg                     # 宠物 Logo（透明背景 SVG，内嵌 PNG）
 ├── logo-cat.svg                 # 原猫图标 logo（保留备用）
 ├── favicon.svg                  # 浏览器标签图标（宠物 logo 透明版）
@@ -100,14 +107,16 @@ git push
 - **替换规则**：更换 logo 图片时只需替换 `/logo.svg`，无需改动 HTML（各页面引用同文件）
 - **手机端**：`style.css` 中 `@media (max-width: 767px)` 将 header 内边距设为 `padding: 0 12px`，logo 更靠左
 
-## 已修改 logo 的页面
+## 导航改造（已完成）
 
-| 页面 | 导航栏 | 侧边栏 | 底部 |
-|------|--------|--------|------|
-| index.html | ✅ | ✅ | ✅ |
-| pet-food-calculator/index.html | ✅ | ✅ | ✅ |
-
-其余页面待修改。
+所有页面的导航已从旧版下拉菜单统一升级：
+- **桌面端**：`nav-group` / `nav-trigger` / `nav-dropdown` → `div.desktop-nav` + `a.nav-link`
+- **移动端**：`sidebar-overlay` + `mobile-sidebar`（平级兄弟）→ `div.side-overlay > div.side-panel`（嵌套结构）
+- **类名映射**：`sidebar-overlay`→`side-overlay`，`mobile-sidebar`→`side-panel`，`sidebar-header`→`sp-header`，`sidebar-close`→`sp-close`，`sidebar-body`→`sp-body`，`sidebar-section`→`sp-section`
+- **hamburger**：3 个 `<span>` 改为 `☰` 字符（避免 CSS 依赖）
+- **JS**：`nav.js` 通过 `.hamburger` 点击切换 `.side-overlay` 的 `open` 类，CSS 通过 `.side-overlay.open .side-panel` 控制抽屉滑入
+- **当前页高亮**：`nav.js` 自动匹配 URL 给 `.side-panel a` 加 `active` 类
+- **暗色主题**：需在页面 `<style>` 加 `.side-panel { background: var(--card-bg); }`
 
 ## Contact 表单
 
@@ -132,12 +141,6 @@ git push
 - [ ] 注册 Amazon Associates
 - [ ] 注册 Awin（备选联盟平台）
 - [x] 部署到 Cloudflare Pages
-- [x] 添加 FAQ 区块提升 SEO
-- [x] 写 SEO 文章（dog-walking-guide 首发）
-- [x] 写 SEO 文章（dog-feeding-guide）
-- [x] 写 SEO 文章（pet-water-guide）
-- [x] 写 SEO 文章（pet-age-guide）
-- [x] 写 SEO 文章（pet-calorie-guide）
-- [x] 写 SEO 文章（pet-insurance-guide）
-- [ ] 下一篇 SEO 文章
-- [ ] 去 Search Console 更新 sitemap
+- [x] 导航改造（所有页面统一为 nav-link + side-overlay/side-panel）
+- [x] 清理指南内容（移除所有 AI 生成指南文章，仅保留工具）
+- [ ] 去 Search Console 提交更新后的 sitemap
