@@ -92,6 +92,57 @@ async function handleApi(request, env, url) {
     }
   }
 
+  // === POST /api/contact — contact form ===
+  if (request.method === 'POST' && path === '/api/contact') {
+    try {
+      const body = await request.json();
+      const { name, email, message } = body;
+      if (!name || !email || !message) {
+        return new Response(JSON.stringify({ error: 'All fields required' }), {
+          status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders }
+        });
+      }
+      if (!email.includes('@')) {
+        return new Response(JSON.stringify({ error: 'Invalid email' }), {
+          status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders }
+        });
+      }
+
+      if (env.NEWSLETTER) {
+        const key = `contact_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+        await env.NEWSLETTER.put(key, JSON.stringify({
+          name, email, message,
+          source: 'contact',
+          timestamp: Date.now()
+        }));
+      }
+
+      if (env.SENDGRID_KEY) {
+        await fetch('https://api.sendgrid.com/v3/mail/send', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + env.SENDGRID_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            personalizations: [{ to: [{ email: 'support@keenerpet.com' }] }],
+            from: { email: 'support@keenerpet.com', name: 'KeenerPet Contact' },
+            subject: '[KeenerPet] Contact from ' + name,
+            content: [{ type: 'text/plain', value: 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message }]
+          })
+        });
+      }
+
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      });
+    } catch (err) {
+      return new Response(JSON.stringify({ error: 'Internal error' }), {
+        status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      });
+    }
+  }
+
   // === GET /api/admin/<token> — admin panel (no password form, secret URL) ===
   if (request.method === 'GET' && path.startsWith('/api/admin/')) {
     const token = path.replace('/api/admin/', '');
