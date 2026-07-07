@@ -118,7 +118,7 @@ async function handleApi(request, env, url) {
       }
 
       if (env.BREVO_KEY) {
-        await fetch('https://api.brevo.com/v3/smtp/email', {
+        const brevoRes = await fetch('https://api.brevo.com/v3/smtp/email', {
           method: 'POST',
           headers: {
             'api-key': env.BREVO_KEY,
@@ -132,6 +132,12 @@ async function handleApi(request, env, url) {
             textContent: 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message
           })
         });
+        if (!brevoRes.ok) {
+          const errText = await brevoRes.text();
+          return new Response(JSON.stringify({ error: 'Brevo: ' + brevoRes.status + ' ' + errText }), {
+            status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders }
+          });
+        }
       }
 
       return new Response(JSON.stringify({ success: true }), {
