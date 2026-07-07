@@ -3,7 +3,7 @@
 
 /* ====== Reset & Base ====== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     font-family: 'Inter', -apple-system, sans-serif;
     background: #fafaf9;
@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -440,6 +441,9 @@ footer {
 @media (max-width: 540px) {
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
     .footer-col.footer-guides ul { column-count: 2; }
+}
+@media (max-width: 480px) {
+    .footer-col.footer-guides ul { column-count: 1; }
 }
 .footer-bottom {
     border-top: 1px solid var(--border);

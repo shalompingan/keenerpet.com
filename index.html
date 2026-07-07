@@ -290,6 +290,16 @@
             .risk-banner-cta { display: block; width: 100%; text-align: center; padding: 14px; font-size: 15px; }
         }
 
+        /* ====== Mobile ====== */
+        @media (max-width: 480px) {
+            .hero { padding: 24px 0 16px; }
+            .quick-picks { flex-direction: column; gap: 10px; }
+            .quick-pick-group { min-width: 100%; }
+            .budget-toggle .pill { padding: 8px 10px; font-size: 13px; min-width: 0; white-space: normal; }
+            .faq-item { padding: 14px 16px; }
+            .faq-item summary { font-size: 14px; }
+        }
+
         /* ====== Print Styles ====== */
         @media print {
             @page { size: auto; margin: 0.4in; }
