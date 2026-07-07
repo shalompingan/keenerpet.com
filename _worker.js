@@ -117,18 +117,18 @@ async function handleApi(request, env, url) {
         }));
       }
 
-      if (env.SENDGRID_KEY) {
-        await fetch('https://api.sendgrid.com/v3/mail/send', {
+      if (env.BREVO_KEY) {
+        await fetch('https://api.brevo.com/v3/smtp/email', {
           method: 'POST',
           headers: {
-            'Authorization': 'Bearer ' + env.SENDGRID_KEY,
+            'api-key': env.BREVO_KEY,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            personalizations: [{ to: [{ email: 'support@keenerpet.com' }] }],
-            from: { email: 'support@keenerpet.com', name: 'KeenerPet Contact' },
+            sender: { email: 'support@keenerpet.com', name: 'KeenerPet Contact' },
+            to: [{ email: 'support@keenerpet.com' }],
             subject: '[KeenerPet] Contact from ' + name,
-            content: [{ type: 'text/plain', value: 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message }]
+            textContent: 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message
           })
         });
       }
