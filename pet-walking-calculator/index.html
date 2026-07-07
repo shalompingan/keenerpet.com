@@ -298,6 +298,34 @@
     </section>
 </main>
 
+<!-- Contact Modal -->
+<div id="contactOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center" onclick="if(event.target===this)closeContact()">
+  <div style="background:#fff;border-radius:16px;padding:36px 32px;max-width:460px;width:90%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:Inter,sans-serif">
+    <button onclick="closeContact()" style="position:absolute;top:12px;right:16px;border:none;background:none;font-size:24px;cursor:pointer;color:#78716c;line-height:1">×</button>
+    <h2 style="font-size:20px;font-weight:800;color:#292524;margin:0 0 4px">Contact Us</h2>
+    <p style="font-size:14px;color:#78716c;margin:0 0 20px">Have questions or feedback? We'd love to hear from you.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <label style="font-size:.8rem;font-weight:600;color:#78716c" for="cfName">Your Name</label>
+        <input type="text" id="cfName" placeholder="e.g. Alex Johnson" maxlength="100" style="padding:10px 12px;border:2px solid #e7e5e4;border-radius:8px;font-family:Inter,sans-serif;font-size:.88rem;outline:none">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <label style="font-size:.8rem;font-weight:600;color:#78716c" for="cfEmail">Your Email</label>
+        <input type="email" id="cfEmail" placeholder="alex@example.com" maxlength="200" style="padding:10px 12px;border:2px solid #e7e5e4;border-radius:8px;font-family:Inter,sans-serif;font-size:.88rem;outline:none">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <label style="font-size:.8rem;font-weight:600;color:#78716c" for="cfMessage">Message</label>
+        <textarea id="cfMessage" placeholder="Tell us what is on your mind..." maxlength="2000" style="padding:10px 12px;border:2px solid #e7e5e4;border-radius:8px;font-family:Inter,sans-serif;font-size:.88rem;outline:none;min-height:100px;resize:vertical"></textarea>
+      </div>
+      <button id="cfSubmit" style="padding:11px 0;border:none;border-radius:8px;background:var(--primary);color:#fff;font-family:Inter,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:2px">Send Message</button>
+      <p id="cfStatus" style="font-size:.82rem;color:#78716c;margin:0;text-align:center"></p>
+    </div>
+  </div>
+</div>
+<script>function openContact(){var o=document.getElementById('contactOverlay');if(o){o.style.display='flex';document.body.style.overflow='hidden';}}function closeContact(){var o=document.getElementById('contactOverlay');if(o){o.style.display='none';document.body.style.overflow='';}}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContact();});document.getElementById('cfSubmit').addEventListener('click',function(){var n=document.getElementById('cfName').value.trim(),e=document.getElementById('cfEmail').value.trim(),m=document.getElementById('cfMessage').value.trim(),s=document.getElementById('cfStatus');if(!n||!e||!m){s.textContent='Please fill in all fields.';s.style.color='#DC2626';return;}if(!e.includes('@')){s.textContent='Please enter a valid email.';s.style.color='#DC2626';return;}s.textContent='Sending...';s.style.color='#78716c';fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,message:m})}).then(function(r){if(r.ok){s.textContent='Message sent! We will get back to you within 48 hours.';s.style.color='#059669';document.getElementById('cfName').value='';document.getElementById('cfEmail').value='';document.getElementById('cfMessage').value='';}else{s.textContent='Failed to send. Please try again later.';s.style.color='#DC2626';}}).catch(function(){s.textContent='Network error. Please try again.';s.style.color='#DC2626';});});</script>
+
+<footer>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -351,7 +379,7 @@
                     <li><a href="/privacy/">Privacy Policy</a></li>
                     <li><a href="/privacy/#terms">Terms of Use</a></li>
                     <li><a href="/privacy/#disclaimer">Disclaimer</a></li>
-                    <li><a href="#" onclick="location.href='mailto:'+'support'+'@'+'keenerpet.com';return false">Contact</a></li>
+                    <li><a href="#" onclick="openContact();return false">Contact</a></li>
                 </ul>
             </div>
         </div>
