@@ -86,6 +86,22 @@ git push
 - 响应式断点：480px / 540px / 600px / 640px
 - 配色：暖色基调（`#fafaf9` 背景，`#292524` 文字）
 
+## Contact 表单
+
+所有页面底部导航的 Contact 链接通过弹出表单（modal）提交：
+
+- 邮箱配置（Brevo）：
+  - 发件人（verified sender）：`cqionglei@gmail.com`
+  - 收件人：`support@keenerpet.com`
+  - replyTo：用户提交的邮箱
+- API 端点：`POST /api/contact`（在 `_worker.js` 中处理）
+- 环境变量：`BREVO_KEY`（Cloudflare Pages Production 环境）
+- KV 绑定：`NEWSLETTER`（存储提交记录）
+- 表单字段：Name / Email / Message
+- Modal 插入位置：`</main>` 和 `<footer>` 之间
+- 导航 Contact 链接：`onclick="openContact();return false"`
+- 内容区邮件链接也要改为弹出表单，而不是 mailto:
+
 ## 待办
 - [x] 替换 GA4 ID 为真实 ID（G-J3DHX71CRB）
 - [x] 注册 Chewy 联盟账号（Partnerize）

@@ -7,7 +7,7 @@
     <meta name="description" content="ASPCA-calibrated pet cost calculator: estimate first-year and lifetime expenses for your dog or cat. Plan your budget with breed recommendations.">
     <link rel="canonical" href="https://keenerpet.com/">
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <meta property="og:title" content="Pet Cost Calculator – How Much Does a Dog or Cat Cost? | KeenerPet">
     <meta property="og:description" content="ASPCA-calibrated pet cost calculator. Estimate first-year and lifetime expenses. Get breed recommendations for your budget.">
@@ -300,6 +300,11 @@
             .faq-item summary { font-size: 14px; }
         }
 
+        /* ====== SVG Icons ====== */
+        .tool-card .icon svg, .about-card .icon svg, .cost-action-card .icon svg {
+            display: block; margin: 0 auto;
+        }
+
         /* ====== Print Styles ====== */
         @media print {
             @page { size: auto; margin: 0.4in; }
@@ -330,7 +335,7 @@
 
 <header>
     <div class="container">
-        <a href="/" class="logo"><span class="logo-icon">🐾</span> Keener<span>Pet</span></a>
+        <a href="/" class="logo" style="gap:0"><img src="/logo.svg" alt="KeenerPet" style="height:56px;width:56px;display:block;border-radius:4px;margin-right:-4px">Keener<span>Pet</span></a>
         <div class="desktop-nav">
             <div class="nav-group">
                 <button class="nav-trigger">Tools <span class="arrow">▾</span></button>
@@ -512,13 +517,13 @@
 
                     <div class="cost-actions">
                         <div class="cost-action-card">
-                            <div class="icon">🛡️</div>
+                            <div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5.2 3.9 10.1 9 11 5.1-.9 9-5.8 9-11V7l-9-5z"/><path d="M9 12l2.3 2.3L15 9.7"/></svg></div>
                             <h4>Compare Pet Insurance</h4>
                             <p>Protect your budget from surprise vet bills. Get quotes from top providers.</p>
                             <a href="/pet-insurance/" class="cta">Estimate Insurance →</a>
                         </div>
                         <div class="cost-action-card">
-                            <div class="icon">🎒</div>
+                            <div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 010-4h14v4"/><path d="M3 12h18v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2z"/><path d="M10 16v4"/><path d="M14 16v4"/></svg></div>
                             <h4>New Pet Starter Kit</h4>
                             <p>Everything you need for your new family member — food, bowls, beds, and toys.</p>
                             <a href="https://www.chewy.com/s?query=new+puppy+starter+kit" target="_blank" rel="sponsored" class="cta">Shop Supplies →</a>
@@ -554,24 +559,24 @@
 
     <section class="tools-section">
         <div class="container">
-            <h2>🧰 All Pet Tools</h2>
+            <h2>All Pet Tools</h2>
             <div class="tools-grid">
                 <a href="/pet-food-calculator/" class="tool-card" style="border-top:3px solid #0d9488">
-                    <div class="icon">🍖</div>
+                    <div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M8 4v2M16 4v2"/><path d="M18 12c0 3.3-2.7 6-6 6s-6-2.7-6-6h12z"/></svg></div>
                     <h3>Pet Food Calculator</h3>
                     <p>Find exactly how much to feed your dog or cat. Daily portions in kcal, cups, and grams.</p>
                     <span class="go-link">Calculate Food →</span>
                 </a>
-                <a href="/pet-age-calculator/" class="tool-card"><div class="icon">🐕</div><h3>Pet Age Calculator</h3><p>How old is your pet in human years? Accurate formula based on breed and size.</p><span class="go-link">Use Tool →</span></a>
-                <a href="/pet-water-intake/" class="tool-card"><div class="icon">💧</div><h3>Pet Water Intake</h3><p>How much water should your dog or cat drink daily?</p><span class="go-link">Use Tool →</span></a>
-                <a href="/pet-calorie-calculator/" class="tool-card"><div class="icon">⚡</div><h3>Pet Calorie Calculator</h3><p>Calculate your pet's daily calorie needs for weight management.</p><span class="go-link">Use Tool →</span></a>
-                <a href="/pet-walking-calculator/" class="tool-card"><div class="icon">🚶</div><h3>Pet Walking Calculator</h3><p>How far did your dog walk? Calculate distance and exercise goals.</p><span class="go-link">Use Tool →</span></a>
-                <a href="/pet-insurance/" class="tool-card"><div class="icon">🛡️</div><h3>Pet Insurance Estimator</h3><p>See how much pet insurance costs and find the best plan.</p><span class="go-link">Estimate Cost →</span></a>
-                <a href="/pet-toxicity-checker/" class="tool-card"><div class="icon">☠️</div><h3>Pet Toxicity Checker</h3><p>Is it safe? Search 120+ foods, plants, and substances.</p><span class="go-link">Check Now →</span></a>
-                <a href="/dog-breed-match/" class="tool-card"><div class="icon">🐶</div><h3>Dog Breed Match Quiz</h3><p>Answer 8 quick questions and get personalized breed recommendations.</p><span class="go-link">Take Quiz →</span></a>
-                <a href="/dog-separation-anxiety/" class="tool-card"><div class="icon">💚</div><h3>Separation Anxiety Test</h3><p>Evaluate your dog's stress level with 12 questions.</p><span class="go-link">Take Test →</span></a>
-                <a href="/dog-pregnancy-calculator/" class="tool-card"><div class="icon">🤰</div><h3>Dog Pregnancy Calculator</h3><p>Calculate due dates and track week-by-week milestones.</p><span class="go-link">Calculate →</span></a>
-                <a href="/dog-ear-checker/" class="tool-card"><div class="icon">👂</div><h3>Dog Ear Cleaning Checker</h3><p>Check if your dog's ears need cleaning and get step-by-step tips.</p><span class="go-link">Check Now →</span></a>
+                <a href="/pet-age-calculator/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Pet Age Calculator</h3><p>How old is your pet in human years? Accurate formula based on breed and size.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-water-intake/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 8 6 12 6 15c0 3.3 2.7 6 6 6s6-2.7 6-6c0-3-2-7-6-13z"/></svg></div><h3>Pet Water Intake</h3><p>How much water should your dog or cat drink daily?</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-calorie-calculator/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>Pet Calorie Calculator</h3><p>Calculate your pet's daily calorie needs for weight management.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-walking-calculator/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-2 1.5-3 3-3s3 1 3 3"/><path d="M14 16c0-2 1.5-3 3-3s3 1 3 3"/><path d="M7 13V6a2 2 0 014 0v7"/><path d="M17 13V6a2 2 0 014 0v7"/></svg></div><h3>Pet Walking Calculator</h3><p>How far did your dog walk? Calculate distance and exercise goals.</p><span class="go-link">Use Tool →</span></a>
+                <a href="/pet-insurance/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5.2 3.9 10.1 9 11 5.1-.9 9-5.8 9-11V7l-9-5z"/><path d="M9 12l2.3 2.3L15 9.7"/></svg></div><h3>Pet Insurance Estimator</h3><p>See how much pet insurance costs and find the best plan.</p><span class="go-link">Estimate Cost →</span></a>
+                <a href="/pet-toxicity-checker/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 9v5"/><circle cx="12" cy="17" r="1"/></svg></div><h3>Pet Toxicity Checker</h3><p>Is it safe? Search 120+ foods, plants, and substances.</p><span class="go-link">Check Now →</span></a>
+                <a href="/dog-breed-match/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.4l-1.5-1.3C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.3.8 4.5 2.1C13.2 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.5 11.6L12 21.4z"/></svg></div><h3>Dog Breed Match Quiz</h3><p>Answer 8 quick questions and get personalized breed recommendations.</p><span class="go-link">Take Quiz →</span></a>
+                <a href="/dog-separation-anxiety/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.4l-1.5-1.3C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.3.8 4.5 2.1C13.2 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.5 11.6L12 21.4z"/><path d="M9 12h6M12 9v6"/></svg></div><h3>Separation Anxiety Test</h3><p>Evaluate your dog's stress level with 12 questions.</p><span class="go-link">Take Test →</span></a>
+                <a href="/dog-pregnancy-calculator/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="16" r="2"/><path d="M12 14v2l1 1"/></svg></div><h3>Dog Pregnancy Calculator</h3><p>Calculate due dates and track week-by-week milestones.</p><span class="go-link">Calculate →</span></a>
+                <a href="/dog-ear-checker/" class="tool-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22c-2.2-1-4-3.5-4-6 0-4 2-6 4-6s3 1.5 3 3c0 2-1 3-2 4s-1 3 0 4"/><path d="M15 8c1.5 1 2 3 2 5"/><circle cx="17" cy="4" r="2"/></svg></div><h3>Dog Ear Cleaning Checker</h3><p>Check if your dog's ears need cleaning and get step-by-step tips.</p><span class="go-link">Check Now →</span></a>
             </div>
         </div>
     </section>
@@ -579,10 +584,10 @@
     <section class="about-section">
         <div class="container">
             <div class="about-grid">
-                <div class="about-card"><div class="icon">💰</div><h3>ASPCA-Calibrated</h3><p>All recurring cost estimates based on ASPCA Pet Care Costs guidelines — the industry standard for pet expense data.</p></div>
-                <div class="about-card"><div class="icon">🔒</div><h3>Your Privacy</h3><p>All calculations happen in your browser. We never store or share your information.</p></div>
-                <div class="about-card"><div class="icon">🎯</div><h3>Comprehensive</h3><p>From adoption fees to emergency funds — we cover every major expense category for responsible pet ownership.</p></div>
-                <div class="about-card"><div class="icon">📈</div><h3>Always Improving</h3><p>New tools added regularly. Have a suggestion? We'd love to hear from you.</p></div>
+                <div class="about-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div><h3>ASPCA-Calibrated</h3><p>All recurring cost estimates based on ASPCA Pet Care Costs guidelines — the industry standard for pet expense data.</p></div>
+                <div class="about-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 118 0v4"/></svg></div><h3>Your Privacy</h3><p>All calculations happen in your browser. We never store or share your information.</p></div>
+                <div class="about-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div><h3>Comprehensive</h3><p>From adoption fees to emergency funds — we cover every major expense category for responsible pet ownership.</p></div>
+                <div class="about-card"><div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-7 7-4-4-6 6"/><path d="M17 6h6v6"/></svg></div><h3>Always Improving</h3><p>New tools added regularly. Have a suggestion? We'd love to hear from you.</p></div>
             </div>
         </div>
     </section>
@@ -590,7 +595,7 @@
 
     <section class="faq-section">
         <div class="container">
-            <h2>❓ Frequently Asked Questions</h2>
+            <h2><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="10"/><path d="M9.1 9.1c.7-1 1.8-1.6 3-1.6 2 0 3.6 1.6 3.6 3.5 0 2-1.6 3.5-3.6 3.5"/><circle cx="12" cy="16.5" r=".8"/></svg> Frequently Asked Questions</h2>
             <details class="faq-item">
                 <summary>How much does a dog cost in the first year?</summary>
                 <div class="faq-answer">For a medium-sized dog with moderate spending, first-year costs typically range from <strong>$1,500 to $4,000</strong>. Based on ASPCA baselines, annual recurring costs for a medium dog are approximately $850 (food, routine medical, preventatives, toys, license) plus $516 for recommended pet insurance. One-time startup costs add $500–$1,500 depending on adoption vs breeder and initial supplies.</div>
