@@ -125,8 +125,9 @@ async function handleApi(request, env, url) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            sender: { email: 'support@keenerpet.com', name: 'KeenerPet Contact' },
+            sender: { email: 'cqionglei@gmail.com', name: 'KeenerPet Contact' },
             to: [{ email: 'support@keenerpet.com' }],
+            replyTo: { email: email, name: name },
             subject: '[KeenerPet] Contact from ' + name,
             textContent: 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message
           })
