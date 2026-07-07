@@ -2,77 +2,37 @@
 (function () {
   'use strict';
 
-  // --- Mobile Sidebar ---
+  // --- Mobile Side Panel ---
   var hamburger = document.querySelector('.hamburger');
-  var sidebar = document.querySelector('.mobile-sidebar');
-  var overlay = document.querySelector('.sidebar-overlay');
-  var closeBtn = document.querySelector('.sidebar-close');
+  var panel = document.querySelector('.side-panel');
+  var overlay = document.querySelector('.side-overlay');
+  var closeBtn = document.querySelector('.sp-close');
 
-  function openSidebar() {
-    if (!sidebar || !overlay) return;
-    sidebar.classList.add('open');
+  function openPanel() {
+    if (!panel || !overlay) return;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeSidebar() {
-    if (!sidebar || !overlay) return;
-    sidebar.classList.remove('open');
+  function closePanel() {
+    if (!panel || !overlay) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  if (hamburger) hamburger.addEventListener('click', openSidebar);
-  if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-  if (overlay) overlay.addEventListener('click', closeSidebar);
+  if (hamburger) hamburger.addEventListener('click', openPanel);
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  if (overlay) overlay.addEventListener('click', closePanel);
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeSidebar();
-  });
-
-  // --- Desktop Dropdown (hover + click fallback for touch) ---
-  var navGroups = document.querySelectorAll('.desktop-nav .nav-group');
-  var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-  navGroups.forEach(function (group) {
-    var trigger = group.querySelector('.nav-trigger');
-    if (!trigger) return;
-
-    // Desktop: hover open/close (CSS also handles :hover, but JS ensures clean state)
-    group.addEventListener('mouseenter', function () {
-      if (!isTouchDevice) {
-        navGroups.forEach(function (g) { g.classList.remove('open'); });
-        group.classList.add('open');
-      }
-    });
-    group.addEventListener('mouseleave', function () {
-      if (!isTouchDevice) {
-        group.classList.remove('open');
-      }
-    });
-
-    // Touch devices: toggle with click
-    trigger.addEventListener('click', function (e) {
-      if (!isTouchDevice) return;
-      e.stopPropagation();
-      var isOpen = group.classList.contains('open');
-      navGroups.forEach(function (g) { g.classList.remove('open'); });
-      if (!isOpen) group.classList.add('open');
-    });
-  });
-
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.desktop-nav')) {
-      navGroups.forEach(function (g) { g.classList.remove('open'); });
-    }
+    if (e.key === 'Escape') closePanel();
   });
 
   // --- Auto-highlight current page ---
   var currentPath = window.location.pathname;
   if (!currentPath.endsWith('/')) currentPath += '/';
 
-  document.querySelectorAll('.dropdown-item, .sidebar-section a').forEach(function (link) {
+  document.querySelectorAll('.side-panel a').forEach(function (link) {
     var href = link.getAttribute('href');
     if (href === currentPath) {
       link.classList.add('active');
