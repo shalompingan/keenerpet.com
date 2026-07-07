@@ -559,6 +559,12 @@
     }
 
     document.getElementById('unit-kg').addEventListener('click', function() {
+        if (unit === 'lbs') {
+            var val = parseFloat(weightInput.value);
+            if (!isNaN(val) && val > 0) {
+                weightInput.value = Math.round(val / 2.20462 * 10) / 10;
+            }
+        }
         unit = 'kg';
         document.getElementById('unit-kg').classList.add('active');
         document.getElementById('unit-lbs').classList.remove('active');
@@ -567,6 +573,12 @@
     });
 
     document.getElementById('unit-lbs').addEventListener('click', function() {
+        if (unit === 'kg') {
+            var val = parseFloat(weightInput.value);
+            if (!isNaN(val) && val > 0) {
+                weightInput.value = Math.round(val * 2.20462 * 10) / 10;
+            }
+        }
         unit = 'lbs';
         document.getElementById('unit-lbs').classList.add('active');
         document.getElementById('unit-kg').classList.remove('active');

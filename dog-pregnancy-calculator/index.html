@@ -910,7 +910,7 @@
         // Current week (1-9, 0 = not yet confirmed)
         let currentWeek = 0;
         const dayStartWeek = [0, 0, 7, 14, 21, 28, 35, 42, 49, 56]; // day ranges by week
-        for (let i = 8; i >= 1; i--) {
+        for (let i = 9; i >= 1; i--) {
             if (daysAlong >= dayStartWeek[i]) {
                 currentWeek = i;
                 break;
