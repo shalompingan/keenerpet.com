@@ -674,6 +674,7 @@ footer {
 
 /* ===== Mobile (≤767px) ===== */
 @media (max-width: 767px) {
+    header .container { padding: 0 12px; }
     .desktop-nav { display: none !important; }
     .hamburger { display: flex !important; }
     .sidebar-overlay { display: none; }

@@ -34,7 +34,11 @@ keenerpet.com/
 ├── privacy/index.html
 ├── guides/
 │   └── dog-walking-guide/index.html   # SEO 指南文章
-├── style.css                   # 共享样式（全局通用）
+├── logo.svg                     # 宠物 Logo（透明背景 SVG，内嵌 PNG）
+├── logo-cat.svg                 # 原猫图标 logo（保留备用）
+├── favicon.svg                  # 浏览器标签图标（宠物 logo 透明版）
+├── favicon.png                  # 32×32 PNG 版 favicon
+├── apple-touch-icon.png         # 180×180 iPhone 书签图标
 ├── _worker.js                  # Cloudflare Worker API
 ├── wrangler.toml               # Cloudflare Pages 配置
 ├── sitemap.xml
@@ -85,6 +89,25 @@ git push
 - 阴影：`0 10px 30px rgba(0,0,0,0.08)`
 - 响应式断点：480px / 540px / 600px / 640px
 - 配色：暖色基调（`#fafaf9` 背景，`#292524` 文字）
+
+## Logo / Favicon
+
+- **Logo 文件**：`/logo.svg`（透明背景，来自图怪兽设计平台的宠物图片）
+- **导航栏 logo**：72px 图片，`margin:-22px 0 -22px 0` 负边距保持导航栏高度不变，`margin-right:-12px` 让文字贴紧
+- **底部/侧边栏 logo**：72px 图片，正常文档流（无负边距）；底部加 `margin-right:-12px` 文字贴紧
+- **Favicon**：`/favicon.svg`（SVG 内嵌 32×32 PNG）+ `/favicon.png` 备用
+- **Apple Touch Icon**：`/apple-touch-icon.png`
+- **替换规则**：更换 logo 图片时只需替换 `/logo.svg`，无需改动 HTML（各页面引用同文件）
+- **手机端**：`style.css` 中 `@media (max-width: 767px)` 将 header 内边距设为 `padding: 0 12px`，logo 更靠左
+
+## 已修改 logo 的页面
+
+| 页面 | 导航栏 | 侧边栏 | 底部 |
+|------|--------|--------|------|
+| index.html | ✅ | ✅ | ✅ |
+| pet-food-calculator/index.html | ✅ | ✅ | ✅ |
+
+其余页面待修改。
 
 ## Contact 表单
 
